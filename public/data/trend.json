@@ -1,0 +1,624 @@
+{
+  "kind": "youtube#searchListResponse",
+  "etag": "6zkHvhyeh85ST_Nz5TmBtt_LFGA",
+  "nextPageToken": "CBIQAA",
+  "regionCode": "US",
+  "pageInfo": {
+    "totalResults": 1000000,
+    "resultsPerPage": 18
+  },
+  "items": [
+    {
+      "kind": "youtube#searchResult",
+      "etag": "NTEQoWacPHzNTOIt9qvs4A9VTP8",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "oofmZvfm46U"
+      },
+      "snippet": {
+        "publishedAt": "2024-06-06T20:07:11Z",
+        "channelId": "UC-PVzZLIy2B6KH75DZweTCg",
+        "title": "📗[ 알트코인추천 ]📗  유럽 금리인하 다음주 CPI발표 / 업비트 빗썸 추천종목!!   관심종목 : 시바이누 폴리매쉬 밈코인 RWA 마일버스 식스코인",
+        "description": "[ 알트코인추천 ]   유럽 금리인하 다음주 CPI발표 / 업비트 빗썸 추천종목!! 관심종목 : 시바이누 폴리매쉬 밈코인 RWA 마일버스 식스 ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/oofmZvfm46U/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/oofmZvfm46U/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/oofmZvfm46U/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "코인타짜 고래",
+        "liveBroadcastContent": "none",
+        "publishTime": "2024-06-06T20:07:11Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "aE-2mDpB5ZvyRTEg37FUetf97Rc",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "POH_wMjBXkc"
+      },
+      "snippet": {
+        "publishedAt": "2024-06-06T10:59:21Z",
+        "channelId": "UC7jVcgMLSDsvBEZHeLmVMpQ",
+        "title": "🟡[ 알트코인추천 ]🟡 신규 알트코인추천 나갑니다!! 타이코 놓치신분들 필수시청 /  관심종목 : 업비트 타이코 타이코코인 피스네트워크 플로키 폴리매쉬",
+        "description": "[ 알트코인추천 ]   신규 알트코인추천 나갑니다!! 타이코 놓치신분들 필수시청 / 관심종목 : 업비트 타이코 타이코코인 피스네트워크 ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/POH_wMjBXkc/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/POH_wMjBXkc/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/POH_wMjBXkc/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "대박코인 고래 트레이더 ",
+        "liveBroadcastContent": "none",
+        "publishTime": "2024-06-06T10:59:21Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "rAOKWBJvcWVNwTkGUO1opnWoigo",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "V-UQVYUoQYY"
+      },
+      "snippet": {
+        "publishedAt": "2024-06-01T10:15:01Z",
+        "channelId": "UCj4U-HJ187q2wwJ9VpfgoQw",
+        "title": "2024년 후반기 &quot;6월&quot;부터 강력하게 터질 코인추천 당장 사세요 앞으로 10배이상 터질 효자종목입니다. #코인추천 #시바이누 #비트코인",
+        "description": "코인추천 #비트코인 #알트코인 현우진입니다. 6월이 시작되었습니다 우리 구독자분들 모두 이번달도 건강하시고 돈 많이버시는 한 달 ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/V-UQVYUoQYY/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/V-UQVYUoQYY/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/V-UQVYUoQYY/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "비트비",
+        "liveBroadcastContent": "none",
+        "publishTime": "2024-06-01T10:15:01Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "cfkZFxRnGq4AUaNbOEq59p_viyc",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "k7VnZV2VbHw"
+      },
+      "snippet": {
+        "publishedAt": "2024-05-30T09:28:48Z",
+        "channelId": "UCHHTOh8WbvMmCnHwIRWhyDA",
+        "title": "역대급으로 터질 &quot;코인추천&quot; 깜짝 놀랄 정도로 폭발합니다 무조건 사두세요",
+        "description": "안녕하세요 코뮤니티입니다. 조만간 코인시장이 크게 반등이 나와줄 모습을 보여주고 있기에 조금 더 강력하게 추천드릴 종목들이 ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/k7VnZV2VbHw/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/k7VnZV2VbHw/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/k7VnZV2VbHw/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "코뮤니티 - 코인의 모든 정보 커뮤니티",
+        "liveBroadcastContent": "none",
+        "publishTime": "2024-05-30T09:28:48Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "rOumdbA_DxLEn0CTGT5ipxEXc-Q",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "YSPxIfOwzAo"
+      },
+      "snippet": {
+        "publishedAt": "2024-05-27T11:15:02Z",
+        "channelId": "UCj4U-HJ187q2wwJ9VpfgoQw",
+        "title": "모두가 기다리는 알트코인 불장 바로 &quot;이 때&quot; 옵니다 코인추천 드리는거 그냥 따라하세요 비트코인횡보와 함께 미친듯이 터집니다 #비트코인 #코인추천 #알트코인",
+        "description": "현우진입니다 어제 꿀맛같은 휴식이후 오늘 영상에서 인사드립니다 이번주 가장 고요하면서 시끄러운시장이 될 확률 매우높습니다 ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/YSPxIfOwzAo/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/YSPxIfOwzAo/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/YSPxIfOwzAo/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "비트비",
+        "liveBroadcastContent": "none",
+        "publishTime": "2024-05-27T11:15:02Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "ldqVm0-fj_u5S_Kp7Vd5ue4GKiI",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "R-d8_UwwJcs"
+      },
+      "snippet": {
+        "publishedAt": "2024-05-30T20:11:15Z",
+        "channelId": "UC-PVzZLIy2B6KH75DZweTCg",
+        "title": "📗[ 알트코인추천 ]📗 신규상장 나락사태 대응방법 + 시바이누 매수가도달     관심종목 :  시바이누 바운스토큰 스타게이트파이낸스 이더리움",
+        "description": "[ 알트코인추천 ]   신규상장 나락사태 대응방법 + 시바이누 매수가도달 관심종목 : 시바이누 바운스토큰 스타게이트파이낸스 이더 ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/R-d8_UwwJcs/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/R-d8_UwwJcs/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/R-d8_UwwJcs/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "코인타짜 고래",
+        "liveBroadcastContent": "none",
+        "publishTime": "2024-05-30T20:11:15Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "QHkbJ2CEjsbBrKbXUU9KWKRxEW8",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "zpkIINnYMrw"
+      },
+      "snippet": {
+        "publishedAt": "2024-05-23T10:01:01Z",
+        "channelId": "UCj4U-HJ187q2wwJ9VpfgoQw",
+        "title": "앞으로 미친 상승 터져줄 &quot;코인추천&quot; 강력하게 터질겁니다 무조건 사놓으세요",
+        "description": "구독자분들 안녕하세요 현우진입니다. 한국 시간 기준으로 23~24일 중으로 이더리움 ETF 결과가 나올 예정입니다 이에 맞춰 추천 ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/zpkIINnYMrw/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/zpkIINnYMrw/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/zpkIINnYMrw/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "비트비",
+        "liveBroadcastContent": "none",
+        "publishTime": "2024-05-23T10:01:01Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "pOS6GKxhGJs31VrLolznIsabM6M",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "ECISrBfffBI"
+      },
+      "snippet": {
+        "publishedAt": "2024-02-05T08:00:05Z",
+        "channelId": "UCvil4OAt-zShzkKHsg9EQAw",
+        "title": "비트코인 10배 오르면 &#39;이 코인은&#39; 100배 오를 겁니다 (오태민 대표)",
+        "description": "비트코인 10배 오르면 '이 코인은' 100배 오를 겁니다 (오태민 대표 3부) - 촬영일시: 1월 31일 오태민 대표 『한국 경제 긴급 진단』 ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/ECISrBfffBI/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/ECISrBfffBI/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/ECISrBfffBI/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "김작가 TV",
+        "liveBroadcastContent": "none",
+        "publishTime": "2024-02-05T08:00:05Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "WgC1gzMfsVlLp-rJOdtce7Xslsk",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "j0QmAzHiDk4"
+      },
+      "snippet": {
+        "publishedAt": "2024-02-26T04:43:28Z",
+        "channelId": "UCoOQUteD_4wor08wTCb_OuQ",
+        "title": "시바이누 800원 갑니다  #시바이누코인 #비트코인 #시바이누",
+        "description": "알트코인추천종목 #알트코인추천 #알트코인추천 #알트코인 스택스 비트코인 도지코인 이더리움클래식 김치코인 알트코인 페이코인 ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/j0QmAzHiDk4/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/j0QmAzHiDk4/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/j0QmAzHiDk4/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "밈코인 연구소",
+        "liveBroadcastContent": "none",
+        "publishTime": "2024-02-26T04:43:28Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "LkVl0y9UPPRWszpKusvEbuhhWJo",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "mwWWI39m9vw"
+      },
+      "snippet": {
+        "publishedAt": "2024-06-05T08:52:19Z",
+        "channelId": "UCHHTOh8WbvMmCnHwIRWhyDA",
+        "title": "핵폭발 코인추천 &quot;이번 6월&quot; 가장크게 상승할 전망을 가진 알트코인 TOP2!!",
+        "description": "코뮤니티 구독자분들 안녕하세요. 오늘은 이번시기 알트코인 불장에서 가장 안정적이고 크게 힘을 받아줄 코인추천 종목 2가지 비체인 ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/mwWWI39m9vw/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/mwWWI39m9vw/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/mwWWI39m9vw/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "코뮤니티 - 코인의 모든 정보 커뮤니티",
+        "liveBroadcastContent": "none",
+        "publishTime": "2024-06-05T08:52:19Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "QApo5KncFjVIqAl3ZdFGXfjKWxU",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "c7KjigZWeao"
+      },
+      "snippet": {
+        "publishedAt": "2024-06-06T10:01:13Z",
+        "channelId": "UCHHTOh8WbvMmCnHwIRWhyDA",
+        "title": "지금 &quot;당장 사야할&quot; 대폭발 코인추천 ! 아무도 모르게 숨겨진 보석같은 알트코인 2종목 #알트코인추천",
+        "description": "알트코인추천 코뮤니티 구독자분들 안녕하세요. 오늘도 이번시기 정말 큰 잠재력을 가진 코인추천 2가지 준비했습니다. 또한 최근 ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/c7KjigZWeao/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/c7KjigZWeao/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/c7KjigZWeao/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "코뮤니티 - 코인의 모든 정보 커뮤니티",
+        "liveBroadcastContent": "none",
+        "publishTime": "2024-06-06T10:01:13Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "XlSSMSJbEKV6ATdxSsgO2CUFhv8",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "VyM8g3d2Bxo"
+      },
+      "snippet": {
+        "publishedAt": "2024-05-31T10:30:20Z",
+        "channelId": "UCj4U-HJ187q2wwJ9VpfgoQw",
+        "title": "알트코인 폭등 시나리오 &quot;찐&quot; 바닥 매수기회 코인추천 #비트코인 #알트코인 #코인추천",
+        "description": "현우진입니다. 모두 힘들었던 5월이 지나갔습니다. 초중순 고통이었는데 잠시 좋았다가 또 하락 나오는 알트코인때문에 다들 속상하실 ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/VyM8g3d2Bxo/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/VyM8g3d2Bxo/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/VyM8g3d2Bxo/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "비트비",
+        "liveBroadcastContent": "none",
+        "publishTime": "2024-05-31T10:30:20Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "i2Sonr31EG5BTYQYTAAVkOLl7FE",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "MpcJjM3Bpzc"
+      },
+      "snippet": {
+        "publishedAt": "2024-06-06T13:28:26Z",
+        "channelId": "UCvpEugMteInEZHSfUij4qqA",
+        "title": "도지코인 시바이누 그리고 &#39;이 밈코인&#39; 일론머스크의 예언으로 내일부터 9억배 오른다?",
+        "description": "일론 머스크의 특별한 행보로 인해 이 밈코인의 강력한 상승이 임박한 것으로 보입니다. #도지코인 #시바이누 #시바이누코인 #비트 ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/MpcJjM3Bpzc/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/MpcJjM3Bpzc/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/MpcJjM3Bpzc/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "비트코인 도지파",
+        "liveBroadcastContent": "none",
+        "publishTime": "2024-06-06T13:28:26Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "jlNi6u6Hz6xgf7gqja1pw1aMmvg",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "vXcqF3MiQ5Q"
+      },
+      "snippet": {
+        "publishedAt": "2024-03-20T11:34:00Z",
+        "channelId": "UCvpEugMteInEZHSfUij4qqA",
+        "title": "비트코인 세력 1위가 말하는 100배 떡상할 알트코인 TOP3",
+        "description": "코인 예언의 신이 앞으로 수백배 이상 급등할 가능성이 있는 코인을 우리에게 알려준 것으로 보입니다. #비트코인 #시바이누 #시바이 ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/vXcqF3MiQ5Q/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/vXcqF3MiQ5Q/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/vXcqF3MiQ5Q/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "비트코인 도지파",
+        "liveBroadcastContent": "none",
+        "publishTime": "2024-03-20T11:34:00Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "Yez-9pVours12jkEQ0z0AMyYhLs",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "x1J_yd9NVpg"
+      },
+      "snippet": {
+        "publishedAt": "2024-05-24T13:30:25Z",
+        "channelId": "UCj4U-HJ187q2wwJ9VpfgoQw",
+        "title": "&quot;이 코인&quot;들은 꼭 사세요! 지금 제대로 독기 품었습니다 #코인추천 #알트코인 #비트코인",
+        "description": "현우진입니다 최근 컨디션 난조로 인해 몸이 많이 지치고 힘들다보니 오늘 영상이 늦어졌습니다. 기다려주신분들께 사과드리며 ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/x1J_yd9NVpg/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/x1J_yd9NVpg/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/x1J_yd9NVpg/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "비트비",
+        "liveBroadcastContent": "none",
+        "publishTime": "2024-05-24T13:30:25Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "wTEwl8ACFJ0ho6D1KSZ1lo0ZU38",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "JHghkSkgDTI"
+      },
+      "snippet": {
+        "publishedAt": "2024-03-24T12:39:40Z",
+        "channelId": "UCvpEugMteInEZHSfUij4qqA",
+        "title": "도지코인 시바이누 아닙니다! 일론머스크가 말하는 1억배 오를 코인 공개!",
+        "description": "일론 머스크의 행보 덕분에 이 밈코인이 수억배의 상승률을 보여줄 수 있을 것으로 예상됩니다. #도지코인 #시바이누 #시바이누코인 ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/JHghkSkgDTI/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/JHghkSkgDTI/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/JHghkSkgDTI/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "비트코인 도지파",
+        "liveBroadcastContent": "none",
+        "publishTime": "2024-03-24T12:39:40Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "RKarx8-i9n3_eN-d6tnkMkSZRpY",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "Na-_U250tp8"
+      },
+      "snippet": {
+        "publishedAt": "2024-05-30T12:00:20Z",
+        "channelId": "UC-PVzZLIy2B6KH75DZweTCg",
+        "title": "📗[ 알트코인추천 ]📗 시바이누 매수가도달!! 곧터진다 신규상장 바운스토큰 스타게이트 대응방법    관심종목 :  시바이누 페페 플로키 봉크 밈코인 바운스토큰 스타게이트파이낸스",
+        "description": "[ 알트코인추천 ]   시바이누 매수가도달!! 곧터진다 신규상장 바운스토큰 스타게이트 대응방법 관심종목 : 시바이누 페페 플로키 봉크 ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/Na-_U250tp8/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/Na-_U250tp8/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/Na-_U250tp8/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "코인타짜 고래",
+        "liveBroadcastContent": "none",
+        "publishTime": "2024-05-30T12:00:20Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "iHgYp96GmXCHP5Xrw-CY9yTfChM",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "ZaW1sa3VF18"
+      },
+      "snippet": {
+        "publishedAt": "2024-05-29T11:00:24Z",
+        "channelId": "UCj4U-HJ187q2wwJ9VpfgoQw",
+        "title": "제발 좀 사세요 비트코인 &quot;불장 임박&quot; 알트코인 매집 당장 하세요 무조건 터지는 코인추천 #시바이누 #코인추천 #알트코인",
+        "description": "현우진입니다. 오늘도 영상시청해주셔서 감사합니다. 5월도 끝나가는 시점에서 현재 알트코인들의 움직임이 심상치 않습니다.",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/ZaW1sa3VF18/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/ZaW1sa3VF18/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/ZaW1sa3VF18/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "비트비",
+        "liveBroadcastContent": "none",
+        "publishTime": "2024-05-29T11:00:24Z"
+      }
+    }
+  ]
+}

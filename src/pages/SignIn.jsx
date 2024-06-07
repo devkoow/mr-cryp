@@ -9,7 +9,7 @@ import Grid from '@mui/material/Grid';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { googleLogin } from '../api/firebase';
+import { loginGoogle } from '../api/firebase';
 import { useNavigate } from 'react-router-dom';
 import ButtonKakao from '../components/ButtonKakao';
 import LOGO_GOOGLE from '../assets/images/logo_google.png';
@@ -37,7 +37,7 @@ const defaultTheme = createTheme();
 export default function SignIn() {
   const navigate = useNavigate();
   const handleLogin = () => {
-    googleLogin()
+    loginGoogle()
       .then(() => {
         navigate('/home');
       })

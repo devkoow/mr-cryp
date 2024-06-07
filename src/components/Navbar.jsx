@@ -13,11 +13,11 @@ import MenuItem from '@mui/material/MenuItem';
 import Avatar from '@mui/material/Avatar';
 import User from './User';
 import { useNavigate } from 'react-router-dom';
-import { googleLogout } from '../api/firebase';
+import { logoutGoogle } from '../api/firebase';
 import logoutKakao from '../api/logoutKakao';
 import LOGO_APPBAR from '../assets/images/logo_appbar.png';
 
-const pages = ['마켓', '뉴스'];
+const pages = ['마켓', '비전'];
 const settings = ['프로필 수정', '로그아웃'];
 
 function ResponsiveAppBar() {
@@ -27,14 +27,14 @@ function ResponsiveAppBar() {
   const socialType = localStorage.getItem('socialType');
 
   /** 소셜 타입 판단 후 함수 호출
-   * - Google : googleLogout
+   * - Google : logoutGoogle
    * - Kakao : logoutKakao
    */
   const handleLogout = () => {
     try {
       const socialType = localStorage.getItem('socialType');
       if (socialType === 'Google') {
-        googleLogout();
+        logoutGoogle();
         navigate('/');
       } else if (socialType === 'Kakao') {
         logoutKakao();
@@ -51,14 +51,14 @@ function ResponsiveAppBar() {
   const handleCloseUserMenu = (action) => {
     setAnchorElUser(null);
     if (action === '로그아웃') handleLogout();
-    if (action === '프로필 수정') navigate('/mypage');
+    if (action === '프로필 수정') navigate('/profile');
   };
 
   /** 페이지 별 이동 */
   const handleCloseNavMenu = (page) => {
     setAnchorElNav(null);
     if (page === '마켓') navigate('/market');
-    if (page === '뉴스') navigate('/news');
+    if (page === '비전') navigate('/vision');
   };
 
   const handleOpenNavMenu = (event) => {

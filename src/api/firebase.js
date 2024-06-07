@@ -19,7 +19,7 @@ const provider = new GoogleAuthProvider();
 const auth = getAuth();
 
 /** 구글 로그인 */
-export async function googleLogin() {
+export async function loginGoogle() {
   return signInWithPopup(auth, provider).then((result) => {
     const user = result.user;
     const credential = GoogleAuthProvider.credentialFromResult(result);
@@ -36,7 +36,7 @@ export async function googleLogin() {
 }
 
 /** 구글 로그아웃 */
-export async function googleLogout() {
+export async function logoutGoogle() {
   try {
     await signOut(auth);
     localStorage.removeItem('socialType');
