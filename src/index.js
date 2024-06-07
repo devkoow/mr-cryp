@@ -10,6 +10,7 @@ import Profile from './pages/Profile';
 import Market from './pages/Market';
 import SignIn from './pages/SignIn';
 import Vision from './pages/Vision';
+import AuthKakao from './pages/AuthKakao';
 
 const router = createBrowserRouter([
   {
@@ -18,6 +19,7 @@ const router = createBrowserRouter([
     errorElement: <NotFound />,
     children: [
       { index: true, element: <SignIn /> },
+      { path: '/auth', element: <AuthKakao /> },
       { path: '/home', element: <Home /> },
       { path: '/market', element: <Market /> },
       { path: '/vision', element: <Vision /> },
