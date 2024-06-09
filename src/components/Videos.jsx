@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useQuery } from '@tanstack/react-query';
-import { useYoutubeApi } from '../context/YoutubeContext';
+import { useOpenApi } from '../context/OpenApiContext';
 import PropTypes from 'prop-types';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
@@ -9,7 +9,7 @@ import Skeleton from '@mui/material/Skeleton';
 
 function VideoCard(props) {
   const { loading = false } = props; // 기본적으로 loading = false
-  const { youtube } = useYoutubeApi();
+  const { youtube } = useOpenApi();
 
   const {
     isPending,

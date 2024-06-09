@@ -26,8 +26,8 @@ export default class Youtube {
       });
       const items = response.data.items;
       return items.map((item) => ({ ...item, id: item.id.videoId }));
-    } catch (e) {
-      return Promise.reject(e);
+    } catch (error) {
+      return Promise.reject(error);
     }
   }
 

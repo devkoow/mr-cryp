@@ -30,7 +30,6 @@ export async function loginGoogle() {
     localStorage.setItem('nickname', user.displayName);
     localStorage.setItem('imgUrl', user.photoURL);
     console.log('구글 로그인');
-
     return user;
   });
 }

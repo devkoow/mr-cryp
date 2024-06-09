@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 export default function KakaoAuth() {
   const navigate = useNavigate();
   useEffect(() => {
+    /** 액세스 토큰 발급 API */
     const getAuthToken = async () => {
       const urlParams = new URLSearchParams(window.location.search);
       const authCode = urlParams.get('code');
@@ -47,6 +48,7 @@ export default function KakaoAuth() {
         navigate('/');
       }
     };
+    /** 유저 ID, 프로필 이미지, 닉네임 GET API */
     const getUserData = async () => {
       try {
         const response = await axios.get('https://kapi.kakao.com/v2/user/me', {

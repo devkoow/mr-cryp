@@ -17,7 +17,7 @@ import { logoutGoogle } from '../api/firebase';
 import logoutKakao from '../api/logoutKakao';
 import LOGO_APPBAR from '../assets/images/logo_appbar.png';
 
-const pages = ['마켓', '비전'];
+const pages = ['대시보드', '마켓', '비전'];
 const settings = ['프로필 수정', '로그아웃'];
 
 function ResponsiveAppBar() {
@@ -25,7 +25,6 @@ function ResponsiveAppBar() {
   const [anchorElUser, setAnchorElUser] = useState(null);
   const nickname = localStorage.getItem('nickname');
   const socialType = localStorage.getItem('socialType');
-
   /** 소셜 타입 판단 후 함수 호출
    * - Google : logoutGoogle
    * - Kakao : logoutKakao
@@ -57,6 +56,7 @@ function ResponsiveAppBar() {
   /** 페이지 별 이동 */
   const handleCloseNavMenu = (page) => {
     setAnchorElNav(null);
+    if (page === '대시보드') navigate('/home');
     if (page === '마켓') navigate('/market');
     if (page === '비전') navigate('/vision');
   };
@@ -76,6 +76,7 @@ function ResponsiveAppBar() {
       sx={{ top: 0, left: 0, right: 0, marginBottom: 4 }}
     >
       <Container maxWidth="xl">
+        {/* 툴바 - display 속성을 이용해서 md, xs일때 반응형 디자인 구분 */}
         <Toolbar disableGutters>
           {/* md일 때의 네비게이션바 */}
           <Avatar
@@ -86,7 +87,6 @@ function ResponsiveAppBar() {
             variant="h6"
             noWrap
             component="a"
-            href="/home"
             sx={{
               mr: 2,
               display: { xs: 'none', md: 'flex' },
@@ -168,8 +168,8 @@ function ResponsiveAppBar() {
                   mr: 2,
                   color: 'white',
                   display: 'block',
-                  border: 'none', // 외곽선 제거
-                  boxShadow: 'none', // 그림자 제거
+                  border: 'none',
+                  boxShadow: 'none',
                 }}
               >
                 {page}

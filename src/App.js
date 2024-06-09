@@ -4,7 +4,7 @@ import { Outlet, useLocation } from 'react-router-dom';
 import { ThemeProvider } from '@mui/material';
 import { theme } from './defaultTheme';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { YoutubeApiProvider } from './context/YoutubeContext';
+import { OpenApiProvider } from './context/OpenApiContext';
 
 const queryClient = new QueryClient();
 export default function App() {
@@ -15,11 +15,11 @@ export default function App() {
   return (
     <ThemeProvider theme={theme}>
       {!isSignIn && !isAuth && <ResponsiveAppBar />}
-      <YoutubeApiProvider>
+      <OpenApiProvider>
         <QueryClientProvider client={queryClient}>
           <Outlet />
         </QueryClientProvider>
-      </YoutubeApiProvider>
+      </OpenApiProvider>
     </ThemeProvider>
   );
 }
