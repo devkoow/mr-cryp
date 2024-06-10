@@ -2,13 +2,7 @@ import React from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { useOpenApi } from '../context/OpenApiContext';
 
-import {
-  Card,
-  CardHeader,
-  CardContent,
-  Typography,
-  Button,
-} from '@mui/material';
+import { Card, CardHeader, Typography, Button } from '@mui/material';
 
 export default function Articles() {
   const { naver } = useOpenApi();
@@ -40,14 +34,9 @@ export default function Articles() {
       <Typography>코인 관련 기사들</Typography>
       {articles.map((article) => (
         <Card key={article.link}>
-          <CardHeader title={article.title} subheader={article.pubDate} />
-          <CardContent>
-            <Typography variant="body2" color="text.secondary">
-              {article.description}
-            </Typography>
-          </CardContent>
+          <CardHeader title={article.title} />
           <Button href={article.link} target="_blank" rel="noopener noreferrer">
-            기사 읽기
+            본문으로 이동
           </Button>
         </Card>
       ))}

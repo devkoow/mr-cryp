@@ -39,15 +39,15 @@ function VideoCard(props) {
       <Grid container spacing={1}>
         {(loading ? Array.from(new Array(3)) : videos).map((video) => (
           <Grid item xs={4} key={video.id}>
-            <Box key={video.id} sx={{ width: 100, marginRight: 0.5, my: 3 }}>
+            <Box key={video.id} sx={{ width: 210, marginRight: 0.5, my: 3 }}>
               {video ? (
                 <img
-                  style={{ width: 100, height: 65 }}
+                  style={{ width: 210, height: 130 }}
                   alt={video.snippet.title}
                   src={video.snippet.thumbnails.default.url}
                 />
               ) : (
-                <Skeleton variant="rectangular" width={210} height={118} />
+                <Skeleton variant="rectangular" width={210} height={130} />
               )}
 
               {video ? (

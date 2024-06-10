@@ -57,7 +57,7 @@ function ResponsiveAppBar() {
   const handleCloseNavMenu = (page) => {
     setAnchorElNav(null);
     if (page === '대시보드') navigate('/home');
-    if (page === '마켓') navigate('/market');
+    if (page === '마켓') navigate('/trade');
     if (page === '비전') navigate('/vision');
   };
 
