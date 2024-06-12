@@ -17,7 +17,7 @@ import { logoutGoogle } from '../api/firebase';
 import logoutKakao from '../api/logoutKakao';
 import LOGO_APPBAR from '../assets/images/logo_appbar.png';
 
-const pages = ['대시보드', '마켓', '비전'];
+const pages = ['대시보드', '거래', '비전'];
 const settings = ['프로필 수정', '로그아웃'];
 
 function ResponsiveAppBar() {
@@ -57,7 +57,7 @@ function ResponsiveAppBar() {
   const handleCloseNavMenu = (page) => {
     setAnchorElNav(null);
     if (page === '대시보드') navigate('/home');
-    if (page === '마켓') navigate('/trade');
+    if (page === '거래') navigate('/trade');
     if (page === '비전') navigate('/vision');
   };
 

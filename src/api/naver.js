@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-/** 네이버 검색 API를 이용하여 뉴스 데이터 검색
+/** 네이버 검색 API를 사용
  - getArticle() : 실제 API 사용
  - useMock() : 따로 저장해놓은 데이터 사용
  */
@@ -31,7 +31,7 @@ export default class Naver {
       console.log(response.data.items);
       return response.data.items;
     } catch (error) {
-      console.error('네이버 API 호출 오류 : ', error);
+      console.log('네이버 뉴스 기사 다운로드 중 에러 : ', error);
       return Promise.reject(error);
     }
   }
@@ -40,8 +40,9 @@ export default class Naver {
     try {
       const response = await axios.get('/data/article.json');
       return response.data.items;
-    } catch (e) {
-      return Promise.reject(e);
+    } catch (error) {
+      console.log('네이버 목데이터 다운로드 중 에러 : ', error);
+      return Promise.reject(error);
     }
   }
 }

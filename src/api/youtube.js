@@ -27,6 +27,7 @@ export default class Youtube {
       const items = response.data.items;
       return items.map((item) => ({ ...item, id: item.id.videoId }));
     } catch (error) {
+      console.log('유튜브 검색 결과 다운로드 중 에러 : ', error);
       return Promise.reject(error);
     }
   }
@@ -36,8 +37,9 @@ export default class Youtube {
       const response = await axios.get('/data/trend.json');
       const items = response.data.items;
       return items.map((item) => ({ ...item, id: item.id.videoId }));
-    } catch (e) {
-      return Promise.reject(e);
+    } catch (error) {
+      console.log('유튜브 목데이터 다운로드 중 에러 : ', error);
+      return Promise.reject(error);
     }
   }
 }
