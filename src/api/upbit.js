@@ -1,20 +1,22 @@
 import axios from 'axios';
 
-/** 업비트 API 사용 함수
- - tickers : 거래 가능한 마켓 코드
- - marketNow : 현재가 정보
- - getRecentTransactions : 실시간 체결 내역
+/** 업비트 REST API, WebSocket API 사용
+ - REST API
+      - QUOTATION 
+      - tickers : 거래 가능한 마켓 코드
+      - candleMinutes : 분봉 데이터
+      - candleDays : 일봉 데이터
+      - candleWeeks : 주봉 데이터
+      - candleMonths : 월봉 데이터
+ 
+      - EXCHANGE
+      - myAccounts : 내 계좌 조회
+      - orderedOne : 개별 주문 조회
 
- - candleMinutes : 분봉 데이터
- - candleDays : 일봉 데이터
- - candleWeeks : 주봉 데이터
- - candleMonths : 월봉 데이터
-
- - myAccounts : 내 계좌 조회
- - order : 주문하기
- - cancel : 주문 취소
- - orderedList : 주문 리스트 조회
- - orderedOne : 개별 주문 조회
+ - WebSocket API
+      - realTimePrice : 실시간 현재가 정보 -> useWsTicker
+      - tradeHistory : 실시간 체결 내역 -> useWsTrade
+      - orderbook : 실시간 오더북(호가정보 조회) -> useWsOrderbook
  */
 export default class Upbit {
   constructor() {
@@ -24,7 +26,7 @@ export default class Upbit {
     });
   }
 
-  async tickers() {
+  async marketCode() {
     try {
       const response = await this.getData.get('/market/all?isDetails=false');
       return response.data.slice(0, 100);
@@ -33,17 +35,17 @@ export default class Upbit {
     }
   }
 
-  async marketsNow(market) {
+  async realTimePrice(market) {
     try {
       const response = await this.getData.get(`/ticker/?markets=${market}`);
       return response.data[0];
     } catch (error) {
-      console.log('현재가 정보 다운로드 중 에러 : ', error);
+      console.log('실시간 가격 다운로드 중 에러 : ', error);
       return Promise.reject(error);
     }
   }
 
-  async recentTransactions(market) {
+  async tradeHistory(market) {
     try {
       const response = await this.getData.get(
         `/trades/ticks?market=${market}`,
@@ -55,7 +57,20 @@ export default class Upbit {
       );
       return response.data;
     } catch (error) {
-      console.log('실시간 체결 정보 다운로드 중 에러 : ', error);
+      console.log('실시간 체결 내역 다운로드 중 에러 : ', error);
+      return Promise.reject(error);
+    }
+  }
+
+  async orderbook(markets) {
+    try {
+      const marketParam = markets.join('&markets=');
+      const response = await this.getData.get(
+        `/orderbook?markets=${marketParam}`
+      );
+      return response.data;
+    } catch (error) {
+      console.log('실시간 오더북 다운로드 중 에러 : ', error);
       return Promise.reject(error);
     }
   }

@@ -2,7 +2,7 @@ import React from 'react';
 import { useOpenApi } from '../../context/OpenApiContext';
 import { useQuery } from '@tanstack/react-query';
 
-export default function Tickers() {
+export default function MarketCode() {
   const { upbit } = useOpenApi();
   const {
     isPending,
@@ -12,7 +12,7 @@ export default function Tickers() {
   } = useQuery({
     queryKey: ['tickers'],
     queryFn: () => {
-      return upbit.tickers();
+      return upbit.marketCode();
     },
     staleTime: 1000 * 60 * 5,
   });

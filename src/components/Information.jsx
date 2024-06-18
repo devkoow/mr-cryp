@@ -2,7 +2,8 @@ import React from 'react';
 import Grid from '@mui/material/Grid';
 
 /** 가상 자산 관련 정보 영상 
- - iFrame을 사용한 고정 영상
+ - iFrame 사용
+ - 코인 초보를 위한 자료 영상 첨부
 */
 export default function Information() {
   return (
@@ -13,7 +14,7 @@ export default function Information() {
           height="315"
           src="https://www.youtube.com/embed/5dkaMkcTgNA"
           allowFullScreen
-          title="Video 1"
+          title="초등학생도 이해하는 비트코인 원리"
         ></iframe>
       </Grid>
       <Grid item xs={12} sm={4}>
@@ -22,7 +23,7 @@ export default function Information() {
           height="315"
           src="https://www.youtube.com/embed/V7moeujHDGY"
           allowFullScreen
-          title="Video 2"
+          title="업비트 사용법"
         ></iframe>
       </Grid>
       <Grid item xs={12} sm={4}>
@@ -31,7 +32,7 @@ export default function Information() {
           height="315"
           src="https://www.youtube.com/embed/KSsA92e0GK8"
           allowFullScreen
-          title="Video 3"
+          title="코인 차트 보는법"
         ></iframe>
       </Grid>
     </Grid>

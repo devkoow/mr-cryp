@@ -2,13 +2,13 @@ import React, { useEffect, useState } from 'react';
 import { useOpenApi } from '../../context/OpenApiContext';
 import { Typography } from '@mui/material';
 
-export default function Transactions({ market }) {
+export default function TradeHistoryRestApi({ market }) {
   const { upbit } = useOpenApi();
-  const [transaction, setTransaction] = useState('');
+  const [tradeHistory, setTradeHistory] = useState('');
 
   useEffect(() => {
-    upbit.recentTransactions(market).then((response) => {
-      setTransaction(response[0]);
+    upbit.tradeHistory(market).then((response) => {
+      setTradeHistory(response[0]);
     });
   }, [market, upbit]);
 
@@ -17,19 +17,19 @@ export default function Transactions({ market }) {
       <Typography variant="h5">실시간 체결 내역</Typography>
       <Typography variant="h6">마켓 코드: {market}</Typography>
       <Typography variant="body1">
-        체결 시간: {transaction.trade_time_utc}
+        체결 시간: {tradeHistory.trade_time_utc}
       </Typography>
       <Typography variant="body1">
-        체결 날짜: {transaction.trade_date_utc}
+        체결 날짜: {tradeHistory.trade_date_utc}
       </Typography>
       <Typography variant="body1">
-        체결 가격: {transaction.trade_price}
+        체결 가격: {tradeHistory.trade_price}
       </Typography>
       <Typography variant="body1">
-        체결량: {transaction.trade_volume}
+        체결량: {tradeHistory.trade_volume}
       </Typography>
       <Typography variant="body1">
-        체결 ID: {transaction.sequential_id}
+        체결 ID: {tradeHistory.sequential_id}
       </Typography>
     </div>
   );

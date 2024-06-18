@@ -18,11 +18,14 @@ import logoutKakao from '../api/logoutKakao';
 import LOGO_APPBAR from '../assets/images/logo_appbar.png';
 
 const pages = ['대시보드', '거래', '비전'];
-const settings = ['프로필 수정', '로그아웃'];
+const settings = ['프로필 정보', '로그아웃'];
+const subMenus = ['실시간 오더북', '실시간 거래 내역', '전체 차트', '주문하기'];
 
-function ResponsiveAppBar() {
+export default function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = useState(null);
   const [anchorElUser, setAnchorElUser] = useState(null);
+  const [activePage, setActivePage] = useState('대시보드');
+  const [activeSubMenu, setActiveSubMenu] = useState('');
   const nickname = localStorage.getItem('nickname');
   const socialType = localStorage.getItem('socialType');
   /** 소셜 타입 판단 후 함수 호출
@@ -50,20 +53,32 @@ function ResponsiveAppBar() {
   const handleCloseUserMenu = (action) => {
     setAnchorElUser(null);
     if (action === '로그아웃') handleLogout();
-    if (action === '프로필 수정') navigate('/profile');
+    if (action === '프로필 정보') navigate('/profile');
   };
 
-  /** 페이지 별 이동 */
+  /** 페이지 메뉴 토글 */
   const handleCloseNavMenu = (page) => {
     setAnchorElNav(null);
+    setActivePage(page);
     if (page === '대시보드') navigate('/home');
     if (page === '거래') navigate('/trade');
     if (page === '비전') navigate('/vision');
   };
 
+  /** 서브메뉴 토글 */
+  const handleToggleSubMenu = (subMenu) => {
+    setActiveSubMenu(subMenu);
+    if (subMenu === '실시간 거래 내역') navigate('/trade/tradeHistory');
+    if (subMenu === '실시간 오더북') navigate('/trade/orderbook');
+    if (subMenu === '전체 차트') navigate('/trade/realTimePrice');
+  };
+
+  /** xs일 때 드롭다운 메뉴를 여는 함수 */
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
+
+  /** 유저를 클릭하면 드롭다운 메뉴를 여는 함수 */
   const handleOpenUserMenu = (event) => {
     setAnchorElUser(event.currentTarget);
   };
@@ -75,10 +90,10 @@ function ResponsiveAppBar() {
       position="static"
       sx={{ top: 0, left: 0, right: 0, marginBottom: 4 }}
     >
+      {/* 메인 네비게이션바 : xs, md일 때 반응형 디자인 구분 */}
       <Container maxWidth="xl">
-        {/* 툴바 - display 속성을 이용해서 md, xs일때 반응형 디자인 구분 */}
         <Toolbar disableGutters>
-          {/* md일 때의 네비게이션바 */}
+          {/* xs */}
           <Avatar
             src={LOGO_APPBAR}
             sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }}
@@ -135,7 +150,7 @@ function ResponsiveAppBar() {
               ))}
             </Menu>
           </Box>
-          {/* sx일 때의 네비게이션바 */}
+          {/* md */}
           <Avatar
             src={LOGO_APPBAR}
             sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }}
@@ -215,7 +230,27 @@ function ResponsiveAppBar() {
           </Box>
         </Toolbar>
       </Container>
+      {/* 서브 네비게이션바 : 거래 탭의 하위 탭을 활성화 */}
+      {activePage === '거래' && (
+        <Box sx={{ display: 'flex', marginLeft: 35 }}>
+          {subMenus.map((subMenu) => (
+            <Button
+              key={subMenu}
+              onClick={() => handleToggleSubMenu(subMenu)}
+              sx={{
+                my: 2,
+                mr: 2,
+                color: activeSubMenu === subMenu ? 'secondary.light' : 'white',
+                display: 'block',
+                border: 'none',
+                boxShadow: 'none',
+              }}
+            >
+              {subMenu}
+            </Button>
+          ))}
+        </Box>
+      )}
     </AppBar>
   );
 }
-export default ResponsiveAppBar;
