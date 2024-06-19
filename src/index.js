@@ -11,9 +11,10 @@ import SignIn from './pages/SignIn';
 import Vision from './pages/Vision';
 import AuthKakao from './pages/AuthKakao';
 import Trade from './pages/Trade';
-import Orderbook from './components/upbit/Orderbook';
-import TradeHistory from './components/upbit/TradeHistory';
-import RealTimePrice from './components/upbit/RealTimePrice';
+import Orderbook from './pages/Orderbook';
+import TradeHistory from './pages/TradeHistory';
+import RealTimePrice from './pages/RealTimePrice';
+import Orders from './pages/Orders';
 
 const router = createBrowserRouter([
   {
@@ -28,6 +29,7 @@ const router = createBrowserRouter([
       { path: '/trade/orderbook', element: <Orderbook /> },
       { path: '/trade/tradeHistory', element: <TradeHistory /> },
       { path: '/trade/realTimePrice', element: <RealTimePrice /> },
+      { path: '/trade/orders', element: <Orders /> },
       { path: '/vision', element: <Vision /> },
       { path: '/profile', element: <Profile /> },
     ],

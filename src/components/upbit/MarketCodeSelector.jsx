@@ -1,5 +1,7 @@
+import { Box, MenuItem, Select, Typography } from '@mui/material';
 import { memo } from 'react';
 
+/** 마켓 코드를 선택하여 */
 function MarketCodeSelector({
   curMarketCode,
   setCurMarketCode,
@@ -13,27 +15,32 @@ function MarketCodeSelector({
   return (
     <>
       {!isLoading ? (
-        <div>
-          Market Code |
-          <select
+        <Box
+          display="flex"
+          flexDirection="column"
+          alignItems="center"
+          justifyContent="space-between"
+        >
+          <Typography>마켓 코드</Typography>
+          <Select
             name="marketcode"
             onChange={handleMarket}
             value={curMarketCode}
           >
             {marketCodes
               ? marketCodes.map((code) => (
-                  <option
+                  <MenuItem
                     key={`${code.market}_${code.english_name}`}
                     value={code.market}
                   >
                     {code.market}
-                  </option>
+                  </MenuItem>
                 ))
               : null}
-          </select>
-        </div>
+          </Select>
+        </Box>
       ) : (
-        'Market Code Loading...'
+        <Typography>마켓 코드 불러오는 중...</Typography>
       )}
     </>
   );

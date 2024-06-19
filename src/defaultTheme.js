@@ -40,5 +40,36 @@ export let theme = createTheme({
         },
       },
     },
+    // 테이블 컨테이너
+    MuiTableContainer: {
+      styleOverrides: {
+        root: {
+          marginTop: '1rem',
+        },
+      },
+    },
+    // 테이블 헤드
+    MuiTableHead: {
+      defaultProps: {
+        color: globalColors.vanilla['300'],
+      },
+      styleOverrides: {
+        root: {
+          backgroundColor: globalColors.hotpink['400'],
+        },
+      },
+    },
+    // 테이블 셀
+    MuiTableCell: {
+      defaultProps: {},
+      styleOverrides: {
+        head: {
+          color: 'white',
+        },
+        root: {
+          alignItems: 'center',
+        },
+      },
+    },
   },
 });

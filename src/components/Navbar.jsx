@@ -71,6 +71,7 @@ export default function ResponsiveAppBar() {
     if (subMenu === '실시간 거래 내역') navigate('/trade/tradeHistory');
     if (subMenu === '실시간 오더북') navigate('/trade/orderbook');
     if (subMenu === '전체 차트') navigate('/trade/realTimePrice');
+    if (subMenu === '주문하기') navigate('/trade/orders');
   };
 
   /** xs일 때 드롭다운 메뉴를 여는 함수 */
