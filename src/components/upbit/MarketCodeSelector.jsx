@@ -1,7 +1,13 @@
 import { Box, MenuItem, Select, Typography } from '@mui/material';
 import { memo } from 'react';
 
-/** 마켓 코드를 선택하여 */
+/** 마켓 코드 셀렉터
+  - Props 
+        - curMarketCode
+        - setCurMarketCode
+        - isLoading
+        - marketCode
+ */
 function MarketCodeSelector({
   curMarketCode,
   setCurMarketCode,

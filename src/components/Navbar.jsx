@@ -70,7 +70,7 @@ export default function ResponsiveAppBar() {
     setActiveSubMenu(subMenu);
     if (subMenu === '실시간 거래 내역') navigate('/trade/tradeHistory');
     if (subMenu === '실시간 오더북') navigate('/trade/orderbook');
-    if (subMenu === '전체 차트') navigate('/trade/realTimePrice');
+    if (subMenu === '전체 차트') navigate('/trade/charts');
     if (subMenu === '주문하기') navigate('/trade/orders');
   };
 
@@ -233,7 +233,7 @@ export default function ResponsiveAppBar() {
       </Container>
       {/* 서브 네비게이션바 : 거래 탭의 하위 탭을 활성화 */}
       {activePage === '거래' && (
-        <Box sx={{ display: 'flex', marginLeft: 35 }}>
+        <Box sx={{ display: 'flex', marginLeft: 39.5 }}>
           {subMenus.map((subMenu) => (
             <Button
               key={subMenu}

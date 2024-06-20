@@ -1,22 +1,19 @@
 import axios from 'axios';
 
-/** 업비트 REST API, WebSocket API 사용
- - REST API
-      - QUOTATION 
-      - tickers : 거래 가능한 마켓 코드
-      - candleMinutes : 분봉 데이터
-      - candleDays : 일봉 데이터
-      - candleWeeks : 주봉 데이터
-      - candleMonths : 월봉 데이터
- 
-      - EXCHANGE
-      - myAccounts : 내 계좌 조회
-      - orderedOne : 개별 주문 조회
+/** 업비트 REST API
+  - QUOTATION API
+        - marketCode : 거래 가능한 전체 마켓 코드
+        - currentPrice : 해당 마켓 코드 현재가 정보
+        - orderbook : 해당 마켓 코드 실시간 오더북
+        - tradeHistory : 해당 마켓 코드 실시간 거래 내역
+        - candleMinutes : 분봉 데이터
+        - candleDays : 일봉 데이터
+        - candleWeeks : 주봉 데이터
+        - candleMonths : 월봉 데이터
 
- - WebSocket API
-      - realTimePrice : 실시간 현재가 정보 -> useWsTicker
-      - tradeHistory : 실시간 체결 내역 -> useWsTrade
-      - orderbook : 실시간 오더북(호가정보 조회) -> useWsOrderbook
+  - EXCHANGE API
+        - myAccounts : 내 계좌 조회
+        - orderedOne : 개별 주문 조회
  */
 export default class Upbit {
   constructor() {
@@ -35,9 +32,9 @@ export default class Upbit {
     }
   }
 
-  async realTimePrice(market) {
+  async currentPrice(ticker) {
     try {
-      const response = await this.getData.get(`/ticker/?markets=${market}`);
+      const response = await this.getData.get(`/ticker/?markets=${ticker}`);
       return response.data[0];
     } catch (error) {
       console.log('실시간 가격 다운로드 중 에러 : ', error);
@@ -45,10 +42,10 @@ export default class Upbit {
     }
   }
 
-  async tradeHistory(market) {
+  async tradeHistory(ticker) {
     try {
       const response = await this.getData.get(
-        `/trades/ticks?market=${market}`,
+        `/trades/ticks?market=${ticker}`,
         {
           params: {
             count: 1,
@@ -75,10 +72,10 @@ export default class Upbit {
     }
   }
 
-  async candleMinutes(unit, market) {
+  async candleMinutes(unit, ticker) {
     try {
       const response = await this.getData.get(
-        `/candles/minutes/${unit}?market=${market}`,
+        `/candles/minutes/${unit}?market=${ticker}`,
         {
           params: {
             count: 1,
@@ -92,10 +89,10 @@ export default class Upbit {
     }
   }
 
-  async candleDays(market) {
+  async candleDays(ticker) {
     try {
       const response = await this.getData.get(
-        `/candles/days?market=${market}`,
+        `/candles/days?market=${ticker}`,
         {
           params: {
             count: 1,
@@ -109,10 +106,10 @@ export default class Upbit {
     }
   }
 
-  async candleWeeks(market) {
+  async candleWeeks(ticker) {
     try {
       const response = await this.getData.get(
-        `/candles/weeks?market=${market}`,
+        `/candles/weeks?market=${ticker}`,
         {
           params: {
             count: 1,
@@ -126,10 +123,10 @@ export default class Upbit {
     }
   }
 
-  async candleMonths(market) {
+  async candleMonths(ticker) {
     try {
       const response = await this.getData.get(
-        `/candles/months?market=${market}`,
+        `/candles/months?market=${ticker}`,
         {
           params: {
             count: 1,

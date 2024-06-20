@@ -25,6 +25,13 @@ export let theme = createTheme({
     },
   },
   components: {
+    // 타이포그래피
+    MuiTypography: {
+      defaultProps: {
+        fontFamily: 'ChoseonGu',
+      },
+      styleOverrides: {},
+    },
     // 버튼
     MuiButton: {
       defaultProps: {
@@ -48,6 +55,12 @@ export let theme = createTheme({
         },
       },
     },
+    // 테이블
+    MuiTable: {
+      defaultProps: {
+        fontFamily: 'ChoseonGu',
+      },
+    },
     // 테이블 헤드
     MuiTableHead: {
       defaultProps: {
@@ -61,7 +74,9 @@ export let theme = createTheme({
     },
     // 테이블 셀
     MuiTableCell: {
-      defaultProps: {},
+      defaultProps: {
+        fontFamily: 'ChoseonGu',
+      },
       styleOverrides: {
         head: {
           color: 'white',
