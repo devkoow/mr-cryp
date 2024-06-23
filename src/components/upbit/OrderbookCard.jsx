@@ -1,10 +1,7 @@
 import { memo, useEffect, useState } from 'react';
 import { useFetchMarketCode, useWsOrderbook } from 'use-upbit-api';
-import MarketCodeSelector from '../components/upbit/MarketCodeSelector';
 import {
   Box,
-  Button,
-  Paper,
   Table,
   TableBody,
   TableCell,
@@ -13,7 +10,7 @@ import {
   TableRow,
   Typography,
 } from '@mui/material';
-import { globalColors } from '../globalColors';
+import { globalColors } from '../../globalColors';
 
 /** 실시간 오더북 테이블 UI */
 const OrderTable = memo(function OrderTable({ targetMarketCode }) {
@@ -39,18 +36,8 @@ const OrderTable = memo(function OrderTable({ targetMarketCode }) {
 
   return (
     <>
-      <Typography>연결 상태 : {isConnected ? '🟢' : '🔴'}</Typography>
-      <Button onClick={connectButtonHandler}>{'연결종료'}</Button>
       {socketData ? (
-        <TableContainer
-          component={Paper}
-          sx={{ maxWidth: 500, marginTop: '1rem' }}
-        >
-          <Box>
-            <Typography>마켓 티커 : {socketData.code}</Typography>
-            <Typography>총 매도 물량 : {socketData.total_ask_size}</Typography>
-            <Typography>총 매수 물량 : {socketData.total_bid_size}</Typography>
-          </Box>
+        <TableContainer sx={{ maxHeight: 750, margin: 0, padding: 0 }}>
           <Table display="flex">
             <TableHead>
               <TableRow>
@@ -93,7 +80,7 @@ const OrderTable = memo(function OrderTable({ targetMarketCode }) {
 });
 
 // 실시간 오더북
-function OrderBook() {
+function OrderBookCard() {
   const { isLoading, marketCodes } = useFetchMarketCode();
   const [curMarketCode, setCurMarketCode] = useState('KRW-BTC');
   const [targetMarketCode, setTargetMarketCode] = useState([
@@ -115,23 +102,11 @@ function OrderBook() {
 
   return (
     <>
-      <Box
-        margin="auto"
-        display="flex"
-        flexDirection="column"
-        alignItems="center"
-      >
-        <Typography variant="h5">실시간 오더북</Typography>
-        <MarketCodeSelector
-          curMarketCode={curMarketCode}
-          setCurMarketCode={setCurMarketCode}
-          isLoading={isLoading}
-          marketCodes={marketCodes}
-        />
+      <Box>
         <OrderTable targetMarketCode={targetMarketCode} />
       </Box>
     </>
   );
 }
 
-export default memo(OrderBook);
+export default memo(OrderBookCard);

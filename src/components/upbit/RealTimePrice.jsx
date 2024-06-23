@@ -1,7 +1,6 @@
 import { memo, useEffect, useState } from 'react';
 import { useFetchMarketCode, useWsTicker } from 'use-upbit-api';
 import {
-  Box,
   TableContainer,
   Table,
   TableBody,
@@ -9,13 +8,20 @@ import {
   TableHead,
   TableRow,
   Typography,
-  Paper,
 } from '@mui/material';
 
 /** 실시간 가격 테이블 UI */
 const RealTimePriceTable = memo(function RealTimePriceTable({ socketData }) {
   return (
-    <TableContainer component={Paper} sx={{ maxWidth: 500 }}>
+    <TableContainer
+      sx={{
+        maxWidth: '100%',
+        maxHeight: 850,
+        overflow: 'auto',
+        margin: 0,
+        padding: 0,
+      }}
+    >
       <Table>
         <TableHead>
           <TableRow>
@@ -28,7 +34,7 @@ const RealTimePriceTable = memo(function RealTimePriceTable({ socketData }) {
         <TableBody>
           {socketData.map((data) => (
             <TableRow key={data.code}>
-              <TableCell>{data.code}</TableCell>
+              <TableCell sx={{}}>{data.code}</TableCell>
               <TableCell>{data.trade_price.toLocaleString()}</TableCell>
               <TableCell
                 sx={{
@@ -38,7 +44,10 @@ const RealTimePriceTable = memo(function RealTimePriceTable({ socketData }) {
                 {(data.signed_change_rate * 100).toFixed(2)}%
               </TableCell>
               <TableCell>
-                {parseInt(data.acc_trade_price).toLocaleString()}
+                {Math.round(
+                  parseInt(data.acc_trade_price_24h) / 1000000
+                ).toLocaleString()}
+                백만
               </TableCell>
             </TableRow>
           ))}
@@ -69,18 +78,11 @@ function RealTimePrice() {
 
   return (
     <>
-      <Box
-        margin="auto"
-        display="flex"
-        flexDirection="column"
-        alignItems="center"
-      >
-        {socketData ? (
-          <RealTimePriceTable socketData={socketData} />
-        ) : (
-          <Typography>실시간 가격 로딩중...</Typography>
-        )}
-      </Box>
+      {socketData ? (
+        <RealTimePriceTable socketData={socketData} />
+      ) : (
+        <Typography>실시간 가격 로딩중...</Typography>
+      )}
     </>
   );
 }

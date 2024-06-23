@@ -233,7 +233,7 @@ export default function ResponsiveAppBar() {
       </Container>
       {/* 서브 네비게이션바 : 거래 탭의 하위 탭을 활성화 */}
       {activePage === '거래' && (
-        <Box sx={{ display: 'flex', marginLeft: 39.5 }}>
+        <Box sx={{ display: 'flex', marginLeft: 45.5 }}>
           {subMenus.map((subMenu) => (
             <Button
               key={subMenu}

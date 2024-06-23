@@ -1,7 +1,7 @@
 import './App.css';
 import ResponsiveAppBar from './components/Navbar';
 import { Outlet, useLocation } from 'react-router-dom';
-import { ThemeProvider } from '@mui/material';
+import { CssBaseline, ThemeProvider } from '@mui/material';
 import { theme } from './defaultTheme';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { OpenApiProvider } from './context/OpenApiContext';
@@ -14,12 +14,14 @@ export default function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      {!isSignIn && !isAuth && <ResponsiveAppBar />}
-      <OpenApiProvider>
-        <QueryClientProvider client={queryClient}>
-          <Outlet />
-        </QueryClientProvider>
-      </OpenApiProvider>
+      <CssBaseline>
+        {!isSignIn && !isAuth && <ResponsiveAppBar />}
+        <OpenApiProvider>
+          <QueryClientProvider client={queryClient}>
+            <Outlet />
+          </QueryClientProvider>
+        </OpenApiProvider>
+      </CssBaseline>
     </ThemeProvider>
   );
 }

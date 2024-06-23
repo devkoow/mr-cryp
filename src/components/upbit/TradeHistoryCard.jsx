@@ -1,8 +1,7 @@
 import { memo, useEffect, useState } from 'react';
 import { useFetchMarketCode, useWsTrade } from 'use-upbit-api';
-import MarketCodeSelector from '../components/upbit/MarketCodeSelector';
+import MarketCodeSelector from '../../components/upbit/MarketCodeSelector';
 import {
-  Button,
   TableContainer,
   Table,
   TableBody,
@@ -10,7 +9,6 @@ import {
   TableHead,
   TableRow,
   Typography,
-  Paper,
   Box,
 } from '@mui/material';
 
@@ -30,12 +28,7 @@ const TradeTable = memo(function TradeTable({ targetMarketCode }) {
 
   return (
     <>
-      <Typography>연결 상태 : {isConnected ? '🟢' : '🔴'}</Typography>
-      <Button onClick={connectButtonHandler}>{'연결종료'}</Button>
-      <TableContainer
-        component={Paper}
-        sx={{ maxWidth: 1000, marginTop: '1rem' }}
-      >
+      <TableContainer sx={{ maxWidth: 1000, maxHeight: 400, overflow: 'auto' }}>
         {socketData ? (
           <Table>
             <TableHead>
@@ -99,13 +92,6 @@ function TradeHistory() {
         flexDirection="column"
         alignItems="center"
       >
-        <Typography variant="h5">실시간 거래내역</Typography>
-        <MarketCodeSelector
-          curMarketCode={curMarketCode}
-          setCurMarketCode={setCurMarketCode}
-          isLoading={isLoading}
-          marketCodes={marketCodes}
-        />
         <TradeTable targetMarketCode={targetMarketCode} />
       </Box>
     </>

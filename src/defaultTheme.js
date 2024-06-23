@@ -25,12 +25,31 @@ export let theme = createTheme({
     },
   },
   components: {
+    MuiCssBaseline: {
+      styleOverrides: `
+        ::-webkit-scrollbar {
+          width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+          background: #f1f1f1;
+        }
+        ::-webkit-scrollbar-thumb {
+          background: #888;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+          background: #555;
+        }
+        * {
+          scrollbar-width: thin;
+          scrollbar-color: #888 #f1f1f1;
+        }
+      `,
+    },
     // 타이포그래피
     MuiTypography: {
       defaultProps: {
         fontFamily: 'ChoseonGu',
       },
-      styleOverrides: {},
     },
     // 버튼
     MuiButton: {
@@ -50,16 +69,12 @@ export let theme = createTheme({
     // 테이블 컨테이너
     MuiTableContainer: {
       styleOverrides: {
-        root: {
-          marginTop: '1rem',
-        },
+        root: {},
       },
     },
     // 테이블
     MuiTable: {
-      defaultProps: {
-        fontFamily: 'ChoseonGu',
-      },
+      defaultProps: {},
     },
     // 테이블 헤드
     MuiTableHead: {
@@ -74,15 +89,16 @@ export let theme = createTheme({
     },
     // 테이블 셀
     MuiTableCell: {
-      defaultProps: {
-        fontFamily: 'ChoseonGu',
-      },
       styleOverrides: {
-        head: {
-          color: 'white',
-        },
         root: {
           alignItems: 'center',
+          fontFamily: 'ChoseonGu',
+          fontSize: 12,
+          whiteSpace: 'nowrap',
+          padding: 2,
+        },
+        head: {
+          color: 'white',
         },
       },
     },
