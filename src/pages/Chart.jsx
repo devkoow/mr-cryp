@@ -6,9 +6,12 @@ import TradeHistoryCard from '../components/upbit/TradeHistoryCard';
 import ChartCard from '../components/upbit/ChartCard';
 import { Grid } from '@mui/material';
 
+/** 전체 차트 페이지
+ * - code : 선택한 마켓의 티커
+ */
 export default function Chart() {
   const [code, setCode] = useState('KRW-BTC');
-
+  const [price, setPrice] = useState(0);
   return (
     <Grid
       container
@@ -17,7 +20,7 @@ export default function Chart() {
       margin="auto"
     >
       <Grid item xs={3}>
-        <RealTimePrice setCode={setCode} />
+        <RealTimePrice setCode={setCode} setPrice={setPrice} />
       </Grid>
       <Grid item xs={9}>
         <MarketCard code={code} />
@@ -27,7 +30,7 @@ export default function Chart() {
             <TradeHistoryCard code={code} />
           </Grid>
           <Grid item xs={5}>
-            <OrderbookCard code={code} />
+            <OrderbookCard code={code} price={price} />
           </Grid>
         </Grid>
       </Grid>

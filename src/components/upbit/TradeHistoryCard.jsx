@@ -1,6 +1,5 @@
 import { memo, useEffect, useState } from 'react';
 import { useFetchMarketCode, useWsTrade } from 'use-upbit-api';
-import MarketCodeSelector from '../../components/upbit/MarketCodeSelector';
 import {
   TableContainer,
   Table,
@@ -13,10 +12,12 @@ import {
 } from '@mui/material';
 import { StyledTableCell } from '../../defaultTheme';
 
-/** 실시간 거래내역 테이블 UI */
+/** 실시간 거래내역 테이블 UI
+ * - timestampToTime : 타임스탬프 값을 KST 시간으로 변환
+ */
 const TradeTable = memo(function TradeTable({ targetMarketCode }) {
   const webSocketOptions = { throttle_time: 400, max_length_queue: 100 };
-  const { socket, isConnected, socketData } = useWsTrade(...targetMarketCode);
+  const { socket, isConnected, socketData } = useWsTrade(targetMarketCode);
   const timestampToTime = (timestamp) => {
     const time = new Date(timestamp);
     const timeStr = time.toLocaleTimeString();
@@ -25,7 +26,7 @@ const TradeTable = memo(function TradeTable({ targetMarketCode }) {
 
   return (
     <TableContainer sx={{ maxWidth: 1000, height: 400, overflow: 'auto' }}>
-      {socketData ? (
+      {socketData && (
         <Table stickyHeader aria-label="sticky table">
           <TableHead>
             <TableRow>
@@ -36,29 +37,29 @@ const TradeTable = memo(function TradeTable({ targetMarketCode }) {
             </TableRow>
           </TableHead>
           <TableBody>
-            {[...socketData].reverse().map((ele, index) => (
+            {[...socketData].reverse().map((element, index) => (
               <TableRow key={index}>
                 <TableCell align="center">
-                  {timestampToTime(ele.trade_timestamp)}
+                  {timestampToTime(element.trade_timestamp)}
                 </TableCell>
                 <TableCell align="center">
-                  {Number(ele.trade_price).toLocaleString()}원
+                  {Number(element.trade_price).toLocaleString()}원
                 </TableCell>
                 <TableCell align="center">
                   <Typography
                     fontSize={12}
-                    color={ele.ask_bid === 'ASK' ? 'red' : 'blue'}
+                    color={element.ask_bid === 'ASK' ? 'red' : 'blue'}
                   >
-                    {ele.trade_volume}
+                    {element.trade_volume}
                   </Typography>
                 </TableCell>
                 <TableCell align="center">
                   <Typography
                     fontSize={12}
-                    color={ele.ask_bid === 'ASK' ? 'red' : 'blue'}
+                    color={element.ask_bid === 'ASK' ? 'red' : 'blue'}
                   >
                     {Math.round(
-                      ele.trade_volume * ele.trade_price
+                      element.trade_volume * element.trade_price
                     ).toLocaleString()}
                     원
                   </Typography>
@@ -67,45 +68,41 @@ const TradeTable = memo(function TradeTable({ targetMarketCode }) {
             ))}
           </TableBody>
         </Table>
-      ) : (
-        <Typography>실시간 거래내역 로딩중...</Typography>
       )}
     </TableContainer>
   );
 });
 
-function TradeHistory({ marketCode }) {
-  const { isLoading, fetchedCodes } = useFetchMarketCode();
-  const [curMarketCode, setCurMarketCode] = useState('KRW-BTC');
-  const [targetMarketCode, setTargetMarketCode] = useState([
-    {
-      market: 'KRW-BTC',
-      korean_name: '비트코인',
-      english_name: 'Bitcoin',
-    },
-  ]);
+/** 실시간 거래 내역
+ * - targetMarketCode : props로 전달받은 마켓의 티커
+ */
+function TradeHistory({ code }) {
+  const { isLoading, marketCodes } = useFetchMarketCode();
+  const [targetMarketCode, setTargetMarketCode] = useState();
 
   useEffect(() => {
-    if (fetchedCodes) {
-      setCurMarketCode(marketCode);
-      const target = fetchedCodes.filter(
-        (code) => code.market === curMarketCode
+    if (marketCodes) {
+      const targetCode = marketCodes.find(
+        (marketCode) => marketCode.market === code
       );
-      setTargetMarketCode(target);
+      setTargetMarketCode(
+        targetCode || {
+          market: 'KRW-BTC',
+          korean_name: '비트코인',
+          english_name: 'Bitcoin',
+        }
+      );
     }
-  }, [curMarketCode, fetchedCodes, marketCode]);
+  }, [code, marketCodes]);
+
+  if (isLoading) {
+    return <Typography>실시간 거래 내역 로딩중...</Typography>;
+  }
 
   return (
-    <>
-      <Box
-        margin="auto"
-        display="flex"
-        flexDirection="column"
-        alignItems="center"
-      >
-        <TradeTable targetMarketCode={targetMarketCode} />
-      </Box>
-    </>
+    <Box>
+      <TradeTable targetMarketCode={targetMarketCode} />
+    </Box>
   );
 }
 

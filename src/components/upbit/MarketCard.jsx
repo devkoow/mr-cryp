@@ -1,35 +1,56 @@
 import React, { useEffect, useState } from 'react';
-import { useOpenApi } from '../../context/OpenApiContext';
+import { useWsTicker, useFetchMarketCode } from 'use-upbit-api';
 import { theme } from '../../defaultTheme';
 import { Box, Typography, Divider } from '@mui/material';
 
+/** 실시간 마켓 정보 */
 export default function MarketCard({ code }) {
-  const { upbit } = useOpenApi();
+  const { isLoading, marketCodes } = useFetchMarketCode();
+  const [krwMarketCodes, setKrwMarketCodes] = useState([]);
+  const { socket, isConnected, socketData } = useWsTicker(krwMarketCodes);
   const [data, setData] = useState({});
-  const priceColor =
-    data.signed_change_rate > 0
-      ? 'red'
-      : data.signed_change_rate < 0
-      ? 'blue'
-      : 'black';
 
   useEffect(() => {
-    const fetchData = async () => {
-      const result = await upbit.currentPrice(code);
-      setData(result);
-    };
-    fetchData();
-  }, [code, upbit]);
+    if (!isLoading && marketCodes) {
+      setKrwMarketCodes(
+        marketCodes.filter((element) => element.market.includes('KRW'))
+      );
+    }
+  }, [isLoading, marketCodes]);
+
+  useEffect(() => {
+    if (socketData) {
+      const targetData = socketData.find((element) => element.code === code);
+      setData(targetData);
+    }
+  }, [code, socketData]);
+
+  const marketCodeMap = {};
+  krwMarketCodes.forEach((item) => {
+    marketCodeMap[item.market] = item.korean_name;
+  });
+
+  const numColor =
+    data.signed_change_rate === 0
+      ? 'black'
+      : data.signed_change_rate > 0
+      ? 'red'
+      : 'blue';
 
   if (!data) {
-    return <div>마켓 정보 로딩중...</div>;
+    return <Typography>마켓 정보 로딩중...</Typography>;
   }
 
   return (
     <Box
       sx={{ height: 100, border: `thick double ${theme.palette.primary.main}` }}
     >
-      <Typography>{data.market}</Typography>
+      <Box display="flex">
+        <Typography fontSize={20} fontWeight={'bold'}>
+          {marketCodeMap[data.code]}
+        </Typography>
+        <Typography fontSize={15}>{data.code}</Typography>
+      </Box>
       <Divider />
       <Box display="flex" justifyContent={'space-between'} paddingLeft={1}>
         <Box
@@ -39,21 +60,21 @@ export default function MarketCard({ code }) {
           marginTop={1}
         >
           <Box display="flex" alignItems="flex-end">
-            <Typography variant="h5" color={priceColor} fontWeight={'bold'}>
+            <Typography variant="h5" fontWeight={'bold'} color={numColor}>
               {Number(data.trade_price).toLocaleString()}
             </Typography>
-            <Typography color={priceColor} fontWeight={'bold'}>
+            <Typography fontWeight={'bold'} color={numColor}>
               KRW
             </Typography>
           </Box>
-          <Box display="flex" justifyContent={'space-between'}>
+          <Box display="flex" justifyContent={'space-between'} gap={2}>
             <Typography fontSize={12} fontWeight="bold" color="#8c8b88">
               전일대비
             </Typography>
-            <Typography color={priceColor} fontSize={12} fontWeight={'bold'}>
+            <Typography fontSize={15} fontWeight={'bold'} color={numColor}>
               {(data.signed_change_rate * 100).toFixed(2)}%
             </Typography>
-            <Typography color={priceColor} fontSize={12} fontWeight={'bold'}>
+            <Typography fontSize={15} fontWeight={'bold'} color={numColor}>
               {Number(data.signed_change_price).toLocaleString()}
             </Typography>
           </Box>
@@ -62,12 +83,12 @@ export default function MarketCard({ code }) {
           sx={{
             maxWidth: '100%',
             display: 'flex',
-            gap: 10,
-            marginRight: 3,
+            gap: 2,
+            marginRight: 2,
           }}
         >
           <Box display="flex" flexDirection="column" justifyContent={'center'}>
-            <Box display="flex" justifyContent={'space-between'} gap="3rem">
+            <Box display="flex" justifyContent={'space-between'} width={200}>
               <Typography noWrap fontSize={12} marginTop={1}>
                 고가
               </Typography>
@@ -81,7 +102,7 @@ export default function MarketCard({ code }) {
               </Typography>
             </Box>
             <Divider />
-            <Box display="flex" justifyContent={'space-between'} gap="3rem">
+            <Box display="flex" justifyContent={'space-between'} width={200}>
               <Typography noWrap fontSize={12} marginTop={1}>
                 저가
               </Typography>
@@ -97,7 +118,7 @@ export default function MarketCard({ code }) {
             <Divider />
           </Box>
           <Box display="flex" flexDirection="column" justifyContent={'center'}>
-            <Box display="flex" justifyContent={'space-between'} gap="3rem">
+            <Box display="flex" justifyContent={'space-between'} width={200}>
               <Typography noWrap fontSize={12} marginTop={1}>
                 52주 신고가
               </Typography>
@@ -111,7 +132,7 @@ export default function MarketCard({ code }) {
               </Typography>
             </Box>
             <Divider />
-            <Box display="flex" justifyContent={'space-between'} gap="3rem">
+            <Box display="flex" justifyContent={'space-between'} width={200}>
               <Typography noWrap fontSize={12} marginTop={1}>
                 52주 신저가
               </Typography>
@@ -127,7 +148,7 @@ export default function MarketCard({ code }) {
             <Divider />
           </Box>
           <Box display="flex" flexDirection="column" justifyContent={'center'}>
-            <Box display="flex" justifyContent={'space-between'} gap="3rem">
+            <Box display="flex" justifyContent={'space-between'} width={200}>
               <Typography noWrap fontSize={12} marginTop={1}>
                 거래량(24시간)
               </Typography>
@@ -136,7 +157,7 @@ export default function MarketCard({ code }) {
               </Typography>
             </Box>
             <Divider />
-            <Box display="flex" justifyContent={'space-between'} gap="3rem">
+            <Box display="flex" justifyContent={'space-between'} width={200}>
               <Typography noWrap fontSize={12} marginTop={1}>
                 거래대금(24시간)
               </Typography>
