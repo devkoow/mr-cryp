@@ -11,61 +11,71 @@ import {
   Typography,
   Box,
 } from '@mui/material';
+import { StyledTableCell } from '../../defaultTheme';
 
 /** 실시간 거래내역 테이블 UI */
 const TradeTable = memo(function TradeTable({ targetMarketCode }) {
   const webSocketOptions = { throttle_time: 400, max_length_queue: 100 };
   const { socket, isConnected, socketData } = useWsTrade(...targetMarketCode);
-
-  /** 웹소켓 연결 핸들러
-   * - evt : 추가적으로 전달하고자 하는 이벤트 파라미터
-   */
-  const connectButtonHandler = (evt) => {
-    if (isConnected && socket) {
-      socket.close();
-    }
+  const timestampToTime = (timestamp) => {
+    const time = new Date(timestamp);
+    const timeStr = time.toLocaleTimeString();
+    return timeStr;
   };
 
   return (
-    <>
-      <TableContainer sx={{ maxWidth: 1000, maxHeight: 400, overflow: 'auto' }}>
-        {socketData ? (
-          <Table>
-            <TableHead>
-              <TableRow>
-                <TableCell>코인</TableCell>
-                <TableCell>체결 ID</TableCell>
-                <TableCell>체결 시간</TableCell>
-                <TableCell>ASK/BID</TableCell>
-                <TableCell>체결 가격</TableCell>
+    <TableContainer sx={{ maxWidth: 1000, height: 400, overflow: 'auto' }}>
+      {socketData ? (
+        <Table stickyHeader aria-label="sticky table">
+          <TableHead>
+            <TableRow>
+              <StyledTableCell align="center">체결 시간</StyledTableCell>
+              <StyledTableCell align="center">체결 가격</StyledTableCell>
+              <StyledTableCell align="center">체결량</StyledTableCell>
+              <StyledTableCell align="center">체결금액</StyledTableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {[...socketData].reverse().map((ele, index) => (
+              <TableRow key={index}>
+                <TableCell align="center">
+                  {timestampToTime(ele.trade_timestamp)}
+                </TableCell>
+                <TableCell align="center">
+                  {Number(ele.trade_price).toLocaleString()}원
+                </TableCell>
+                <TableCell align="center">
+                  <Typography
+                    fontSize={12}
+                    color={ele.ask_bid === 'ASK' ? 'red' : 'blue'}
+                  >
+                    {ele.trade_volume}
+                  </Typography>
+                </TableCell>
+                <TableCell align="center">
+                  <Typography
+                    fontSize={12}
+                    color={ele.ask_bid === 'ASK' ? 'red' : 'blue'}
+                  >
+                    {Math.round(
+                      ele.trade_volume * ele.trade_price
+                    ).toLocaleString()}
+                    원
+                  </Typography>
+                </TableCell>
               </TableRow>
-            </TableHead>
-            <TableBody>
-              {[...socketData].reverse().map((ele, index) => (
-                <TableRow key={index}>
-                  <TableCell>{ele.code} </TableCell>
-                  <TableCell>{ele.sequential_id} </TableCell>
-                  <TableCell>
-                    {ele.trade_date} {ele.trade_time}
-                  </TableCell>
-                  <TableCell>{ele.ask_bid} </TableCell>
-                  <TableCell>
-                    {ele.prev_closing_price.toLocaleString()}{' '}
-                  </TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        ) : (
-          <Typography>실시간 거래내역 로딩중...</Typography>
-        )}
-      </TableContainer>
-    </>
+            ))}
+          </TableBody>
+        </Table>
+      ) : (
+        <Typography>실시간 거래내역 로딩중...</Typography>
+      )}
+    </TableContainer>
   );
 });
 
-function TradeHistory() {
-  const { isLoading, marketCodes } = useFetchMarketCode();
+function TradeHistory({ marketCode }) {
+  const { isLoading, fetchedCodes } = useFetchMarketCode();
   const [curMarketCode, setCurMarketCode] = useState('KRW-BTC');
   const [targetMarketCode, setTargetMarketCode] = useState([
     {
@@ -76,13 +86,14 @@ function TradeHistory() {
   ]);
 
   useEffect(() => {
-    if (marketCodes) {
-      const target = marketCodes.filter(
+    if (fetchedCodes) {
+      setCurMarketCode(marketCode);
+      const target = fetchedCodes.filter(
         (code) => code.market === curMarketCode
       );
       setTargetMarketCode(target);
     }
-  }, [curMarketCode, marketCodes]);
+  }, [curMarketCode, fetchedCodes, marketCode]);
 
   return (
     <>

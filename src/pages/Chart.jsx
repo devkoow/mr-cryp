@@ -1,12 +1,14 @@
-import React from 'react';
-import { Grid, Box } from '@mui/material';
+import React, { useState } from 'react';
 import RealTimePrice from '../components/upbit/RealTimePrice';
 import MarketCard from '../components/upbit/MarketCard';
 import OrderbookCard from '../components/upbit/OrderbookCard';
 import TradeHistoryCard from '../components/upbit/TradeHistoryCard';
 import ChartCard from '../components/upbit/ChartCard';
+import { Grid } from '@mui/material';
 
 export default function Chart() {
+  const [code, setCode] = useState('KRW-BTC');
+
   return (
     <Grid
       container
@@ -15,17 +17,17 @@ export default function Chart() {
       margin="auto"
     >
       <Grid item xs={3}>
-        <RealTimePrice />
+        <RealTimePrice setCode={setCode} />
       </Grid>
       <Grid item xs={9}>
-        <MarketCard ticker={'KRW-BTC'} />
+        <MarketCard code={code} />
         <Grid container spacing={0} padding="0">
           <Grid item xs={7}>
-            <ChartCard ticker={'KRW-BTC'} />
-            <TradeHistoryCard />
+            <ChartCard code={code} />
+            <TradeHistoryCard code={code} />
           </Grid>
           <Grid item xs={5}>
-            <OrderbookCard />
+            <OrderbookCard code={code} />
           </Grid>
         </Grid>
       </Grid>

@@ -11,23 +11,17 @@ import {
   Typography,
 } from '@mui/material';
 import { globalColors } from '../../globalColors';
+import { StyledTableCell } from '../../defaultTheme';
 
 /** 실시간 오더북 테이블 UI */
 const OrderTable = memo(function OrderTable({ targetMarketCode }) {
   const webSocketOptions = { throttle_time: 400, max_length_queue: 100 };
 
-  /** 오더북 데이터
-   * - socket : 웹소켓
-   * - isConnected : 웹소켓 연결 여부
-   * - socketData : 웹소켓 데이터
-   */
   const { socket, isConnected, socketData } = useWsOrderbook(
     ...targetMarketCode
   );
 
-  /** 웹소켓 연결 핸들러
-   * - evt : 추가적으로 전달하고자 하는 이벤트 파라미터
-   */
+  // 웹소켓 연결 핸들러 - evt : 추가적으로 전달하고자 하는 이벤트 파라미터
   const connectButtonHandler = (evt) => {
     if (isConnected && socket) {
       socket.close();
@@ -37,13 +31,19 @@ const OrderTable = memo(function OrderTable({ targetMarketCode }) {
   return (
     <>
       {socketData ? (
-        <TableContainer sx={{ maxHeight: 750, margin: 0, padding: 0 }}>
-          <Table display="flex">
+        <TableContainer sx={{ height: 800, margin: 0, padding: 0 }}>
+          <Table display="flex" stickyHeader aria-label="sticky table">
             <TableHead>
               <TableRow>
-                <TableCell>매도 물량</TableCell>
-                <TableCell>가격</TableCell>
-                <TableCell>매수 물량</TableCell>
+                <StyledTableCell sx={{ padding: 1 }} align="center">
+                  매도 물량
+                </StyledTableCell>
+                <StyledTableCell sx={{ padding: 1 }} align="center">
+                  가격
+                </StyledTableCell>
+                <StyledTableCell sx={{ padding: 1 }} align="center">
+                  매수 물량
+                </StyledTableCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -51,19 +51,27 @@ const OrderTable = memo(function OrderTable({ targetMarketCode }) {
                 .reverse()
                 .map((element, index) => (
                   <TableRow key={`ask_${index}`}>
-                    <TableCell sx={{ backgroundColor: 'skyblue' }}>
+                    <TableCell
+                      sx={{ backgroundColor: 'skyblue' }}
+                      align="right"
+                    >
                       {element.ask_size}
                     </TableCell>
-                    <TableCell>{element.ask_price.toLocaleString()}</TableCell>
-                    <TableCell>-</TableCell>
+                    <TableCell sx={{ padding: 1 }} align="center">
+                      {element.ask_price.toLocaleString()}
+                    </TableCell>
+                    <TableCell sx={{ padding: 1 }}>-</TableCell>
                   </TableRow>
                 ))}
               {[...socketData.orderbook_units].map((element, index) => (
                 <TableRow key={`bid_${index}`}>
-                  <TableCell>-</TableCell>
-                  <TableCell>{element.bid_price.toLocaleString()}</TableCell>
+                  <TableCell sx={{ padding: 1 }}>-</TableCell>
+                  <TableCell sx={{ padding: 1 }} align="center">
+                    {element.bid_price.toLocaleString()}
+                  </TableCell>
                   <TableCell
-                    sx={{ backgroundColor: globalColors.hotpink['500'] }}
+                    sx={{ backgroundColor: globalColors.hotpink['300'] }}
+                    align="left"
                   >
                     {element.bid_size}
                   </TableCell>
@@ -79,7 +87,7 @@ const OrderTable = memo(function OrderTable({ targetMarketCode }) {
   );
 });
 
-// 실시간 오더북
+/** 실시간 오더북 */
 function OrderBookCard() {
   const { isLoading, marketCodes } = useFetchMarketCode();
   const [curMarketCode, setCurMarketCode] = useState('KRW-BTC');

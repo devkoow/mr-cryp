@@ -1,13 +1,14 @@
-import { createTheme } from '@mui/material';
+import { createTheme, TableCell } from '@mui/material';
 import { globalColors } from './globalColors';
+import { styled } from '@mui/system';
 
 /** 컬러 팔레트, 기본 컴포넌트 세팅
  * 배경 : skyblue,
- * primary : hotpink, secondary : vanilla
- - main : 400
- - light : 300
- - dark : 500
- - contrastText: 서로 반대 컬러 & 200
+ * primary : hotpink / secondary : vanilla
+- light : 300
+- main : 400
+- dark : 500
+ - contrastText: primary와 secondary의 서로 반대 컬러['200']
  */
 export let theme = createTheme({
   palette: {
@@ -96,6 +97,7 @@ export let theme = createTheme({
           fontSize: 12,
           whiteSpace: 'nowrap',
           padding: 2,
+          verticalAlign: 'middle',
         },
         head: {
           color: 'white',
@@ -104,3 +106,11 @@ export let theme = createTheme({
     },
   },
 });
+
+/** 스틱키 헤드 셀 */
+export const StyledTableCell = styled(TableCell)(({ theme }) => ({
+  backgroundColor: theme.palette.primary.main,
+  position: 'sticky',
+  top: 0,
+  zIndex: 100,
+}));
