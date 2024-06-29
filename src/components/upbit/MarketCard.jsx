@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useWsTicker, useFetchMarketCode } from 'use-upbit-api';
 import { theme } from '../../defaultTheme';
 import { Box, Typography, Divider } from '@mui/material';
+import { globalColors } from '../../globalColors';
 
 /** 실시간 마켓 정보 */
 export default function MarketCard({ code }) {
@@ -34,8 +35,8 @@ export default function MarketCard({ code }) {
     data.signed_change_rate === 0
       ? 'black'
       : data.signed_change_rate > 0
-      ? 'red'
-      : 'blue';
+      ? globalColors.color_pos['400']
+      : globalColors.color_neg['400'];
 
   if (!data) {
     return <Typography>마켓 정보 로딩중...</Typography>;
@@ -72,10 +73,16 @@ export default function MarketCard({ code }) {
               전일대비
             </Typography>
             <Typography fontSize={15} fontWeight={'bold'} color={numColor}>
-              {(data.signed_change_rate * 100).toFixed(2)}%
+              {Number(data.signed_change_rate) > 0 ? '+' : ''}
+              {Number(data.signed_change_rate * 100).toFixed(2)}%
             </Typography>
             <Typography fontSize={15} fontWeight={'bold'} color={numColor}>
-              {Number(data.signed_change_price).toLocaleString()}
+              {Number(data.signed_change_price) < 0
+                ? '▼'
+                : Number(data.signed_change_price) > 0
+                ? '▲'
+                : ''}
+              {Number(data.change_price).toLocaleString()}
             </Typography>
           </Box>
         </Box>
@@ -96,7 +103,7 @@ export default function MarketCard({ code }) {
                 fontSize={12}
                 fontWeight={'bold'}
                 marginTop={1}
-                color={'red'}
+                color={globalColors.color_pos['400']}
               >
                 {Number(data.high_price).toLocaleString()}
               </Typography>
@@ -110,7 +117,7 @@ export default function MarketCard({ code }) {
                 fontSize={12}
                 fontWeight={'bold'}
                 marginTop={1}
-                color={'blue'}
+                color={globalColors.color_neg['400']}
               >
                 {Number(data.low_price).toLocaleString()}
               </Typography>
@@ -126,7 +133,7 @@ export default function MarketCard({ code }) {
                 fontSize={12}
                 fontWeight={'bold'}
                 marginTop={1}
-                color={'red'}
+                color={globalColors.color_pos['400']}
               >
                 {Number(data.highest_52_week_price).toLocaleString()}
               </Typography>
@@ -140,7 +147,7 @@ export default function MarketCard({ code }) {
                 fontSize={12}
                 fontWeight={'bold'}
                 marginTop={1}
-                color={'blue'}
+                color={globalColors.color_neg['400']}
               >
                 {Number(data.lowest_52_week_price).toLocaleString()}
               </Typography>

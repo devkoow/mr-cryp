@@ -11,16 +11,19 @@ import {
   Typography,
   Box,
 } from '@mui/material';
+import { globalColors } from '../../globalColors';
 
 const RealTimePriceTable = memo(function RealTimePriceTable({
   socketData,
   marketCodeMap,
   setCode,
   setPrice,
+  setPrevPrice,
 }) {
-  const handleRowClick = (code, price) => {
+  const handleRowClick = (code, rate, prevPrice) => {
     setCode(code);
-    setPrice(price);
+    setPrice(rate);
+    setPrevPrice(prevPrice);
   };
 
   return (
@@ -47,8 +50,11 @@ const RealTimePriceTable = memo(function RealTimePriceTable({
             <TableRow
               key={data.code}
               onClick={() => {
-                handleRowClick(data.code, data.signed_change_price);
-                console.log(data.signed_change_price);
+                handleRowClick(
+                  data.code,
+                  data.signed_change_rate,
+                  data.prev_closing_price
+                );
               }}
               sx={{
                 '&:hover': {
@@ -59,7 +65,7 @@ const RealTimePriceTable = memo(function RealTimePriceTable({
             >
               <TableCell>
                 <Typography
-                  fontSize={10}
+                  fontSize={11}
                   fontWeight={'bold'}
                   sx={{ maxWidth: '5em', overflowWrap: 'break-word' }}
                 >
@@ -76,9 +82,9 @@ const RealTimePriceTable = memo(function RealTimePriceTable({
                   sx={{
                     color:
                       data.signed_change_rate > 0
-                        ? 'red'
+                        ? globalColors.color_pos['400']
                         : data.signed_change_rate < 0
-                        ? 'blue'
+                        ? globalColors.color_neg['400']
                         : 'black',
                   }}
                 >
@@ -89,9 +95,9 @@ const RealTimePriceTable = memo(function RealTimePriceTable({
                 sx={{
                   color:
                     data.signed_change_rate > 0
-                      ? 'red'
+                      ? globalColors.color_pos['400']
                       : data.signed_change_rate < 0
-                      ? 'blue'
+                      ? globalColors.color_neg['400']
                       : 'black',
                 }}
                 align="right"
@@ -125,7 +131,7 @@ const RealTimePriceTable = memo(function RealTimePriceTable({
  * - krwMarketCodes : KRW로 시작하는 marketCodes
  * - marketCodeMap : market 값을 키로 사용하는 korean_name 해시맵
  * */
-function RealTimePrice({ setCode, setPrice }) {
+function RealTimePrice({ setCode, setPrice, setPrevPrice }) {
   const { isLoading, marketCodes } = useFetchMarketCode();
   const [krwMarketCodes, setKrwMarketCodes] = useState([]);
   const { socket, isConnected, socketData } = useWsTicker(krwMarketCodes);
@@ -151,6 +157,7 @@ function RealTimePrice({ setCode, setPrice }) {
           marketCodeMap={marketCodeMap}
           setCode={setCode}
           setPrice={setPrice}
+          setPrevPrice={setPrevPrice}
         />
       ) : (
         <Typography>실시간 가격 로딩중...</Typography>

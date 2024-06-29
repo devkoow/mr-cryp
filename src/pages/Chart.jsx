@@ -11,7 +11,9 @@ import { Grid } from '@mui/material';
  */
 export default function Chart() {
   const [code, setCode] = useState('KRW-BTC');
-  const [price, setPrice] = useState(0);
+  const [rate, setPrice] = useState(0);
+  const [prevPrice, setPrevPrice] = useState(null);
+
   return (
     <Grid
       container
@@ -20,7 +22,11 @@ export default function Chart() {
       margin="auto"
     >
       <Grid item xs={3}>
-        <RealTimePrice setCode={setCode} setPrice={setPrice} />
+        <RealTimePrice
+          setCode={setCode}
+          setPrice={setPrice}
+          setPrevPrice={setPrevPrice}
+        />
       </Grid>
       <Grid item xs={9}>
         <MarketCard code={code} />
@@ -30,7 +36,7 @@ export default function Chart() {
             <TradeHistoryCard code={code} />
           </Grid>
           <Grid item xs={5}>
-            <OrderbookCard code={code} price={price} />
+            <OrderbookCard code={code} rate={rate} prevPrice={prevPrice} />
           </Grid>
         </Grid>
       </Grid>
