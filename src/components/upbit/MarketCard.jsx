@@ -46,11 +46,13 @@ export default function MarketCard({ code }) {
     <Box
       sx={{ height: 100, border: `thick double ${theme.palette.primary.main}` }}
     >
-      <Box display="flex">
+      <Box display="flex" marginLeft={0.5} gap={0.5}>
         <Typography fontSize={20} fontWeight={'bold'}>
           {marketCodeMap[data.code]}
         </Typography>
-        <Typography fontSize={15}>{data.code}</Typography>
+        <Typography fontSize={15} align="right">
+          {data.code}
+        </Typography>
       </Box>
       <Divider />
       <Box display="flex" justifyContent={'space-between'} paddingLeft={1}>

@@ -72,13 +72,13 @@ export default class Upbit {
     }
   }
 
-  async candleMinutes(unit, ticker) {
+  async candleMinutes(unit, ticker, count) {
     try {
       const response = await this.getData.get(
         `/candles/minutes/${unit}?market=${ticker}`,
         {
           params: {
-            count: 1,
+            count: count,
           },
         }
       );
@@ -89,13 +89,13 @@ export default class Upbit {
     }
   }
 
-  async candleDays(ticker) {
+  async candleDays(ticker, count) {
     try {
       const response = await this.getData.get(
         `/candles/days?market=${ticker}`,
         {
           params: {
-            count: 1,
+            count: count,
           },
         }
       );
@@ -106,13 +106,13 @@ export default class Upbit {
     }
   }
 
-  async candleWeeks(ticker) {
+  async candleWeeks(ticker, count) {
     try {
       const response = await this.getData.get(
         `/candles/weeks?market=${ticker}`,
         {
           params: {
-            count: 1,
+            count: count,
           },
         }
       );
@@ -123,13 +123,13 @@ export default class Upbit {
     }
   }
 
-  async candleMonths(ticker) {
+  async candleMonths(ticker, count) {
     try {
       const response = await this.getData.get(
         `/candles/months?market=${ticker}`,
         {
           params: {
-            count: 1,
+            count: count,
           },
         }
       );

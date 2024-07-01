@@ -18,7 +18,7 @@ export default function Chart() {
     <Grid
       container
       spacing={0}
-      sx={{ width: 1200, height: 900, border: '1px  ' }}
+      sx={{ width: 1200, height: 900, border: '1px' }}
       margin="auto"
     >
       <Grid item xs={3}>
