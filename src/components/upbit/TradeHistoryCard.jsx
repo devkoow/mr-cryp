@@ -10,7 +10,7 @@ import {
   Typography,
   Box,
 } from '@mui/material';
-import { StyledTableCell } from '../../defaultTheme';
+import { PriceTypography, StyledTableCell } from '../../defaultTheme';
 import { globalColors } from '../../globalColors';
 import { useOpenApi } from '../../context/OpenApiContext';
 
@@ -46,11 +46,13 @@ const TradeTable = memo(function TradeTable({ targetMarketCode, initialData }) {
                       {timestampToTime(data.timestamp)}
                     </TableCell>
                     <TableCell align="center">
-                      {Number(data.trade_price).toLocaleString()}원
+                      <PriceTypography fontSize={10}>
+                        {Number(data.trade_price).toLocaleString()}원
+                      </PriceTypography>
                     </TableCell>
                     <TableCell align="center">
-                      <Typography
-                        fontSize={12}
+                      <PriceTypography
+                        fontSize={10}
                         color={
                           data.ask_bid === 'ASK'
                             ? globalColors.color_pos['400']
@@ -58,11 +60,11 @@ const TradeTable = memo(function TradeTable({ targetMarketCode, initialData }) {
                         }
                       >
                         {data.trade_volume}
-                      </Typography>
+                      </PriceTypography>
                     </TableCell>
                     <TableCell align="center">
-                      <Typography
-                        fontSize={12}
+                      <PriceTypography
+                        fontSize={10}
                         color={
                           data.ask_bid === 'ASK'
                             ? globalColors.color_pos['400']
@@ -73,7 +75,7 @@ const TradeTable = memo(function TradeTable({ targetMarketCode, initialData }) {
                           data.trade_volume * data.trade_price
                         ).toLocaleString()}
                         원
-                      </Typography>
+                      </PriceTypography>
                     </TableCell>
                   </TableRow>
                 ))

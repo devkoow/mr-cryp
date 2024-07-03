@@ -7,7 +7,7 @@ import ChartCard from '../components/upbit/ChartCard';
 import { Grid } from '@mui/material';
 
 /** 전체 차트 페이지
- * - code : 선택한 마켓의 티커
+ * - code : 실시간 금액에서 선택한 마켓의 티커
  */
 export default function Chart() {
   const [code, setCode] = useState('KRW-BTC');
@@ -18,7 +18,7 @@ export default function Chart() {
     <Grid
       container
       spacing={0}
-      sx={{ width: 1200, height: 900, border: '1px' }}
+      sx={{ width: 1200, height: 900, border: '1px', boxShadow: 3 }}
       margin="auto"
     >
       <Grid item xs={3}>

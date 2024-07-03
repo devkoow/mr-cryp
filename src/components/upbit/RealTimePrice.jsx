@@ -1,6 +1,6 @@
 import { memo, useEffect, useState } from 'react';
 import { useFetchMarketCode, useWsTicker } from 'use-upbit-api';
-import { StyledTableCell } from '../../defaultTheme';
+import { PriceTypography, StyledTableCell } from '../../defaultTheme';
 import {
   TableContainer,
   Table,
@@ -76,7 +76,7 @@ const RealTimePriceTable = memo(function RealTimePriceTable({
                 </Typography>
               </TableCell>
               <TableCell align="right">
-                <Typography
+                <PriceTypography
                   fontSize={11}
                   fontWeight={'bold'}
                   sx={{
@@ -89,7 +89,7 @@ const RealTimePriceTable = memo(function RealTimePriceTable({
                   }}
                 >
                   {data.trade_price.toLocaleString()}
-                </Typography>
+                </PriceTypography>
               </TableCell>
               <TableCell
                 sx={{
@@ -103,19 +103,21 @@ const RealTimePriceTable = memo(function RealTimePriceTable({
                 align="right"
               >
                 <Box display="flex" flexDirection="column">
-                  <Typography fontSize={12} fontWeight={'bold'}>
+                  <PriceTypography fontSize={10} fontWeight={'bold'}>
                     {(data.signed_change_rate * 100).toFixed(2)}%
-                  </Typography>
-                  <Typography fontSize={12} fontWeight={'bold'}>
+                  </PriceTypography>
+                  <PriceTypography fontSize={10} fontWeight={'bold'}>
                     {data.signed_change_price.toLocaleString()}
-                  </Typography>
+                  </PriceTypography>
                 </Box>
               </TableCell>
               <TableCell>
-                {Math.round(
-                  parseInt(data.acc_trade_price_24h) / 1000000
-                ).toLocaleString()}
-                백만
+                <PriceTypography fontSize={10}>
+                  {Math.round(
+                    parseInt(data.acc_trade_price_24h) / 1000000
+                  ).toLocaleString()}
+                  백만
+                </PriceTypography>
               </TableCell>
             </TableRow>
           ))}

@@ -1,4 +1,4 @@
-import { createTheme, TableCell } from '@mui/material';
+import { createTheme, TableCell, Typography } from '@mui/material';
 import { globalColors } from './globalColors';
 import { styled } from '@mui/system';
 
@@ -93,7 +93,7 @@ export let theme = createTheme({
       styleOverrides: {
         root: {
           alignItems: 'center',
-          fontFamily: 'ChoseonGu',
+          // fontFamily: 'ChoseonGu',
           fontSize: 12,
           whiteSpace: 'nowrap',
           padding: 2,
@@ -113,5 +113,9 @@ export const StyledTableCell = styled(TableCell)(({ theme }) => ({
   position: 'sticky',
   top: 0,
   zIndex: 100,
-  height: '5px',
+}));
+
+/** 테이블 금액 타이포그래피 */
+export const PriceTypography = styled(Typography)(({ theme }) => ({
+  fontFamily: 'ONE-Mobile-Title',
 }));

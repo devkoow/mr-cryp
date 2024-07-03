@@ -92,23 +92,21 @@ function TradeHistory() {
   }, [curMarketCode, marketCodes]);
 
   return (
-    <>
-      <Box
-        margin="auto"
-        display="flex"
-        flexDirection="column"
-        alignItems="center"
-      >
-        <Typography variant="h5">실시간 거래내역</Typography>
-        <MarketCodeSelector
-          curMarketCode={curMarketCode}
-          setCurMarketCode={setCurMarketCode}
-          isLoading={isLoading}
-          marketCodes={marketCodes}
-        />
-        <TradeTable targetMarketCode={targetMarketCode} />
-      </Box>
-    </>
+    <Box
+      margin="auto"
+      display="flex"
+      flexDirection="column"
+      alignItems="center"
+    >
+      <Typography variant="h5">실시간 거래내역</Typography>
+      <MarketCodeSelector
+        curMarketCode={curMarketCode}
+        setCurMarketCode={setCurMarketCode}
+        isLoading={isLoading}
+        marketCodes={marketCodes}
+      />
+      <TradeTable targetMarketCode={targetMarketCode} />
+    </Box>
   );
 }
 

@@ -10,7 +10,7 @@ import {
   TableRow,
   Typography,
 } from '@mui/material';
-import { StyledTableCell } from '../../defaultTheme';
+import { StyledTableCell, PriceTypography } from '../../defaultTheme';
 import { globalColors } from '../../globalColors';
 
 /** 실시간 오더북 테이블 UI */
@@ -72,19 +72,40 @@ const OrderTable = memo(function OrderTable({
                   sx={{ padding: 1, width: '33%' }}
                   align="center"
                 >
-                  매도 물량
+                  <Box
+                    height="11px"
+                    display="flex"
+                    alignItems="center"
+                    justifyContent="center"
+                  >
+                    <Typography fontSize={12}>매도 물량</Typography>
+                  </Box>
                 </StyledTableCell>
                 <StyledTableCell
                   sx={{ padding: 1, width: '33%' }}
                   align="center"
                 >
-                  가격
+                  <Box
+                    height="11px"
+                    display="flex"
+                    alignItems="center"
+                    justifyContent="center"
+                  >
+                    <Typography fontSize={12}>가격</Typography>
+                  </Box>
                 </StyledTableCell>
                 <StyledTableCell
                   sx={{ padding: 1, width: '33%' }}
                   align="center"
                 >
-                  매수 물량
+                  <Box
+                    height="11px"
+                    display="flex"
+                    alignItems="center"
+                    justifyContent="center"
+                  >
+                    <Typography fontSize={12}>매수 물량</Typography>
+                  </Box>
                 </StyledTableCell>
               </TableRow>
             </TableHead>
@@ -100,23 +121,23 @@ const OrderTable = memo(function OrderTable({
                       <Box
                         sx={{
                           position: 'relative',
-                          height: '20px',
+                          height: '15px',
                         }}
                       >
-                        <Typography
-                          fontSize={12}
+                        <PriceTypography
+                          fontSize={10}
                           sx={{
                             position: 'absolute',
                             right: 0,
                           }}
                         >
                           {Number(element.ask_size).toFixed(4)}
-                        </Typography>
+                        </PriceTypography>
                         <Box
                           sx={{
                             position: 'absolute',
                             right: 0,
-                            height: '20px',
+                            height: '15px',
                             width: `${(element.ask_size / askMaxSize) * 100}%`,
                             maxWidth: '100%',
                             backgroundColor: globalColors.color_ask['500'],
@@ -127,14 +148,14 @@ const OrderTable = memo(function OrderTable({
                     </TableCell>
                     <TableCell sx={{ padding: 1 }} align="center">
                       <Box display="flex" justifyContent={'space-between'}>
-                        <Typography
+                        <PriceTypography
                           color={numColor}
-                          fontSize={14}
+                          fontSize={12}
                           fontWeight={'bold'}
                         >
                           {element.ask_price.toLocaleString()}
-                        </Typography>
-                        <Typography fontSize={14} color={numColor}>
+                        </PriceTypography>
+                        <PriceTypography fontSize={12} color={numColor}>
                           {Number(rate) > 0 ? '+' : ''}
                           {prevPrice &&
                             Number(
@@ -142,7 +163,7 @@ const OrderTable = memo(function OrderTable({
                                 100
                             ).toFixed(2)}
                           {prevPrice && '%'}
-                        </Typography>
+                        </PriceTypography>
                       </Box>
                     </TableCell>
                     <TableCell sx={{ padding: 1 }}></TableCell>
@@ -154,21 +175,21 @@ const OrderTable = memo(function OrderTable({
                   <TableCell sx={{ padding: 1 }}></TableCell>
                   <TableCell sx={{ padding: 1 }} align="center">
                     <Box display="flex" justifyContent={'space-between'}>
-                      <Typography
+                      <PriceTypography
                         color={numColor}
-                        fontSize={14}
+                        fontSize={12}
                         fontWeight={'bold'}
                       >
                         {element.bid_price.toLocaleString()}
-                      </Typography>
-                      <Typography fontSize={14} color={numColor}>
+                      </PriceTypography>
+                      <PriceTypography fontSize={12} color={numColor}>
                         {Number(rate) > 0 ? '+' : ''}
                         {prevPrice &&
                           Number(
                             ((element.bid_price - prevPrice) / prevPrice) * 100
                           ).toFixed(2)}
                         {prevPrice && '%'}
-                      </Typography>
+                      </PriceTypography>
                     </Box>
                   </TableCell>
                   <TableCell
@@ -178,23 +199,23 @@ const OrderTable = memo(function OrderTable({
                     <Box
                       sx={{
                         position: 'relative',
-                        height: '20px',
+                        height: '15px',
                       }}
                     >
-                      <Typography
-                        fontSize={12}
+                      <PriceTypography
+                        fontSize={10}
                         sx={{
                           position: 'absolute',
-                          right: 0,
+                          left: 0,
                         }}
                       >
                         {Number(element.bid_size).toFixed(4)}
-                      </Typography>
+                      </PriceTypography>
                       <Box
                         sx={{
                           position: 'absolute',
                           left: 0,
-                          height: '20px',
+                          height: '15px',
                           width: `${(element.bid_size / bidMaxSize) * 100}%`,
                           maxWidth: '100%',
                           backgroundColor: globalColors.color_bid['500'],
