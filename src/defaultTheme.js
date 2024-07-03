@@ -113,4 +113,5 @@ export const StyledTableCell = styled(TableCell)(({ theme }) => ({
   position: 'sticky',
   top: 0,
   zIndex: 100,
+  height: '5px',
 }));

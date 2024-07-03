@@ -30,9 +30,9 @@ export default function Chart() {
       </Grid>
       <Grid item xs={9}>
         <MarketCard code={code} />
+        <ChartCard code={code} />
         <Grid container spacing={0} padding="0">
           <Grid item xs={7}>
-            <ChartCard code={code} />
             <TradeHistoryCard code={code} />
           </Grid>
           <Grid item xs={5}>

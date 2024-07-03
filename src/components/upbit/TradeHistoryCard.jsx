@@ -12,11 +12,12 @@ import {
 } from '@mui/material';
 import { StyledTableCell } from '../../defaultTheme';
 import { globalColors } from '../../globalColors';
+import { useOpenApi } from '../../context/OpenApiContext';
 
 /** 실시간 거래내역 테이블 UI
  * - timestampToTime : 타임스탬프 값을 KST 시간으로 변환
  */
-const TradeTable = memo(function TradeTable({ targetMarketCode }) {
+const TradeTable = memo(function TradeTable({ targetMarketCode, initialData }) {
   const webSocketOptions = { throttle_time: 400, max_length_queue: 100 };
   const { socket, isConnected, socketData } = useWsTrade(targetMarketCode);
   const timestampToTime = (timestamp) => {
@@ -38,6 +39,45 @@ const TradeTable = memo(function TradeTable({ targetMarketCode }) {
             </TableRow>
           </TableHead>
           <TableBody>
+            {initialData
+              ? [...initialData].reverse().map((data, index) => (
+                  <TableRow key={index}>
+                    <TableCell align="center">
+                      {timestampToTime(data.timestamp)}
+                    </TableCell>
+                    <TableCell align="center">
+                      {Number(data.trade_price).toLocaleString()}원
+                    </TableCell>
+                    <TableCell align="center">
+                      <Typography
+                        fontSize={12}
+                        color={
+                          data.ask_bid === 'ASK'
+                            ? globalColors.color_pos['400']
+                            : globalColors.color_neg['400']
+                        }
+                      >
+                        {data.trade_volume}
+                      </Typography>
+                    </TableCell>
+                    <TableCell align="center">
+                      <Typography
+                        fontSize={12}
+                        color={
+                          data.ask_bid === 'ASK'
+                            ? globalColors.color_pos['400']
+                            : globalColors.color_neg['400']
+                        }
+                      >
+                        {Math.round(
+                          data.trade_volume * data.trade_price
+                        ).toLocaleString()}
+                        원
+                      </Typography>
+                    </TableCell>
+                  </TableRow>
+                ))
+              : '내역 테이블 로딩중'}
             {socketData
               ? [...socketData].reverse().map((data, index) => (
                   <TableRow key={index}>
@@ -90,6 +130,8 @@ const TradeTable = memo(function TradeTable({ targetMarketCode }) {
 function TradeHistory({ code }) {
   const { isLoading, marketCodes } = useFetchMarketCode();
   const [targetMarketCode, setTargetMarketCode] = useState();
+  const [initialData, setInitialData] = useState(null);
+  const { upbit } = useOpenApi();
 
   useEffect(() => {
     if (marketCodes) {
@@ -106,13 +148,24 @@ function TradeHistory({ code }) {
     }
   }, [code, marketCodes]);
 
+  useEffect(() => {
+    async function fetchData() {
+      const result = await upbit.tradeHistory(code);
+      setInitialData(result);
+    }
+    fetchData();
+  }, []);
+
   if (isLoading) {
     return <Typography>실시간 거래 내역 로딩중...</Typography>;
   }
 
   return (
     <Box>
-      <TradeTable targetMarketCode={targetMarketCode} />
+      <TradeTable
+        targetMarketCode={targetMarketCode}
+        initialData={initialData}
+      />
     </Box>
   );
 }

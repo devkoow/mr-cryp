@@ -48,7 +48,7 @@ export default class Upbit {
         `/trades/ticks?market=${ticker}`,
         {
           params: {
-            count: 1,
+            count: 30,
           },
         }
       );

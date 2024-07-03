@@ -64,7 +64,7 @@ const OrderTable = memo(function OrderTable({
   return (
     <>
       {socketData && (
-        <TableContainer sx={{ height: 800, margin: 0, padding: 0 }}>
+        <TableContainer sx={{ height: 400, margin: 0, padding: 0 }}>
           <Table display="flex" stickyHeader aria-label="sticky table">
             <TableHead>
               <TableRow>
@@ -99,8 +99,8 @@ const OrderTable = memo(function OrderTable({
                     >
                       <Box
                         sx={{
-                          position: 'relative', // 상위 요소를 기준으로 위치를 지정합니다.
-                          height: '20px', // 적절한 높이를 설정합니다.
+                          position: 'relative',
+                          height: '20px',
                         }}
                       >
                         <Typography
@@ -177,8 +177,8 @@ const OrderTable = memo(function OrderTable({
                   >
                     <Box
                       sx={{
-                        position: 'relative', // 상위 요소를 기준으로 위치를 지정합니다.
-                        height: '20px', // 적절한 높이를 설정합니다.
+                        position: 'relative',
+                        height: '20px',
                       }}
                     >
                       <Typography

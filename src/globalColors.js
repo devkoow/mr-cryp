@@ -8,6 +8,8 @@ export const globalColors = {
   white: '#ffffff',
   black: '#000000',
   tooltip_bgColor: 'rgba(255,255,255, 0.8)',
+  sma_50: '#03fc73',
+  sma_15: '#de0417',
 
   skyblue: { 200: '#9af9fc', 300: '#5cf5fa', 400: '#1eeff5', 500: '#05eef5' },
   hotpink: { 200: '#f788bc', 300: '#fa6eaf', 400: '#ff63ac', 500: '#fa52a1' },
