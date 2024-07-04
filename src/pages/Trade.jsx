@@ -1,10 +1,11 @@
 import React from 'react';
-import { Box, Typography } from '@mui/material';
+import { Box } from '@mui/material';
+import { DescTypography } from '../defaultTheme';
 
 export default function Trade() {
   return (
     <Box display="flex" justifyContent="center">
-      <Typography>거래 메뉴를 선택해주세요</Typography>
+      <DescTypography>위에서 거래 메뉴를 선택해주세요</DescTypography>
     </Box>
   );
 }

@@ -1,6 +1,10 @@
 import { memo, useEffect, useState } from 'react';
 import { useFetchMarketCode, useWsTicker } from 'use-upbit-api';
-import { PriceTypography, StyledTableCell } from '../../defaultTheme';
+import {
+  DescTypography,
+  PriceTypography,
+  StyledTableCell,
+} from '../../defaultTheme';
 import {
   TableContainer,
   Table,
@@ -39,10 +43,26 @@ const RealTimePriceTable = memo(function RealTimePriceTable({
       <Table stickyHeader aria-label="sticky table">
         <TableHead>
           <TableRow>
-            <StyledTableCell align="center">코인</StyledTableCell>
-            <StyledTableCell align="center">현재가</StyledTableCell>
-            <StyledTableCell align="center">전일대비</StyledTableCell>
-            <StyledTableCell align="center">거래대금</StyledTableCell>
+            <StyledTableCell align="center">
+              <DescTypography fontSize={12} fontWeight={700}>
+                코인
+              </DescTypography>
+            </StyledTableCell>
+            <StyledTableCell align="center">
+              <DescTypography fontSize={12} fontWeight={700}>
+                현재가
+              </DescTypography>
+            </StyledTableCell>
+            <StyledTableCell align="center">
+              <DescTypography fontSize={12} fontWeight={700}>
+                전일대비
+              </DescTypography>
+            </StyledTableCell>
+            <StyledTableCell align="center">
+              <DescTypography fontSize={12} fontWeight={700}>
+                거래대금
+              </DescTypography>
+            </StyledTableCell>
           </TableRow>
         </TableHead>
         <TableBody>

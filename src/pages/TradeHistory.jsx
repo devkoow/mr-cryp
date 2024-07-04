@@ -13,6 +13,7 @@ import {
   Paper,
   Box,
 } from '@mui/material';
+import { DescTypography, PriceTypography } from '../defaultTheme';
 
 /** 실시간 거래내역 테이블 UI */
 const TradeTable = memo(function TradeTable({ targetMarketCode }) {
@@ -30,8 +31,12 @@ const TradeTable = memo(function TradeTable({ targetMarketCode }) {
 
   return (
     <>
-      <Typography>연결 상태 : {isConnected ? '🟢' : '🔴'}</Typography>
-      <Button onClick={connectButtonHandler}>{'연결종료'}</Button>
+      <Box display="flex" alignItems="center" gap={4}>
+        <DescTypography>연결 상태 : {isConnected ? '🟢' : '🔴'}</DescTypography>
+        <Button onClick={connectButtonHandler}>
+          <DescTypography>연결종료</DescTypography>
+        </Button>
+      </Box>
       <TableContainer
         component={Paper}
         sx={{ maxWidth: 1000, marginTop: '1rem' }}
@@ -40,24 +45,46 @@ const TradeTable = memo(function TradeTable({ targetMarketCode }) {
           <Table>
             <TableHead>
               <TableRow>
-                <TableCell>코인</TableCell>
-                <TableCell>체결 ID</TableCell>
-                <TableCell>체결 시간</TableCell>
-                <TableCell>ASK/BID</TableCell>
-                <TableCell>체결 가격</TableCell>
+                <TableCell align="center">
+                  <DescTypography fontSize={20} fontWeight={700}>
+                    코인
+                  </DescTypography>
+                </TableCell>
+                <TableCell align="center">
+                  <DescTypography fontSize={20} fontWeight={700}>
+                    체결 ID
+                  </DescTypography>
+                </TableCell>
+                <TableCell align="center">
+                  <DescTypography fontSize={20} fontWeight={700}>
+                    체결 시간
+                  </DescTypography>
+                </TableCell>
+                <TableCell align="center">
+                  <DescTypography fontSize={20} fontWeight={700}>
+                    ASK/BID
+                  </DescTypography>
+                </TableCell>
+                <TableCell align="center">
+                  <DescTypography fontSize={20} fontWeight={700}>
+                    체결 가격
+                  </DescTypography>
+                </TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
               {[...socketData].reverse().map((ele, index) => (
                 <TableRow key={index}>
-                  <TableCell>{ele.code} </TableCell>
-                  <TableCell>{ele.sequential_id} </TableCell>
-                  <TableCell>
+                  <TableCell align="center">{ele.code} </TableCell>
+                  <TableCell align="center">{ele.sequential_id} </TableCell>
+                  <TableCell align="center">
                     {ele.trade_date} {ele.trade_time}
                   </TableCell>
-                  <TableCell>{ele.ask_bid} </TableCell>
-                  <TableCell>
-                    {ele.prev_closing_price.toLocaleString()}{' '}
+                  <TableCell align="center">{ele.ask_bid} </TableCell>
+                  <TableCell align="center">
+                    <PriceTypography fontSize={11}>
+                      {ele.prev_closing_price.toLocaleString()}
+                    </PriceTypography>
                   </TableCell>
                 </TableRow>
               ))}
@@ -97,8 +124,9 @@ function TradeHistory() {
       display="flex"
       flexDirection="column"
       alignItems="center"
+      gap={1}
     >
-      <Typography variant="h5">실시간 거래내역</Typography>
+      <DescTypography variant="h5">실시간 거래내역</DescTypography>
       <MarketCodeSelector
         curMarketCode={curMarketCode}
         setCurMarketCode={setCurMarketCode}

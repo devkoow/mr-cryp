@@ -10,7 +10,11 @@ import {
   TableRow,
   Typography,
 } from '@mui/material';
-import { StyledTableCell, PriceTypography } from '../../defaultTheme';
+import {
+  StyledTableCell,
+  PriceTypography,
+  DescTypography,
+} from '../../defaultTheme';
 import { globalColors } from '../../globalColors';
 
 /** 실시간 오더북 테이블 UI */
@@ -78,7 +82,9 @@ const OrderTable = memo(function OrderTable({
                     alignItems="center"
                     justifyContent="center"
                   >
-                    <Typography fontSize={12}>매도 물량</Typography>
+                    <DescTypography fontSize={12} fontWeight={700}>
+                      매도 물량
+                    </DescTypography>
                   </Box>
                 </StyledTableCell>
                 <StyledTableCell
@@ -91,7 +97,9 @@ const OrderTable = memo(function OrderTable({
                     alignItems="center"
                     justifyContent="center"
                   >
-                    <Typography fontSize={12}>가격</Typography>
+                    <DescTypography fontSize={12} fontWeight={700}>
+                      가격
+                    </DescTypography>
                   </Box>
                 </StyledTableCell>
                 <StyledTableCell
@@ -104,7 +112,9 @@ const OrderTable = memo(function OrderTable({
                     alignItems="center"
                     justifyContent="center"
                   >
-                    <Typography fontSize={12}>매수 물량</Typography>
+                    <DescTypography fontSize={12} fontWeight={700}>
+                      매수 물량
+                    </DescTypography>
                   </Box>
                 </StyledTableCell>
               </TableRow>

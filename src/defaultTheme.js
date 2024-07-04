@@ -1,6 +1,6 @@
 import { createTheme, TableCell, Typography } from '@mui/material';
 import { globalColors } from './globalColors';
-import { styled } from '@mui/system';
+import { fontFamily, styled } from '@mui/system';
 
 /** 컬러 팔레트, 기본 컴포넌트 세팅
  * 배경 : skyblue,
@@ -26,6 +26,7 @@ export let theme = createTheme({
     },
   },
   components: {
+    // 스크롤바
     MuiCssBaseline: {
       styleOverrides: `
         ::-webkit-scrollbar {
@@ -115,7 +116,26 @@ export const StyledTableCell = styled(TableCell)(({ theme }) => ({
   zIndex: 100,
 }));
 
-/** 테이블 금액 타이포그래피 */
-export const PriceTypography = styled(Typography)(({ theme }) => ({
+/** 금액 타이포그래피 */
+export const PriceTypography = styled(Typography)(() => ({
   fontFamily: 'ONE-Mobile-Title',
+}));
+
+/** 네비게이션바 타이포그래피 */
+export const NavTypography = styled(Typography)(() => ({
+  fontFamily: 'SBAggroB',
+  fontWeight: 500,
+  fontSize: '20px',
+}));
+
+/** 네비게이션바 로고 타이포그래피 */
+export const LogoTypography = styled(Typography)(() => ({
+  fontFamily: 'SDSamliphopangche_Outline',
+  fontWeight: 'bold',
+  fontSize: '50px',
+}));
+
+/** 본문 타이포그래피 */
+export const DescTypography = styled(Typography)(() => ({
+  fontFamily: 'NEXON Lv1 Gothic OTF',
 }));

@@ -44,7 +44,7 @@ export default function MarketCard({ code }) {
 
   return (
     <Box
-      sx={{ height: 100, border: `thick double ${theme.palette.primary.main}` }}
+      sx={{ height: 100, border: `dashed 5px ${theme.palette.primary.main}` }}
     >
       <Box display="flex" marginLeft={0.5} gap={0.5}>
         <Typography fontSize={20} fontWeight={'bold'}>

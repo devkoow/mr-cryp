@@ -1,5 +1,6 @@
 import { Box, MenuItem, Select, Typography } from '@mui/material';
 import { memo } from 'react';
+import { DescTypography } from '../../defaultTheme';
 
 /** 마켓 코드 셀렉터
   - Props 
@@ -27,7 +28,7 @@ function MarketCodeSelector({
           alignItems="center"
           justifyContent="space-between"
         >
-          <Typography>마켓 코드</Typography>
+          <DescTypography>마켓 코드</DescTypography>
           <Select
             name="marketcode"
             onChange={handleMarket}

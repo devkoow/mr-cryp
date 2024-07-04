@@ -10,7 +10,11 @@ import {
   Typography,
   Box,
 } from '@mui/material';
-import { PriceTypography, StyledTableCell } from '../../defaultTheme';
+import {
+  DescTypography,
+  PriceTypography,
+  StyledTableCell,
+} from '../../defaultTheme';
 import { globalColors } from '../../globalColors';
 import { useOpenApi } from '../../context/OpenApiContext';
 
@@ -32,10 +36,26 @@ const TradeTable = memo(function TradeTable({ targetMarketCode, initialData }) {
         <Table stickyHeader aria-label="sticky table">
           <TableHead>
             <TableRow>
-              <StyledTableCell align="center">체결 시간</StyledTableCell>
-              <StyledTableCell align="center">체결 가격</StyledTableCell>
-              <StyledTableCell align="center">체결량</StyledTableCell>
-              <StyledTableCell align="center">체결금액</StyledTableCell>
+              <StyledTableCell align="center">
+                <DescTypography fontSize={12} fontWeight={700}>
+                  체결 시간
+                </DescTypography>
+              </StyledTableCell>
+              <StyledTableCell align="center">
+                <DescTypography fontSize={12} fontWeight={700}>
+                  체결 가격
+                </DescTypography>
+              </StyledTableCell>
+              <StyledTableCell align="center">
+                <DescTypography fontSize={12} fontWeight={700}>
+                  체결량
+                </DescTypography>
+              </StyledTableCell>
+              <StyledTableCell align="center">
+                <DescTypography fontSize={12} fontWeight={700}>
+                  체결금액
+                </DescTypography>
+              </StyledTableCell>
             </TableRow>
           </TableHead>
           <TableBody>
