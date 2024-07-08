@@ -13,7 +13,7 @@ import AuthKakao from './pages/AuthKakao';
 import Trade from './pages/Trade';
 import Orderbook from './pages/Orderbook';
 import TradeHistory from './pages/TradeHistory';
-import Orders from './pages/Orders';
+import Order from './pages/Order';
 import Chart from './pages/Chart';
 
 const router = createBrowserRouter([
@@ -29,7 +29,7 @@ const router = createBrowserRouter([
       { path: '/trade/orderbook', element: <Orderbook /> },
       { path: '/trade/tradeHistory', element: <TradeHistory /> },
       { path: '/trade/charts', element: <Chart /> },
-      { path: '/trade/orders', element: <Orders /> },
+      { path: '/trade/orders', element: <Order /> },
       { path: '/vision', element: <Vision /> },
       { path: '/profile', element: <Profile /> },
     ],
