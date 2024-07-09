@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { v4 as uuidv4 } from 'uuid';
 import axios from 'axios';
+import { v4 as uuidv4 } from 'uuid';
 import { Box } from '@mui/system';
-import { KJUR, KEYUTIL } from 'jsrsasign';
+import { KJUR } from 'jsrsasign';
 
 export default function Account() {
   const [account, setAccount] = useState([]);
@@ -21,9 +21,13 @@ export default function Account() {
   const sJWT = KJUR.jws.JWS.sign('HS256', sHeader, sPayload, sSecret);
 
   useEffect(() => {
+    // console.log('토큰 헤더: ', sHeader);
+    // console.log('토큰 페이로드: ', sPayload);
+    // console.log('토큰 시크릿: ', sSecret);
+    // console.log('JWT: ', sJWT);
     const myAccount = async () => {
       try {
-        const response = await axios.get('/v1/accounts', {
+        const response = await axios.get('https://api.upbit.com/v1/accounts', {
           headers: {
             Authorization: `Bearer ${sJWT}`,
           },
