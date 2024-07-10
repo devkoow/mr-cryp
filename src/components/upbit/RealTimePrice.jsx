@@ -38,6 +38,7 @@ const RealTimePriceTable = memo(function RealTimePriceTable({
         overflow: 'auto',
         margin: 0,
         padding: 0,
+        backgroundColor: globalColors.white,
       }}
     >
       <Table stickyHeader aria-label="sticky table">
@@ -104,8 +105,8 @@ const RealTimePriceTable = memo(function RealTimePriceTable({
                       data.signed_change_rate > 0
                         ? globalColors.color_pos['400']
                         : data.signed_change_rate < 0
-                        ? globalColors.color_neg['400']
-                        : 'black',
+                          ? globalColors.color_neg['400']
+                          : 'black',
                   }}
                 >
                   {data.trade_price.toLocaleString()}
@@ -117,8 +118,8 @@ const RealTimePriceTable = memo(function RealTimePriceTable({
                     data.signed_change_rate > 0
                       ? globalColors.color_pos['400']
                       : data.signed_change_rate < 0
-                      ? globalColors.color_neg['400']
-                      : 'black',
+                        ? globalColors.color_neg['400']
+                        : 'black',
                 }}
                 align="right"
               >

@@ -53,18 +53,22 @@
 }
 
 body {
-  scrollbar-width: thin;
-  scrollbar-color: rgba(0, 0, 0, 0) transparent;
   overflow-y: scroll;
+  scrollbar-width: thin;
+  scrollbar-color: #888 #f1f1f1;
   margin: 0;
   padding: 0;
 }
 
-/* Chrome, Safari, Edge에서 스크롤바 스타일 설정 */
-body::-webkit-scrollbar {
+::-webkit-scrollbar {
   width: 8px;
 }
-
-body::-webkit-scrollbar-thumb {
-  background-color: rgba(0, 0, 0, 0);
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }

@@ -35,8 +35,8 @@ export default function MarketCard({ code }) {
     data.signed_change_rate === 0
       ? 'black'
       : data.signed_change_rate > 0
-      ? globalColors.color_pos['400']
-      : globalColors.color_neg['400'];
+        ? globalColors.color_pos['400']
+        : globalColors.color_neg['400'];
 
   if (!data) {
     return <Typography>마켓 정보 로딩중...</Typography>;
@@ -44,9 +44,13 @@ export default function MarketCard({ code }) {
 
   return (
     <Box
-      sx={{ height: 100, border: `dashed 5px ${theme.palette.primary.main}` }}
+      sx={{
+        height: 100,
+        border: `dashed 5px ${theme.palette.primary.main}`,
+        backgroundColor: globalColors.white,
+      }}
     >
-      <Box display="flex" marginLeft={0.5} gap={0.5}>
+      <Box display="flex" marginLeft={0.5} gap={0.5} alignItems="flex-end">
         <Typography fontSize={20} fontWeight={'bold'}>
           {marketCodeMap[data.code]}
         </Typography>
@@ -82,8 +86,8 @@ export default function MarketCard({ code }) {
               {Number(data.signed_change_price) < 0
                 ? '▼'
                 : Number(data.signed_change_price) > 0
-                ? '▲'
-                : ''}
+                  ? '▲'
+                  : ''}
               {Number(data.change_price).toLocaleString()}
             </PriceTypography>
           </Box>

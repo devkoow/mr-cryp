@@ -2,7 +2,7 @@ import axios from 'axios';
 
 /** 유튜브 데이터 API 클래스
  - search() : 실제 API 사용
- - useMock() : 따로 저장해놓은 데이터 사용
+ - useMock() : 따로 저장해놓은 데이터 'trend.json' 사용
  */
 export default class Youtube {
   constructor() {
@@ -19,7 +19,7 @@ export default class Youtube {
       const response = await this.getData.get('search', {
         params: {
           part: 'snippet',
-          maxResults: 18,
+          maxResults: 12,
           type: 'video',
           q: keyword,
         },

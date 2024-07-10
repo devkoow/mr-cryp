@@ -18,6 +18,7 @@ const logoutKakao = async () => {
       localStorage.removeItem('userId');
       localStorage.removeItem('imgUrl');
       localStorage.removeItem('nickname');
+      localStorage.removeItem('activePage');
       console.log('카카오 로그아웃');
     })
     .catch((error) => {

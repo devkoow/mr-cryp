@@ -10,10 +10,6 @@ import axios from 'axios';
         - candleDays : 일봉 데이터
         - candleWeeks : 주봉 데이터
         - candleMonths : 월봉 데이터
-
-  - EXCHANGE API
-        - myAccounts : 내 계좌 조회
-        - orderedOne : 개별 주문 조회
  */
 export default class Upbit {
   constructor() {

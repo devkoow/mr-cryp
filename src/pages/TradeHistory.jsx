@@ -14,6 +14,7 @@ import {
   Box,
 } from '@mui/material';
 import { DescTypography, PriceTypography } from '../defaultTheme';
+import { globalColors } from '../globalColors';
 
 /** 실시간 거래내역 테이블 UI */
 const TradeTable = memo(function TradeTable({ targetMarketCode }) {
@@ -32,9 +33,17 @@ const TradeTable = memo(function TradeTable({ targetMarketCode }) {
   return (
     <>
       <Box display="flex" alignItems="center" gap={4}>
-        <DescTypography>연결 상태 : {isConnected ? '🟢' : '🔴'}</DescTypography>
+        <DescTypography
+          sx={{
+            color: globalColors.white,
+            textShadow: '1px 1px 2px black',
+            fontWeight: 'bold',
+          }}
+        >
+          연결 상태 : {isConnected ? '🟢' : '🔴'}
+        </DescTypography>
         <Button onClick={connectButtonHandler}>
-          <DescTypography>연결종료</DescTypography>
+          <DescTypography sx={{ fontWeight: 'bold' }}>연결종료</DescTypography>
         </Button>
       </Box>
       <TableContainer
@@ -120,13 +129,22 @@ function TradeHistory() {
 
   return (
     <Box
-      margin="auto"
       display="flex"
       flexDirection="column"
       alignItems="center"
       gap={1}
+      sx={{ marginBottom: 10 }}
     >
-      <DescTypography variant="h5">실시간 거래내역</DescTypography>
+      <DescTypography
+        variant="h5"
+        sx={{
+          color: globalColors.white,
+          textShadow: '1px 1px 2px black',
+          fontWeight: 'bold',
+        }}
+      >
+        실시간 거래내역
+      </DescTypography>
       <MarketCodeSelector
         curMarketCode={curMarketCode}
         setCurMarketCode={setCurMarketCode}

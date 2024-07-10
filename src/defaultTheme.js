@@ -1,13 +1,13 @@
 import { createTheme, TableCell, Typography } from '@mui/material';
 import { globalColors } from './globalColors';
-import { fontFamily, styled } from '@mui/system';
+import { styled } from '@mui/system';
 
 /** 컬러 팔레트, 기본 컴포넌트 세팅
- * 배경 : skyblue,
- * primary : hotpink / secondary : vanilla
-- light : 300
-- main : 400
-- dark : 500
+ - 배경 : skyblue,
+ - primary : hotpink / secondary : vanilla
+        - light : 300
+        - main : 400
+        - dark : 500
  - contrastText: primary와 secondary의 서로 반대 컬러['200']
  */
 export let theme = createTheme({
@@ -25,25 +25,12 @@ export let theme = createTheme({
       constrastText: globalColors.hotpink['200'],
     },
   },
+
   components: {
-    // 스크롤바
     MuiCssBaseline: {
       styleOverrides: `
-        ::-webkit-scrollbar {
-          width: 10px;
-        }
-        ::-webkit-scrollbar-track {
-          background: #f1f1f1;
-        }
-        ::-webkit-scrollbar-thumb {
-          background: #888;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-          background: #555;
-        }
-        * {
-          scrollbar-width: thin;
-          scrollbar-color: #888 #f1f1f1;
+        body {
+          background-color: ${globalColors.skyblue['200']}; 
         }
       `,
     },
@@ -94,7 +81,6 @@ export let theme = createTheme({
       styleOverrides: {
         root: {
           alignItems: 'center',
-          // fontFamily: 'ChoseonGu',
           fontSize: 12,
           whiteSpace: 'nowrap',
           padding: 2,

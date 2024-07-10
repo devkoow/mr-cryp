@@ -29,8 +29,8 @@ const OrderTable = memo(function OrderTable({
     rate === 0
       ? 'black'
       : rate > 0
-      ? globalColors.color_pos['400']
-      : globalColors.color_neg['400']
+        ? globalColors.color_pos['400']
+        : globalColors.color_neg['400']
   );
   const [bidMaxSize, setBidMaxSize] = useState();
   const [askMaxSize, setAskMaxSize] = useState();
@@ -54,8 +54,8 @@ const OrderTable = memo(function OrderTable({
       rate === 0
         ? 'black'
         : rate > 0
-        ? globalColors.color_pos['400']
-        : globalColors.color_neg['400']
+          ? globalColors.color_pos['400']
+          : globalColors.color_neg['400']
     );
   }, [rate]);
 
@@ -68,12 +68,19 @@ const OrderTable = memo(function OrderTable({
   return (
     <>
       {socketData && (
-        <TableContainer sx={{ height: 400, margin: 0, padding: 0 }}>
+        <TableContainer
+          sx={{
+            height: 400,
+            margin: 0,
+            padding: 0,
+            backgroundColor: globalColors.white,
+          }}
+        >
           <Table display="flex" stickyHeader aria-label="sticky table">
             <TableHead>
               <TableRow>
                 <StyledTableCell
-                  sx={{ padding: 1, width: '33%' }}
+                  sx={{ padding: 0.7, width: '33%' }}
                   align="center"
                 >
                   <Box
@@ -88,7 +95,7 @@ const OrderTable = memo(function OrderTable({
                   </Box>
                 </StyledTableCell>
                 <StyledTableCell
-                  sx={{ padding: 1, width: '33%' }}
+                  sx={{ padding: 0.7, width: '33%' }}
                   align="center"
                 >
                   <Box
@@ -103,7 +110,7 @@ const OrderTable = memo(function OrderTable({
                   </Box>
                 </StyledTableCell>
                 <StyledTableCell
-                  sx={{ padding: 1, width: '33%' }}
+                  sx={{ padding: 0.7, width: '33%' }}
                   align="center"
                 >
                   <Box
@@ -271,13 +278,13 @@ function OrderBookCard({ code, rate, prevPrice }) {
   }
 
   return (
-    <Box>
+    <div>
       <OrderTable
         targetMarketCode={targetMarketCode}
         rate={rate}
         prevPrice={prevPrice}
       />
-    </Box>
+    </div>
   );
 }
 

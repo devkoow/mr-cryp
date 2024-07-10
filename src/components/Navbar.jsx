@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import logoutKakao from '../api/logoutKakao';
 import { useNavigate } from 'react-router-dom';
 import { logoutGoogle } from '../api/firebase';
@@ -20,7 +20,7 @@ import { LogoTypography, NavTypography } from '../defaultTheme';
 
 const pages = ['대시보드', '거래', '비전'];
 const settings = ['프로필 정보', '로그아웃'];
-const subMenus = ['실시간 오더북', '실시간 거래 내역', '전체 차트', '주문하기'];
+const subMenus = ['실시간 오더북', '실시간 거래 내역', '전체 차트'];
 
 export default function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = useState(null);
@@ -29,10 +29,12 @@ export default function ResponsiveAppBar() {
   const [activeSubMenu, setActiveSubMenu] = useState('');
   const nickname = localStorage.getItem('nickname');
   const socialType = localStorage.getItem('socialType');
-  /** 소셜 타입 판단 후 함수 호출
-   * - Google : logoutGoogle
-   * - Kakao : logoutKakao
-   */
+
+  useEffect(() => {
+    const activePage = localStorage.getItem('activePage');
+    if (activePage) setActivePage(activePage);
+  }, []);
+
   const handleLogout = () => {
     try {
       const socialType = localStorage.getItem('socialType');
@@ -61,6 +63,7 @@ export default function ResponsiveAppBar() {
   const handleCloseNavMenu = (page) => {
     setAnchorElNav(null);
     setActivePage(page);
+    localStorage.setItem('activePage', page);
     if (page === '대시보드') navigate('/home');
     if (page === '거래') navigate('/trade');
     if (page === '비전') navigate('/vision');
@@ -72,15 +75,14 @@ export default function ResponsiveAppBar() {
     if (subMenu === '실시간 거래 내역') navigate('/trade/tradeHistory');
     if (subMenu === '실시간 오더북') navigate('/trade/orderbook');
     if (subMenu === '전체 차트') navigate('/trade/charts');
-    if (subMenu === '주문하기') navigate('/trade/orders');
   };
 
-  /** xs일 때 드롭다운 메뉴를 여는 함수 */
+  /** 반응형 xs 메뉴바 클릭 -> 드롭다운 */
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
 
-  /** 유저를 클릭하면 드롭다운 메뉴를 여는 함수 */
+  /** 유저 프로필 사진 클릭 -> 드롭다운 */
   const handleOpenUserMenu = (event) => {
     setAnchorElUser(event.currentTarget);
   };

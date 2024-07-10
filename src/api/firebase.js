@@ -43,6 +43,7 @@ export async function logoutGoogle() {
     localStorage.removeItem('userId');
     localStorage.removeItem('nickname');
     localStorage.removeItem('imgUrl');
+    localStorage.removeItem('activePage');
     console.log('구글 로그아웃');
   } catch (error) {
     console.error('구글 로그아웃 오류:', error);

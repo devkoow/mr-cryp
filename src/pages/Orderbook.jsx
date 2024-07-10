@@ -41,9 +41,17 @@ const OrderTable = memo(function OrderTable({ targetMarketCode }) {
   return (
     <>
       <Box display="flex" alignItems="center" gap={4}>
-        <DescTypography>연결 상태 : {isConnected ? '🟢' : '🔴'}</DescTypography>
+        <DescTypography
+          sx={{
+            color: globalColors.white,
+            textShadow: '1px 1px 2px black',
+            fontWeight: 'bold',
+          }}
+        >
+          연결 상태 : {isConnected ? '🟢' : '🔴'}
+        </DescTypography>
         <Button onClick={connectButtonHandler}>
-          <DescTypography>연결종료</DescTypography>
+          <DescTypography sx={{ fontWeight: 'bold' }}>연결종료</DescTypography>
         </Button>
       </Box>
       {socketData ? (
@@ -51,8 +59,15 @@ const OrderTable = memo(function OrderTable({ targetMarketCode }) {
           component={Paper}
           sx={{ maxWidth: 500, marginTop: '1rem' }}
         >
-          <Box>
-            <DescTypography>마켓 티커 : {socketData.code}</DescTypography>
+          <Box sx={{ paddingLeft: 1, paddingTop: 1, paddingBottom: 1 }}>
+            <Box sx={{ display: 'flex' }}>
+              <DescTypography>마켓 티커 </DescTypography>
+              <DescTypography fontWeight={'bold'}>
+                {' '}
+                : {socketData.code}
+              </DescTypography>
+            </Box>
+
             <DescTypography>
               총 매도 물량 : {socketData.total_ask_size}
             </DescTypography>
@@ -148,13 +163,22 @@ function OrderBook() {
 
   return (
     <Box
-      margin="auto"
       display="flex"
       flexDirection="column"
       alignItems="center"
       gap={1}
+      sx={{ marginBottom: 10 }}
     >
-      <DescTypography variant="h5">실시간 오더북</DescTypography>
+      <DescTypography
+        variant="h5"
+        sx={{
+          color: globalColors.white,
+          textShadow: '1px 1px 2px black',
+          fontWeight: 'bold',
+        }}
+      >
+        실시간 오더북
+      </DescTypography>
       <MarketCodeSelector
         curMarketCode={curMarketCode}
         setCurMarketCode={setCurMarketCode}

@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { memo } from 'react';
 import Grid from '@mui/material/Grid';
 
 /** 가상 자산 관련 정보 영상 
  - iFrame 사용
  - 코인 초보를 위한 자료 영상 첨부
 */
-export default function Information() {
+const Information = () => {
   return (
     <Grid container spacing={2} sx={{ marginTop: 2, marginBottom: 4 }}>
       <Grid item xs={12} sm={4}>
@@ -37,4 +37,6 @@ export default function Information() {
       </Grid>
     </Grid>
   );
-}
+};
+
+export default memo(Information);

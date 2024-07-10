@@ -21,7 +21,7 @@ import { useOpenApi } from '../../context/OpenApiContext';
 /** 실시간 거래내역 테이블 UI
  * - timestampToTime : 타임스탬프 값을 KST 시간으로 변환
  */
-const TradeTable = memo(function TradeTable({ targetMarketCode, initialData }) {
+const TradeTable = memo(function TradeTable({ targetMarketCode }) {
   const webSocketOptions = { throttle_time: 400, max_length_queue: 100 };
   const { socket, isConnected, socketData } = useWsTrade(targetMarketCode);
   const timestampToTime = (timestamp) => {
@@ -31,7 +31,14 @@ const TradeTable = memo(function TradeTable({ targetMarketCode, initialData }) {
   };
 
   return (
-    <TableContainer sx={{ maxWidth: 1000, height: 400, overflow: 'auto' }}>
+    <TableContainer
+      sx={{
+        maxWidth: 1000,
+        height: 400,
+        overflow: 'auto',
+        backgroundColor: globalColors.white,
+      }}
+    >
       {socketData && (
         <Table stickyHeader aria-label="sticky table">
           <TableHead>
@@ -59,47 +66,6 @@ const TradeTable = memo(function TradeTable({ targetMarketCode, initialData }) {
             </TableRow>
           </TableHead>
           <TableBody>
-            {initialData
-              ? [...initialData].reverse().map((data, index) => (
-                  <TableRow key={index}>
-                    <TableCell align="center">
-                      {timestampToTime(data.timestamp)}
-                    </TableCell>
-                    <TableCell align="center">
-                      <PriceTypography fontSize={10}>
-                        {Number(data.trade_price).toLocaleString()}원
-                      </PriceTypography>
-                    </TableCell>
-                    <TableCell align="center">
-                      <PriceTypography
-                        fontSize={10}
-                        color={
-                          data.ask_bid === 'ASK'
-                            ? globalColors.color_pos['400']
-                            : globalColors.color_neg['400']
-                        }
-                      >
-                        {data.trade_volume}
-                      </PriceTypography>
-                    </TableCell>
-                    <TableCell align="center">
-                      <PriceTypography
-                        fontSize={10}
-                        color={
-                          data.ask_bid === 'ASK'
-                            ? globalColors.color_pos['400']
-                            : globalColors.color_neg['400']
-                        }
-                      >
-                        {Math.round(
-                          data.trade_volume * data.trade_price
-                        ).toLocaleString()}
-                        원
-                      </PriceTypography>
-                    </TableCell>
-                  </TableRow>
-                ))
-              : '내역 테이블 로딩중'}
             {socketData
               ? [...socketData].reverse().map((data, index) => (
                   <TableRow key={index}>
@@ -110,7 +76,7 @@ const TradeTable = memo(function TradeTable({ targetMarketCode, initialData }) {
                       {Number(data.trade_price).toLocaleString()}원
                     </TableCell>
                     <TableCell align="center">
-                      <Typography
+                      <PriceTypography
                         fontSize={12}
                         color={
                           data.ask_bid === 'ASK'
@@ -119,10 +85,10 @@ const TradeTable = memo(function TradeTable({ targetMarketCode, initialData }) {
                         }
                       >
                         {data.trade_volume}
-                      </Typography>
+                      </PriceTypography>
                     </TableCell>
                     <TableCell align="center">
-                      <Typography
+                      <PriceTypography
                         fontSize={12}
                         color={
                           data.ask_bid === 'ASK'
@@ -134,7 +100,7 @@ const TradeTable = memo(function TradeTable({ targetMarketCode, initialData }) {
                           data.trade_volume * data.trade_price
                         ).toLocaleString()}
                         원
-                      </Typography>
+                      </PriceTypography>
                     </TableCell>
                   </TableRow>
                 ))
@@ -152,7 +118,6 @@ const TradeTable = memo(function TradeTable({ targetMarketCode, initialData }) {
 function TradeHistory({ code }) {
   const { isLoading, marketCodes } = useFetchMarketCode();
   const [targetMarketCode, setTargetMarketCode] = useState();
-  const [initialData, setInitialData] = useState(null);
   const { upbit } = useOpenApi();
 
   useEffect(() => {
@@ -173,7 +138,6 @@ function TradeHistory({ code }) {
   useEffect(() => {
     async function fetchData() {
       const result = await upbit.tradeHistory(code);
-      setInitialData(result);
     }
     fetchData();
   }, []);
@@ -184,10 +148,7 @@ function TradeHistory({ code }) {
 
   return (
     <Box>
-      <TradeTable
-        targetMarketCode={targetMarketCode}
-        initialData={initialData}
-      />
+      <TradeTable targetMarketCode={targetMarketCode} />
     </Box>
   );
 }

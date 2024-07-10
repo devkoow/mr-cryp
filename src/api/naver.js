@@ -2,7 +2,7 @@ import axios from 'axios';
 
 /** 네이버 검색 API를 사용
  - getArticle() : 실제 API 사용
- - useMock() : 따로 저장해놓은 데이터 사용
+ - useMock() : 따로 저장해놓은 데이터 'article.json' 사용
  */
 export default class Naver {
   constructor() {
