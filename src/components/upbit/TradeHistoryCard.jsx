@@ -36,7 +36,7 @@ const TradeTable = memo(function TradeTable({ targetMarketCode }) {
         maxWidth: 1000,
         height: 400,
         overflow: 'auto',
-        backgroundColor: globalColors.white,
+        backgroundColor: globalColors.white['400'],
       }}
     >
       {socketData && (

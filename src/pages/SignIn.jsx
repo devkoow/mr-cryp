@@ -13,7 +13,7 @@ import { loginGoogle } from '../api/firebase';
 import { useNavigate } from 'react-router-dom';
 import ButtonKakao from '../components/ButtonKakao';
 import LOGO_GOOGLE from '../assets/images/logo_google.png';
-import LOGO_BG from '../assets/images/logo_normal.png';
+import LOGO_BG from '../assets/images/logo_main.png';
 
 function Copyright(props) {
   return (

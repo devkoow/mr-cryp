@@ -116,12 +116,20 @@ export const NavTypography = styled(Typography)(() => ({
 
 /** 네비게이션바 로고 타이포그래피 */
 export const LogoTypography = styled(Typography)(() => ({
-  fontFamily: 'SDSamliphopangche_Outline',
+  fontFamily: 'omyu_pretty',
   fontWeight: 'bold',
   fontSize: '50px',
+  fontStyle: 'italic',
 }));
 
-/** 본문 타이포그래피 */
+/** 커스텀 타이포그래피 */
+export const NGTypography = styled(Typography)(() => ({
+  fontFamily: 'NEXON Lv1 Gothic OTF',
+}));
+
 export const DescTypography = styled(Typography)(() => ({
   fontFamily: 'NEXON Lv1 Gothic OTF',
+  color: globalColors.white['400'],
+  textShadow: '1px 1px 2px black',
+  fontWeight: 'bold',
 }));

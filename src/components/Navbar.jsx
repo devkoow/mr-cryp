@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import logoutKakao from '../api/logoutKakao';
 import { useNavigate } from 'react-router-dom';
 import { logoutGoogle } from '../api/firebase';
-import LOGO_APPBAR from '../assets/images/logo_appbar.png';
+import LOGO_APPBAR from '../assets/images/logo_trans_vanilla.png';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -242,7 +242,7 @@ export default function ResponsiveAppBar() {
         </Toolbar>
         {/* 서브 네비게이션바 : 거래 탭의 하위 탭을 활성화 */}
         {activePage === '거래' && (
-          <Box sx={{ display: 'flex', marginLeft: 42 }}>
+          <Box sx={{ display: 'flex', marginLeft: 40 }}>
             {subMenus.map((subMenu) => (
               <Button
                 key={subMenu}

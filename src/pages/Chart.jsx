@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import RealTimePrice from '../components/upbit/RealTimePrice';
+import RealTimePriceCard from '../components/upbit/RealTimePriceCard';
 import MarketCard from '../components/upbit/MarketCard';
 import OrderbookCard from '../components/upbit/OrderbookCard';
 import TradeHistoryCard from '../components/upbit/TradeHistoryCard';
@@ -28,7 +28,7 @@ export default function Chart() {
       margin="auto"
     >
       <Grid item xs={3}>
-        <RealTimePrice
+        <RealTimePriceCard
           setCode={setCode}
           setPrice={setPrice}
           setPrevPrice={setPrevPrice}

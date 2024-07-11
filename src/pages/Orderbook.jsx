@@ -14,7 +14,7 @@ import {
   Typography,
 } from '@mui/material';
 import { globalColors } from '../globalColors';
-import { DescTypography, PriceTypography } from '../defaultTheme';
+import { DescTypography, NGTypography, PriceTypography } from '../defaultTheme';
 
 /** 실시간 오더북 테이블 UI */
 const OrderTable = memo(function OrderTable({ targetMarketCode }) {
@@ -57,23 +57,31 @@ const OrderTable = memo(function OrderTable({ targetMarketCode }) {
       {socketData ? (
         <TableContainer
           component={Paper}
-          sx={{ maxWidth: 500, marginTop: '1rem' }}
+          sx={{
+            maxWidth: 500,
+            marginTop: '1rem',
+          }}
         >
-          <Box sx={{ paddingLeft: 1, paddingTop: 1, paddingBottom: 1 }}>
+          <Box
+            sx={{
+              paddingLeft: 1,
+              paddingTop: 1,
+              paddingBottom: 1,
+            }}
+          >
             <Box sx={{ display: 'flex' }}>
-              <DescTypography>마켓 티커 </DescTypography>
-              <DescTypography fontWeight={'bold'}>
+              <NGTypography>마켓 티커 </NGTypography>
+              <NGTypography fontWeight={'bold'}>
                 {' '}
                 : {socketData.code}
-              </DescTypography>
+              </NGTypography>
             </Box>
-
-            <DescTypography>
+            <NGTypography>
               총 매도 물량 : {socketData.total_ask_size}
-            </DescTypography>
-            <DescTypography>
+            </NGTypography>
+            <NGTypography>
               총 매수 물량 : {socketData.total_bid_size}
-            </DescTypography>
+            </NGTypography>
           </Box>
           <Table display="flex">
             <TableHead>

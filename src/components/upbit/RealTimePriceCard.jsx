@@ -38,7 +38,7 @@ const RealTimePriceTable = memo(function RealTimePriceTable({
         overflow: 'auto',
         margin: 0,
         padding: 0,
-        backgroundColor: globalColors.white,
+        backgroundColor: globalColors.white['400'],
       }}
     >
       <Table stickyHeader aria-label="sticky table">
@@ -154,7 +154,7 @@ const RealTimePriceTable = memo(function RealTimePriceTable({
  * - krwMarketCodes : KRW로 시작하는 marketCodes
  * - marketCodeMap : market 값을 키로 사용하는 korean_name 해시맵
  * */
-function RealTimePrice({ setCode, setPrice, setPrevPrice }) {
+function RealTimePriceCard({ setCode, setPrice, setPrevPrice }) {
   const { isLoading, marketCodes } = useFetchMarketCode();
   const [krwMarketCodes, setKrwMarketCodes] = useState([]);
   const { socket, isConnected, socketData } = useWsTicker(krwMarketCodes);
@@ -188,4 +188,4 @@ function RealTimePrice({ setCode, setPrice, setPrevPrice }) {
     </>
   );
 }
-export default memo(RealTimePrice);
+export default memo(RealTimePriceCard);
