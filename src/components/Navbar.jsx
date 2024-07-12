@@ -20,7 +20,7 @@ import { LogoTypography, NavTypography } from '../defaultTheme';
 
 const pages = ['대시보드', '거래', '비전'];
 const settings = ['프로필 정보', '로그아웃'];
-const subMenus = ['실시간 오더북', '실시간 거래 내역', '전체 차트'];
+const subMenus = ['실시간 오더북', '실시간 거래 내역', '차트'];
 
 export default function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = useState(null);
@@ -74,7 +74,7 @@ export default function ResponsiveAppBar() {
     setActiveSubMenu(subMenu);
     if (subMenu === '실시간 거래 내역') navigate('/trade/tradeHistory');
     if (subMenu === '실시간 오더북') navigate('/trade/orderbook');
-    if (subMenu === '전체 차트') navigate('/trade/charts');
+    if (subMenu === '차트') navigate('/trade/charts');
   };
 
   /** 반응형 xs 메뉴바 클릭 -> 드롭다운 */

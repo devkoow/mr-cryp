@@ -8,8 +8,6 @@ import IMG_BG from '../assets/images/logo_mustache.png';
 import IMG_TEXT from '../assets/images/img_home_text.png';
 import BalanceCard from '../components/upbit/BalanceCard';
 import OrderCard from '../components/upbit/OrderCard';
-// import Account from '../components/upbit/Account';
-// import Bid from '../components/upbit/Bid';
 
 export default function Home() {
   const [balance, setBalance] = useState([]);
@@ -29,7 +27,7 @@ export default function Home() {
   return (
     <Box sx={{ width: '80%', marginBottom: 10, marginX: 'auto' }}>
       <Grid container spacing={1}>
-        <Grid item xs={12} md={12}>
+        <Grid item xs={12} md={12} marginBottom={4}>
           <Paper sx={{ margin: 0, padding: 0, borderRadius: '30px' }}>
             <Box
               sx={{
@@ -50,36 +48,27 @@ export default function Home() {
           </Paper>
         </Grid>
         <Grid item xs={12} md={6}>
-          <DescTypography variant="h6">내 계좌 현황</DescTypography>
+          <DescTypography variant="h6" marginBottom={2}>
+            내 계좌 현황
+          </DescTypography>
           <Box
             sx={{
               display: 'flex',
               justifyContent: 'center',
               backgroundColor: 'transparent',
-              border: 4,
-              borderColor: globalColors.white['400'],
               borderRadius: '30px',
               paddingY: 5,
+              boxShadow: 4,
             }}
           >
             <BalanceCard balance={balance} />
           </Box>
         </Grid>
         <Grid item xs={12} md={6}>
-          <DescTypography variant="h6">계좌 상세정보</DescTypography>
-          <Box
-            sx={{
-              display: 'flex',
-              justifyContent: 'center',
-              backgroundColor: 'transparent',
-              border: 4,
-              borderColor: globalColors.white['400'],
-              borderRadius: '30px',
-              paddingY: 5,
-            }}
-          >
-            <OrderCard balance={balance} />
-          </Box>
+          <DescTypography variant="h6" marginBottom={2}>
+            계좌 상세정보
+          </DescTypography>
+          <OrderCard balance={balance} />
         </Grid>
       </Grid>
     </Box>
