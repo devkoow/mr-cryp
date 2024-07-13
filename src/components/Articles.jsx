@@ -8,17 +8,19 @@ import {
   CardActions,
   IconButton,
   Grid,
+  Snackbar,
+  Alert,
+  Tooltip,
 } from '@mui/material';
 import LinkIcon from '@mui/icons-material/Link';
 import IosShareIcon from '@mui/icons-material/IosShare';
 import ArticleRoundedIcon from '@mui/icons-material/ArticleRounded';
-import Snackbar from '@mui/material/Snackbar';
-import Alert from '@mui/material/Alert';
-import Tooltip from '@mui/material/Tooltip';
+
 import { DescTypography, theme } from '../defaultTheme';
 import { globalColors } from '../globalColors';
 
 export default function Articles() {
+  const [open, setOpen] = useState(false);
   const { naver } = useOpenApi();
   const {
     isPending,
@@ -32,10 +34,8 @@ export default function Articles() {
     },
     staleTime: 1000 * 60 * 10,
   });
-  const [open, setOpen] = useState(false);
 
   if (isPending) {
-    // 로딩 애니메이션으로 교체
     return <span>Loading...</span>;
   }
 
@@ -56,7 +56,6 @@ export default function Articles() {
     if (reason === 'clickaway') {
       return;
     }
-
     setOpen(false);
   };
 

@@ -65,10 +65,9 @@ export default function Home() {
           </Box>
         </Grid>
         <Grid item xs={12} md={6}>
-          <DescTypography variant="h6" marginBottom={2}>
-            계좌 상세정보
-          </DescTypography>
-          <OrderCard balance={balance} />
+          <Box marginTop={12}>
+            <OrderCard balance={balance} />
+          </Box>
         </Grid>
       </Grid>
     </Box>

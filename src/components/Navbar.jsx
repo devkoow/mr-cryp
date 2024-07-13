@@ -74,7 +74,7 @@ export default function ResponsiveAppBar() {
     setActiveSubMenu(subMenu);
     if (subMenu === '실시간 거래 내역') navigate('/trade/tradeHistory');
     if (subMenu === '실시간 오더북') navigate('/trade/orderbook');
-    if (subMenu === '차트') navigate('/trade/charts');
+    if (subMenu === '차트') navigate('/trade/chart');
   };
 
   /** 반응형 xs 메뉴바 클릭 -> 드롭다운 */
