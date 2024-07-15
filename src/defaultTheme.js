@@ -94,7 +94,7 @@ export let theme = createTheme({
   },
 });
 
-/** 스틱키 헤드 셀 */
+// 스틱키 헤드 셀
 export const StyledTableCell = styled(TableCell)(({ theme }) => ({
   backgroundColor: theme.palette.primary.main,
   position: 'sticky',
@@ -102,19 +102,19 @@ export const StyledTableCell = styled(TableCell)(({ theme }) => ({
   zIndex: 100,
 }));
 
-/** 금액 타이포그래피 */
+// 금액 타이포그래피
 export const PriceTypography = styled(Typography)(() => ({
   fontFamily: 'ONE-Mobile-Title',
 }));
 
-/** 네비게이션바 타이포그래피 */
+// 네비게이션바 타이포그래피
 export const NavTypography = styled(Typography)(() => ({
   fontFamily: 'SBAggroB',
   fontWeight: 500,
   fontSize: '20px',
 }));
 
-/** 네비게이션바 로고 타이포그래피 */
+// 네비게이션바 로고 타이포그래피
 export const LogoTypography = styled(Typography)(() => ({
   fontFamily: 'omyu_pretty',
   fontWeight: 'bold',
@@ -122,7 +122,7 @@ export const LogoTypography = styled(Typography)(() => ({
   fontStyle: 'italic',
 }));
 
-/** 커스텀 타이포그래피 */
+// 커스텀 타이포그래피
 export const NGTypography = styled(Typography)(() => ({
   fontFamily: 'NEXON Lv1 Gothic OTF',
 }));
@@ -133,3 +133,9 @@ export const DescTypography = styled(Typography)(() => ({
   textShadow: '1px 1px 2px black',
   fontWeight: 'bold',
 }));
+
+// 플렉스 + y축 센터
+export const flexCenter = {
+  display: 'flex',
+  alignItems: 'center',
+};

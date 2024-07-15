@@ -1,35 +1,45 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Fragment } from 'react';
 import {
-  Modal,
-  Box,
-  Tab,
-  Radio,
-  TextField,
-  IconButton,
-  Button,
-  Snackbar,
   Alert,
+  Radio,
+  Box,
+  Button,
+  IconButton,
+  Modal,
+  Snackbar,
+  Tab,
+  TextField,
+  Table,
+  TableHead,
+  TableRow,
+  TableCell,
+  Tooltip,
 } from '@mui/material';
 import { TabContext, TabList, TabPanel } from '@mui/lab';
-import { NGTypography } from '../../defaultTheme';
+import { NGTypography, theme, flexCenter } from '../../defaultTheme';
+import RestoreIcon from '@mui/icons-material/Restore';
+import { globalColors } from '../../globalColors';
 
-function TabPanels({ value, code }) {
-  const [price, setPrice] = useState(0);
-  const [balance, setBalance] = useState(0);
-  const [accPrice, setAccPrice] = useState(0);
+function Panel({ value, code, addOrder }) {
   const [selectedValue, setSelectedValue] = useState('a');
+  const [price, setPrice] = useState(0);
+  const [balance, setBalance] = useState(1);
+  const [accPrice, setAccPrice] = useState(0);
   const [open, setOpen] = useState(false);
   const [success, setSuccess] = useState('');
 
   const handleRadio = (event) => {
     setSelectedValue(event.target.value);
   };
+
   const handlePriceIncrement = () => {
     setPrice((prevPrice) => Math.max(0, parseFloat(prevPrice) + 1000));
   };
+
   const handlePriceDecrement = () => {
     setPrice((prevPrice) => Math.max(0, parseFloat(prevPrice) - 1000));
   };
+
   const handlePriceChange = (event) => {
     if (!isNaN(event.target.value)) {
       setPrice(Math.max(0, parseFloat(event.target.value)));
@@ -38,11 +48,13 @@ function TabPanels({ value, code }) {
   };
 
   const handleBalanceIncrement = () => {
-    setBalance((prevBalance) => parseFloat(prevBalance) + 1);
+    setBalance((prevBalance) => Math.max(0, parseFloat(prevBalance) + 1));
   };
+
   const handleBalanceDecrement = () => {
-    setBalance((prevBalance) => parseFloat(prevBalance) - 1);
+    setBalance((prevBalance) => Math.max(0, parseFloat(prevBalance) - 1));
   };
+
   const handleBalanceChange = (event) => {
     if (!isNaN(event.target.value)) {
       setBalance(Math.max(0, parseFloat(event.target.value)));
@@ -70,6 +82,38 @@ function TabPanels({ value, code }) {
     setOpen(false);
   };
 
+  const handleReset = () => {
+    setPrice(0);
+    setBalance(1);
+    setAccPrice(0);
+  };
+
+  const handleOrder = () => {
+    try {
+      if (price > 0 && balance > 0 && accPrice > 0) {
+        const orderType = value === '1' ? '매수' : '매도';
+        const newOrder = {
+          orderTime: new Date().toLocaleString(),
+          marketName: code,
+          type: orderType,
+          unitPrice: price,
+          orderPrice: accPrice,
+          orderQuantity: balance,
+          unfilledQuantity: balance,
+        };
+        addOrder(newOrder);
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const handleButtonClick = () => {
+    handleOrder();
+    handleOpen();
+    handleReset();
+  };
+
   useEffect(() => {
     setAccPrice(price * balance);
   }, [price, balance]);
@@ -77,10 +121,10 @@ function TabPanels({ value, code }) {
   return (
     <>
       <TabPanel value={value}>
-        <Box sx={{ gap: 3, display: 'flex', flexDirection: 'column' }}>
-          <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+        <Box sx={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
+          <Box sx={{ ...flexCenter, gap: 2 }}>
             <NGTypography>주문유형</NGTypography>
-            <Box sx={{ display: 'flex', alignItems: 'center' }}>
+            <Box sx={flexCenter}>
               <Radio
                 checked={selectedValue === 'a'}
                 onChange={handleRadio}
@@ -109,8 +153,7 @@ function TabPanels({ value, code }) {
           </Box>
           <Box
             sx={{
-              display: 'flex',
-              alignItems: 'center',
+              ...flexCenter,
               justifyContent: 'space-between',
             }}
           >
@@ -121,8 +164,7 @@ function TabPanels({ value, code }) {
           </Box>
           <Box
             sx={{
-              display: 'flex',
-              alignItems: 'center',
+              ...flexCenter,
               justifyContent: 'space-between',
             }}
           >
@@ -132,7 +174,7 @@ function TabPanels({ value, code }) {
               </NGTypography>
               <NGTypography>(KRW)</NGTypography>
             </Box>
-            <Box sx={{ display: 'flex', alignItems: 'center' }}>
+            <Box sx={flexCenter}>
               <TextField
                 value={price}
                 sx={{ width: 150 }}
@@ -144,8 +186,7 @@ function TabPanels({ value, code }) {
           </Box>
           <Box
             sx={{
-              display: 'flex',
-              alignItems: 'center',
+              ...flexCenter,
               justifyContent: 'space-between',
             }}
           >
@@ -153,7 +194,7 @@ function TabPanels({ value, code }) {
               <NGTypography>주문수량</NGTypography>
               <NGTypography>({code})</NGTypography>
             </Box>
-            <Box sx={{ display: 'flex', alignItems: 'center' }}>
+            <Box sx={flexCenter}>
               <TextField
                 value={balance}
                 sx={{ width: 150 }}
@@ -165,8 +206,7 @@ function TabPanels({ value, code }) {
           </Box>
           <Box
             sx={{
-              display: 'flex',
-              alignItems: 'center',
+              ...flexCenter,
               justifyContent: 'space-between',
             }}
           >
@@ -189,17 +229,41 @@ function TabPanels({ value, code }) {
               수수료(부가세 포함): 0.05%
             </NGTypography>
           </Box>
-          <Button onClick={() => handleOpen()}>
-            {value === '1' ? (
-              <NGTypography fontWeight={'bold'}>매수</NGTypography>
-            ) : (
-              <NGTypography fontWeight={'bold'}>매도</NGTypography>
-            )}
-          </Button>
+          <Box sx={{ ...flexCenter, justifyContent: 'space-between' }}>
+            <Tooltip title="초기화">
+              <Button
+                sx={{
+                  width: '100px',
+                  backgroundColor: globalColors.white['500'],
+                  color: theme.palette.primary.light,
+                  '&:hover': {
+                    color: theme.palette.secondary.main,
+                  },
+                }}
+                onClick={() => {
+                  handleReset();
+                }}
+              >
+                <RestoreIcon />
+              </Button>
+            </Tooltip>
+            <Tooltip title="주문">
+              <Button
+                sx={{ width: '250px' }}
+                onClick={() => handleButtonClick()}
+              >
+                {value === '1' ? (
+                  <NGTypography fontWeight={'bold'}>매수</NGTypography>
+                ) : (
+                  <NGTypography fontWeight={'bold'}>매도</NGTypography>
+                )}
+              </Button>
+            </Tooltip>
+          </Box>
           <Snackbar open={open} autoHideDuration={3000} onClose={handleClose}>
             <Alert onClose={handleClose} severity={success} variant="filled">
               {success === 'success'
-                ? '주문을 성공했습니다'
+                ? '주문했습니다'
                 : '최소주문 금액을 확인해주세요'}
             </Alert>
           </Snackbar>
@@ -209,8 +273,190 @@ function TabPanels({ value, code }) {
   );
 }
 
+function OrderHistory({ value, orders, removeOrder }) {
+  const [selectedValue, setSelectedValue] = useState('a');
+  const [open, setOpen] = useState(false);
+
+  const handleRadio = (event) => {
+    setSelectedValue(event.target.value);
+  };
+
+  const handleOpen = async () => {
+    try {
+      setOpen(true);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  const handleClose = (reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+    setOpen(false);
+  };
+
+  const handleCancel = (index) => {
+    removeOrder(index);
+    handleOpen();
+  };
+
+  return (
+    <TabPanel value={value}>
+      <Box sx={{ display: 'flex', flexDirection: 'column' }}>
+        <Box sx={flexCenter}>
+          <Radio
+            checked={selectedValue === 'a'}
+            onChange={handleRadio}
+            value="a"
+            name="radio-buttons"
+            inputProps={{ 'aria-label': '미체결' }}
+          />
+          <NGTypography>미체결</NGTypography>
+          <Radio
+            checked={selectedValue === 'b'}
+            onChange={handleRadio}
+            value="b"
+            name="radio-buttons"
+            inputProps={{ 'aria-label': '체결' }}
+          />
+          <NGTypography>체결</NGTypography>
+        </Box>
+        <Table>
+          <TableHead>
+            <TableRow>
+              <TableCell rowSpan={2}>
+                <NGTypography sx={{ textAlign: 'center' }}>
+                  주문시간
+                </NGTypography>
+              </TableCell>
+              <TableCell>
+                <NGTypography sx={{ textAlign: 'center' }}>마켓명</NGTypography>
+              </TableCell>
+              <TableCell>
+                <NGTypography sx={{ textAlign: 'center' }}>
+                  단위가격
+                </NGTypography>
+              </TableCell>
+              <TableCell>
+                <NGTypography sx={{ textAlign: 'center' }}>주문량</NGTypography>
+              </TableCell>
+              <TableCell rowSpan={2}>
+                <NGTypography sx={{ textAlign: 'center' }}>취소</NGTypography>
+              </TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>
+                <NGTypography sx={{ textAlign: 'center' }}>구분</NGTypography>
+              </TableCell>
+              <TableCell>
+                <NGTypography sx={{ textAlign: 'center' }}>
+                  주문가격
+                </NGTypography>
+              </TableCell>
+              <TableCell>
+                <NGTypography sx={{ textAlign: 'center' }}>
+                  미체결량
+                </NGTypography>
+              </TableCell>
+            </TableRow>
+          </TableHead>
+          {orders.map((order, index) => {
+            const spliting = order.orderTime.indexOf('오');
+            const date = order.orderTime.substring(0, spliting - 1);
+            const time = order.orderTime.substring(spliting);
+            return (
+              <Fragment key={index}>
+                <TableRow>
+                  <TableCell rowSpan={2}>
+                    <NGTypography sx={{ textAlign: 'center' }}>
+                      {date}
+                      <br />
+                      {time}
+                    </NGTypography>
+                  </TableCell>
+                  <TableCell>
+                    <NGTypography sx={{ textAlign: 'center' }}>
+                      {order.marketName}
+                    </NGTypography>
+                  </TableCell>
+                  <TableCell>
+                    <NGTypography sx={{ textAlign: 'center' }}>
+                      {order.unitPrice}
+                    </NGTypography>
+                  </TableCell>
+                  <TableCell>
+                    <NGTypography sx={{ textAlign: 'center' }}>
+                      {order.orderQuantity}
+                    </NGTypography>
+                  </TableCell>
+                  <TableCell rowSpan={2}>
+                    <Button
+                      sx={{
+                        backgroundColor: globalColors.white['500'],
+                        color: theme.palette.primary.light,
+                        '&:hover': {
+                          color: theme.palette.secondary.main,
+                        },
+                      }}
+                      onClick={() => handleCancel(index)}
+                    >
+                      취소
+                    </Button>
+                  </TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell>
+                    <NGTypography
+                      sx={{
+                        textAlign: 'center',
+                        color:
+                          order.type === '매도'
+                            ? globalColors.color_neg['400']
+                            : globalColors.color_pos['400'],
+                      }}
+                    >
+                      {order.type}
+                    </NGTypography>
+                  </TableCell>
+                  <TableCell>
+                    <NGTypography sx={{ textAlign: 'center' }}>
+                      {order.orderPrice}
+                    </NGTypography>
+                  </TableCell>
+                  <TableCell>
+                    <NGTypography sx={{ textAlign: 'center' }}>
+                      {order.unfilledQuantity}
+                    </NGTypography>
+                  </TableCell>
+                </TableRow>
+              </Fragment>
+            );
+          })}
+        </Table>
+        <Snackbar open={open} autoHideDuration={3000} onClose={handleClose}>
+          <Alert onClose={handleClose} severity="success" variant="filled">
+            주문을 취소했습니다
+          </Alert>
+        </Snackbar>
+      </Box>
+    </TabPanel>
+  );
+}
+
 export default function Order({ open, handleClose, code }) {
   const [value, setValue] = useState('1');
+  const [orders, setOrders] = useState([]);
+
+  const addOrder = (newOrder) => {
+    setOrders((prevOrders) => [...prevOrders, newOrder]);
+    console.log(orders);
+  };
+
+  const removeOrder = (index) => {
+    setOrders((prevOrders) => prevOrders.filter((order, i) => i !== index));
+  };
+
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
@@ -243,8 +489,9 @@ export default function Order({ open, handleClose, code }) {
               <Tab label="거래내역" value="3" />
             </TabList>
           </Box>
-          <TabPanels value="1" code={code} />
-          <TabPanels value="2" code={code} />
+          <Panel value="1" code={code} addOrder={addOrder} />
+          <Panel value="2" code={code} addOrder={addOrder} />
+          <OrderHistory value="3" orders={orders} removeOrder={removeOrder} />
         </TabContext>
       </Box>
     </Modal>
