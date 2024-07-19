@@ -21,13 +21,15 @@ const RealTimePriceTable = memo(function RealTimePriceTable({
   socketData,
   marketCodeMap,
   setCode,
-  setPrice,
+  setRate,
   setPrevPrice,
+  setCurrPrice,
 }) {
-  const handleRowClick = (code, rate, prevPrice) => {
+  const handleRowClick = (code, rate, prevPrice, currPrice) => {
     setCode(code);
-    setPrice(rate);
+    setRate(rate);
     setPrevPrice(prevPrice);
+    setCurrPrice(currPrice);
   };
 
   return (
@@ -74,7 +76,8 @@ const RealTimePriceTable = memo(function RealTimePriceTable({
                 handleRowClick(
                   data.code,
                   data.signed_change_rate,
-                  data.prev_closing_price
+                  data.prev_closing_price,
+                  data.trade_price
                 );
               }}
               sx={{
@@ -154,7 +157,7 @@ const RealTimePriceTable = memo(function RealTimePriceTable({
  * - krwMarketCodes : KRW로 시작하는 marketCodes
  * - marketCodeMap : market 값을 키로 사용하는 korean_name 해시맵
  * */
-function RealTimePriceCard({ setCode, setPrice, setPrevPrice }) {
+function RealTimePriceCard({ setCode, setRate, setPrevPrice, setCurrPrice }) {
   const { isLoading, marketCodes } = useFetchMarketCode();
   const [krwMarketCodes, setKrwMarketCodes] = useState([]);
   const { socket, isConnected, socketData } = useWsTicker(krwMarketCodes);
@@ -179,8 +182,9 @@ function RealTimePriceCard({ setCode, setPrice, setPrevPrice }) {
           socketData={socketData}
           marketCodeMap={marketCodeMap}
           setCode={setCode}
-          setPrice={setPrice}
+          setRate={setRate}
           setPrevPrice={setPrevPrice}
+          setCurrPrice={setCurrPrice}
         />
       ) : (
         <Typography>실시간 가격 로딩중...</Typography>

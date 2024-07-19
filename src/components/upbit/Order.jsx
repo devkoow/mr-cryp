@@ -20,13 +20,14 @@ import { NGTypography, theme, flexCenter } from '../../defaultTheme';
 import RestoreIcon from '@mui/icons-material/Restore';
 import { globalColors } from '../../globalColors';
 
-function Panel({ value, code, addOrder }) {
+function Panel({ value, code, addOrder, currPrice }) {
   const [selectedValue, setSelectedValue] = useState('a');
-  const [price, setPrice] = useState(0);
+  const [price, setPrice] = useState(currPrice || 0);
   const [balance, setBalance] = useState(1);
   const [accPrice, setAccPrice] = useState(0);
   const [open, setOpen] = useState(false);
   const [success, setSuccess] = useState('');
+  const orderableCash = 3000000;
 
   const handleRadio = (event) => {
     setSelectedValue(event.target.value);
@@ -64,7 +65,7 @@ function Panel({ value, code, addOrder }) {
 
   const handleOpen = async () => {
     try {
-      if (price > 0 && balance > 0 && accPrice) {
+      if (orderableCash > accPrice && accPrice > 0) {
         setSuccess('success');
       } else {
         setSuccess('error');
@@ -90,7 +91,7 @@ function Panel({ value, code, addOrder }) {
 
   const handleOrder = () => {
     try {
-      if (price > 0 && balance > 0 && accPrice > 0) {
+      if (orderableCash > accPrice && accPrice > 0) {
         const orderType = value === '1' ? '매수' : '매도';
         const newOrder = {
           orderTime: new Date().toLocaleString(),
@@ -159,7 +160,7 @@ function Panel({ value, code, addOrder }) {
           >
             <NGTypography>주문가능</NGTypography>
             <NGTypography>
-              {parseFloat(3000000).toLocaleString()} KRW
+              {parseFloat(orderableCash).toLocaleString()} KRW
             </NGTypography>
           </Box>
           <Box
@@ -264,7 +265,7 @@ function Panel({ value, code, addOrder }) {
             <Alert onClose={handleClose} severity={success} variant="filled">
               {success === 'success'
                 ? '주문했습니다'
-                : '최소주문 금액을 확인해주세요'}
+                : '주문총액을 다시 확인해주세요'}
             </Alert>
           </Snackbar>
         </Box>
@@ -444,7 +445,7 @@ function OrderHistory({ value, orders, removeOrder }) {
   );
 }
 
-export default function Order({ open, handleClose, code }) {
+export default function Order({ open, handleClose, code, currPrice }) {
   const [value, setValue] = useState('1');
   const [orders, setOrders] = useState([]);
 
@@ -489,7 +490,12 @@ export default function Order({ open, handleClose, code }) {
               <Tab label="거래내역" value="3" />
             </TabList>
           </Box>
-          <Panel value="1" code={code} addOrder={addOrder} />
+          <Panel
+            value="1"
+            code={code}
+            addOrder={addOrder}
+            currPrice={currPrice}
+          />
           <Panel value="2" code={code} addOrder={addOrder} />
           <OrderHistory value="3" orders={orders} removeOrder={removeOrder} />
         </TabContext>

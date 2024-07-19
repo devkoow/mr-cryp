@@ -13,8 +13,9 @@ import { DescTypography, theme } from '../defaultTheme';
  */
 export default function Chart() {
   const [code, setCode] = useState('KRW-BTC');
-  const [rate, setPrice] = useState(0);
+  const [rate, setRate] = useState(0);
   const [prevPrice, setPrevPrice] = useState(null);
+  const [currPrice, setCurrPrice] = useState(null);
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -36,8 +37,9 @@ export default function Chart() {
         <Grid item xs={3}>
           <RealTimePriceCard
             setCode={setCode}
-            setPrice={setPrice}
+            setRate={setRate}
             setPrevPrice={setPrevPrice}
+            setCurrPrice={setCurrPrice}
           />
         </Grid>
         <Grid item xs={9}>
@@ -64,7 +66,12 @@ export default function Chart() {
       >
         <DescTypography>주문하기</DescTypography>
       </Button>
-      <Order open={open} handleClose={handleClose} code={code} />
+      <Order
+        open={open}
+        handleClose={handleClose}
+        code={code}
+        currPrice={currPrice}
+      />
     </Box>
   );
 }
