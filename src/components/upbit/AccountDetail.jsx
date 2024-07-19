@@ -28,6 +28,7 @@ export default function AccountDetail({ balance }) {
           if (index === 0) {
             return (
               <Accordion
+                key={item.currency}
                 sx={{
                   width: '60%',
                   '&:hover': { backgroundColor: globalColors.white['500'] },
@@ -81,6 +82,7 @@ export default function AccountDetail({ balance }) {
           } else {
             return (
               <Accordion
+                key={item.currency}
                 sx={{
                   width: '60%',
                   '&:hover': { backgroundColor: globalColors.white['500'] },

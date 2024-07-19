@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import logoutKakao from '../api/logoutKakao';
 import { useNavigate } from 'react-router-dom';
 import { logoutGoogle } from '../api/firebase';
+import logoutKakao from '../api/logoutKakao';
 import LOGO_APPBAR from '../assets/images/logo_trans_vanilla.png';
+import { LogoTypography, NavTypography } from '../defaultTheme';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -16,7 +17,6 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import Avatar from '@mui/material/Avatar';
 import User from './User';
-import { LogoTypography, NavTypography } from '../defaultTheme';
 
 const pages = ['대시보드', '거래', '비전'];
 const settings = ['프로필 정보', '로그아웃'];
@@ -27,8 +27,9 @@ export default function ResponsiveAppBar() {
   const [anchorElUser, setAnchorElUser] = useState(null);
   const [activePage, setActivePage] = useState('대시보드');
   const [activeSubMenu, setActiveSubMenu] = useState('');
-  const nickname = localStorage.getItem('nickname');
-  const socialType = localStorage.getItem('socialType');
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
 
   useEffect(() => {
     const activePage = localStorage.getItem('activePage');
@@ -52,11 +53,13 @@ export default function ResponsiveAppBar() {
     }
   };
 
-  /** 로그아웃 혹은 프로필 수정 페이지 이동 */
+  /** 로그아웃 혹은 프로필 정보 모달 열기 */
   const handleCloseUserMenu = (action) => {
     setAnchorElUser(null);
     if (action === '로그아웃') handleLogout();
-    if (action === '프로필 정보') navigate('/profile');
+    if (action === '프로필 정보') {
+      handleOpen();
+    }
   };
 
   /** 페이지 메뉴 토글 */
@@ -94,7 +97,7 @@ export default function ResponsiveAppBar() {
       position="static"
       sx={{ top: 0, left: 0, right: 0, marginBottom: 4 }}
     >
-      {/* 메인 네비게이션바 : xs, md일 때 반응형 디자인 구분 */}
+      {/* 메인 네비게이션바 */}
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           {/* md */}
@@ -107,6 +110,7 @@ export default function ResponsiveAppBar() {
               height: '100px',
             }}
           />
+          {/* md */}
           <LogoTypography
             variant="h6"
             noWrap
@@ -122,6 +126,7 @@ export default function ResponsiveAppBar() {
           >
             Mr.Cryp
           </LogoTypography>
+          {/* xs */}
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
             <IconButton
               size="large"
@@ -168,6 +173,7 @@ export default function ResponsiveAppBar() {
               height: '100px',
             }}
           />
+          {/* xs */}
           <LogoTypography
             variant="h6"
             noWrap
@@ -184,6 +190,7 @@ export default function ResponsiveAppBar() {
           >
             Mr.Cryp
           </LogoTypography>
+          {/* md */}
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
               <Button
@@ -203,14 +210,22 @@ export default function ResponsiveAppBar() {
             ))}
           </Box>
           <Box sx={{ flexGrow: 0 }}>
-            <Tooltip
-              title={socialType === 'Kakao' ? '카카오 계정' : '구글 계정'}
-            >
+            <Tooltip title="내 프로필 / 로그아웃">
               <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                <IconButton onClick={handleOpenUserMenu} sx={{ p: 0, mr: 2 }}>
-                  <User />
-                </IconButton>
-                <NavTypography>반갑습니다, {nickname}님</NavTypography>
+                <NavTypography
+                  onClick={handleOpenUserMenu}
+                  fontSize={32}
+                  sx={{
+                    p: 0,
+                    '&:hover': {
+                      opacity: '50%',
+                      cursor: 'pointer',
+                      transition: 'opacity 0.3s ease',
+                    },
+                  }}
+                >
+                  내 프로필
+                </NavTypography>
               </Box>
             </Tooltip>
             <Menu
@@ -240,7 +255,7 @@ export default function ResponsiveAppBar() {
             </Menu>
           </Box>
         </Toolbar>
-        {/* 서브 네비게이션바 : 거래 탭의 하위 탭을 활성화 */}
+        {/* 거래 서브 네비게이션바*/}
         {activePage === '거래' && (
           <Box sx={{ display: 'flex', marginLeft: 40 }}>
             {subMenus.map((subMenu) => (
@@ -263,6 +278,7 @@ export default function ResponsiveAppBar() {
           </Box>
         )}
       </Container>
+      <User open={open} handleClose={handleClose} />
     </AppBar>
   );
 }
