@@ -6,8 +6,8 @@ import { DescTypography } from '../defaultTheme';
 import { globalColors } from '../globalColors';
 import IMG_BG from '../assets/images/logo_mustache.png';
 import IMG_TEXT from '../assets/images/img_home_text.png';
-import BalanceCard from '../components/upbit/BalanceCard';
-import OrderCard from '../components/upbit/OrderCard';
+import AccountBox from '../components/upbit/AccountBox';
+import AccountDetail from '../components/upbit/AccountDetail';
 
 export default function Home() {
   const [balance, setBalance] = useState([]);
@@ -61,12 +61,12 @@ export default function Home() {
               boxShadow: 4,
             }}
           >
-            <BalanceCard balance={balance} />
+            <AccountBox balance={balance} />
           </Box>
         </Grid>
         <Grid item xs={12} md={6}>
           <Box marginTop={12}>
-            <OrderCard balance={balance} />
+            <AccountDetail balance={balance} />
           </Box>
         </Grid>
       </Grid>

@@ -1,6 +1,5 @@
 import React from 'react';
 import {
-  Grid,
   Box,
   Accordion,
   AccordionSummary,
@@ -10,7 +9,7 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { theme, DescTypography, NGTypography } from '../../defaultTheme';
 import { globalColors } from '../../globalColors';
 
-export default function OrderCard({ balance }) {
+export default function AccountDetail({ balance }) {
   const totalBalance = balance.reduce(
     (sum, item) => sum + parseFloat(item.balance) * item.avg_buy_price,
     0
@@ -30,7 +29,7 @@ export default function OrderCard({ balance }) {
             return (
               <Accordion
                 sx={{
-                  width: '80%',
+                  width: '60%',
                   '&:hover': { backgroundColor: globalColors.white['500'] },
                 }}
               >
@@ -83,7 +82,7 @@ export default function OrderCard({ balance }) {
             return (
               <Accordion
                 sx={{
-                  width: '80%',
+                  width: '60%',
                   '&:hover': { backgroundColor: globalColors.white['500'] },
                 }}
               >

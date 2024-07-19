@@ -5,14 +5,12 @@ import './index.css';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Home from './pages/Home';
 import NotFound from './pages/NotFound';
-import Profile from './pages/Profile';
 import SignIn from './pages/SignIn';
 import Vision from './pages/Vision';
 import AuthKakao from './pages/AuthKakao';
 import Trade from './pages/Trade';
 import Orderbook from './pages/Orderbook';
 import TradeHistory from './pages/TradeHistory';
-import Order from './pages/Order';
 import Chart from './pages/Chart';
 
 const router = createBrowserRouter([
@@ -29,7 +27,6 @@ const router = createBrowserRouter([
       { path: '/trade/tradeHistory', element: <TradeHistory /> },
       { path: '/trade/chart', element: <Chart /> },
       { path: '/vision', element: <Vision /> },
-      { path: '/profile', element: <Profile /> },
     ],
   },
 ]);

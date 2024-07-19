@@ -445,7 +445,7 @@ function OrderHistory({ value, orders, removeOrder }) {
   );
 }
 
-export default function Order({ open, handleClose, code, currPrice }) {
+export default function OrderModal({ open, handleClose, code, currPrice }) {
   const [value, setValue] = useState('1');
   const [orders, setOrders] = useState([]);
 

@@ -4,7 +4,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { Box } from '@mui/system';
 import { KJUR } from 'jsrsasign';
 
-export default function Account() {
+export default function RealAccount() {
   const [account, setAccount] = useState([]);
   const accessKey = process.env.REACT_APP_UPBIT_OPEN_API_ACCESS_KEY;
   const secretKey = process.env.REACT_APP_UPBIT_OPEN_API_SECRET_KEY;

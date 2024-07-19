@@ -5,7 +5,7 @@ import { Box, Typography, Divider } from '@mui/material';
 import { globalColors } from '../../globalColors';
 
 /** 실시간 마켓 정보 */
-export default function MarketCard({ code }) {
+export default function MarketDetail({ code }) {
   const { isLoading, marketCodes } = useFetchMarketCode();
   const [krwMarketCodes, setKrwMarketCodes] = useState([]);
   const { socket, isConnected, socketData } = useWsTicker(krwMarketCodes);

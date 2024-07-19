@@ -17,8 +17,7 @@ import {
 } from '../../defaultTheme';
 import { globalColors } from '../../globalColors';
 
-/** 실시간 오더북 테이블 UI */
-const OrderTable = memo(function OrderTable({
+const OrderBookTable = memo(function OrderTable({
   targetMarketCode,
   rate,
   prevPrice,
@@ -251,10 +250,7 @@ const OrderTable = memo(function OrderTable({
   );
 });
 
-/** 실시간 오더북
- * - targetMarketCode : props로 전달받은 마켓의 티커
- */
-function OrderBookCard({ code, rate, prevPrice }) {
+function OrderBookBox({ code, rate, prevPrice }) {
   const { isLoading, marketCodes } = useFetchMarketCode();
   const [targetMarketCode, setTargetMarketCode] = useState();
 
@@ -279,7 +275,7 @@ function OrderBookCard({ code, rate, prevPrice }) {
 
   return (
     <div>
-      <OrderTable
+      <OrderBookTable
         targetMarketCode={targetMarketCode}
         rate={rate}
         prevPrice={prevPrice}
@@ -288,4 +284,4 @@ function OrderBookCard({ code, rate, prevPrice }) {
   );
 }
 
-export default memo(OrderBookCard);
+export default memo(OrderBookBox);

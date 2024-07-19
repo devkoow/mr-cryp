@@ -109,7 +109,7 @@ const initialOptions = {
   },
 };
 
-export default function ChartCard({ code }) {
+export default function ChartBox({ code }) {
   const { upbit } = useOpenApi();
   const [options, setOptions] = useState(initialOptions);
   const [candles, setCandles] = useState([]);

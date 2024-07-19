@@ -1,16 +1,13 @@
 import React, { useState } from 'react';
-import RealTimePriceCard from '../components/upbit/RealTimePriceCard';
-import MarketCard from '../components/upbit/MarketCard';
-import OrderbookCard from '../components/upbit/OrderbookCard';
-import TradeHistoryCard from '../components/upbit/TradeHistoryCard';
-import ChartCard from '../components/upbit/ChartCard';
-import Order from '../components/upbit/Order';
+import MarketListBox from '../components/upbit/MarketListBox';
+import MarketDetail from '../components/upbit/MarketDetail';
+import OrderbookBox from '../components/upbit/OrderbookBox';
+import TradeHistoryBox from '../components/upbit/TradeHistoryBox';
+import ChartBox from '../components/upbit/ChartBox';
+import OrderModal from '../components/upbit/OrderModal';
 import { Box, Grid, Button } from '@mui/material';
 import { DescTypography, theme } from '../defaultTheme';
 
-/** 전체 차트 페이지
- * - code : 실시간 금액에서 선택한 마켓의 티커
- */
 export default function Chart() {
   const [code, setCode] = useState('KRW-BTC');
   const [rate, setRate] = useState(0);
@@ -35,7 +32,7 @@ export default function Chart() {
         margin="auto"
       >
         <Grid item xs={3}>
-          <RealTimePriceCard
+          <MarketListBox
             setCode={setCode}
             setRate={setRate}
             setPrevPrice={setPrevPrice}
@@ -43,14 +40,14 @@ export default function Chart() {
           />
         </Grid>
         <Grid item xs={9}>
-          <MarketCard code={code} />
-          <ChartCard code={code} />
+          <MarketDetail code={code} />
+          <ChartBox code={code} />
           <Grid container spacing={0} padding="0">
             <Grid item xs={7}>
-              <TradeHistoryCard code={code} />
+              <TradeHistoryBox code={code} />
             </Grid>
             <Grid item xs={5}>
-              <OrderbookCard code={code} rate={rate} prevPrice={prevPrice} />
+              <OrderbookBox code={code} rate={rate} prevPrice={prevPrice} />
             </Grid>
           </Grid>
         </Grid>
@@ -66,7 +63,7 @@ export default function Chart() {
       >
         <DescTypography>주문하기</DescTypography>
       </Button>
-      <Order
+      <OrderModal
         open={open}
         handleClose={handleClose}
         code={code}

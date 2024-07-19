@@ -115,7 +115,7 @@ const TradeTable = memo(function TradeTable({ targetMarketCode }) {
 /** 실시간 거래 내역
  * - targetMarketCode : props로 전달받은 마켓의 티커
  */
-function TradeHistory({ code }) {
+function TradeHistoryBox({ code }) {
   const { isLoading, marketCodes } = useFetchMarketCode();
   const [targetMarketCode, setTargetMarketCode] = useState();
   const { upbit } = useOpenApi();
@@ -153,4 +153,4 @@ function TradeHistory({ code }) {
   );
 }
 
-export default memo(TradeHistory);
+export default memo(TradeHistoryBox);

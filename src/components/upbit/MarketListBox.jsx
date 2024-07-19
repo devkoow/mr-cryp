@@ -157,7 +157,7 @@ const RealTimePriceTable = memo(function RealTimePriceTable({
  * - krwMarketCodes : KRW로 시작하는 marketCodes
  * - marketCodeMap : market 값을 키로 사용하는 korean_name 해시맵
  * */
-function RealTimePriceCard({ setCode, setRate, setPrevPrice, setCurrPrice }) {
+function MarketListBox({ setCode, setRate, setPrevPrice, setCurrPrice }) {
   const { isLoading, marketCodes } = useFetchMarketCode();
   const [krwMarketCodes, setKrwMarketCodes] = useState([]);
   const { socket, isConnected, socketData } = useWsTicker(krwMarketCodes);
@@ -192,4 +192,4 @@ function RealTimePriceCard({ setCode, setRate, setPrevPrice, setCurrPrice }) {
     </>
   );
 }
-export default memo(RealTimePriceCard);
+export default memo(MarketListBox);

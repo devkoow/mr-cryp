@@ -3,7 +3,7 @@ import { PieChart } from '@mui/x-charts/PieChart';
 import { theme } from '../../defaultTheme';
 import { globalColors } from '../../globalColors';
 
-export default function BalanceCard({ balance }) {
+export default function AccountBox({ balance }) {
   const palette = [
     theme.palette.primary.main,
     theme.palette.secondary.main,
