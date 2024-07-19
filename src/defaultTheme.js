@@ -30,7 +30,7 @@ export let theme = createTheme({
     MuiCssBaseline: {
       styleOverrides: `
         body {
-          background-color: ${globalColors.skyblue['200']}; 
+          background-color: ${globalColors.skyblue['300']}; 
         }
       `,
     },

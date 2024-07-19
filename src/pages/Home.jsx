@@ -36,7 +36,7 @@ export default function Home() {
                 alignItems: 'center',
                 justifyContent: 'center',
                 height: '500px',
-                backgroundColor: globalColors.vanilla['200'],
+                backgroundColor: globalColors.skyblue['200'],
                 borderRadius: '30px',
                 overflow: 'hidden',
                 gap: '2rem',

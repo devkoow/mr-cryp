@@ -41,7 +41,20 @@ export default function Chart() {
         </Grid>
         <Grid item xs={9}>
           <MarketDetail code={code} />
-          <ChartBox code={code} />
+          <Box sx={{ position: 'relative' }}>
+            <ChartBox code={code} />
+            <Button
+              sx={{
+                position: 'absolute',
+                right: 5,
+                top: 5,
+                '&:hover': { color: theme.palette.secondary.light },
+              }}
+              onClick={handleOpen}
+            >
+              <DescTypography>주문하기</DescTypography>
+            </Button>
+          </Box>
           <Grid container spacing={0} padding="0">
             <Grid item xs={7}>
               <TradeHistoryBox code={code} />
@@ -52,17 +65,6 @@ export default function Chart() {
           </Grid>
         </Grid>
       </Grid>
-      <Button
-        sx={{
-          position: 'absolute',
-          right: 180,
-          top: '31%',
-          '&:hover': { color: theme.palette.secondary.light },
-        }}
-        onClick={handleOpen}
-      >
-        <DescTypography>주문하기</DescTypography>
-      </Button>
       <OrderModal
         open={open}
         handleClose={handleClose}
