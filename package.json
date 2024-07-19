@@ -28,18 +28,16 @@
     "react-redux": "^9.1.2",
     "react-router": "^6.23.1",
     "react-router-dom": "^6.23.1",
-    "react-scripts": "5.0.1",
     "use-upbit-api": "^2.0.9",
     "util": "^0.12.5",
     "uuid": "^10.0.0",
+    "vite-plugin-svgr": "^4.2.0",
     "web-vitals": "^2.1.4",
     "yarn": "^1.22.22"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "start": "vite",
+    "build": "vite build"
   },
   "eslintConfig": {
     "extends": [
@@ -61,8 +59,10 @@
   },
   "packageManager": "yarn@4.3.1",
   "devDependencies": {
+    "@vitejs/plugin-react": "^4.3.1",
     "eslint-config-react-app": "^7.0.1",
     "prettier": "^3.3.2",
-    "prettier-plugin-tailwindcss": "^0.6.5"
+    "prettier-plugin-tailwindcss": "^0.6.5",
+    "vite": "^5.3.4"
   }
 }

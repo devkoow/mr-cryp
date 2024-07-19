@@ -2,7 +2,7 @@ import Button from '@mui/material/Button';
 import LOGO_KAKAO from '../assets/images/logo_kakao.png';
 
 export default function ButtonKakao() {
-  const REST_API_KEY = process.env.REACT_APP_KAKAO_REST_API_KEY;
+  const REST_API_KEY = import.meta.env.VITE_KAKAO_REST_API_KEY;
   const REDIRECT_URI = 'http://localhost:3000/auth';
   const kakaoURL = `https://kauth.kakao.com/oauth/authorize?client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}&response_type=code`;
   const handleLogin = () => {

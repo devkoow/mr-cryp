@@ -23,8 +23,8 @@ export default class Naver {
           query: encodeURIComponent(keyword),
         },
         headers: {
-          'X-Naver-Client-Id': process.env.REACT_APP_NAVER_CLIENT_ID,
-          'X-Naver-Client-Secret': process.env.REACT_APP_NAVER_CLIENT_SECRET,
+          'X-Naver-Client-Id': import.meta.env.VITE_NAVER_CLIENT_ID,
+          'X-Naver-Client-Secret': import.meta.env.VITE_NAVER_CLIENT_SECRET,
           Accept: '*/*',
         },
       });

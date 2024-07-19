@@ -9,7 +9,7 @@ export default class Youtube {
     this.getData = axios.create({
       baseURL: 'https://www.googleapis.com/youtube/v3',
       params: {
-        key: process.env.REACT_APP_YOUTUBE_DATA_API_KEY,
+        key: import.meta.env.VITE_YOUTUBE_DATA_API_KEY,
       },
     });
   }
