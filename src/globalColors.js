@@ -10,7 +10,7 @@ export const globalColors = {
   sma_50: '#03fc73',
   sma_15: '#de0417',
 
-  white: { 400: '#ffffff' },
+  white: '#ffffff',
   white_retro: '#e1e3e1',
   black: { 400: '#141715', 500: '#000000' },
   skyblue: { 200: '#a7fafc', 300: '#6df3f7', 400: '#41f5fa', 500: '#05e9f0' },
@@ -24,4 +24,6 @@ export const globalColors = {
   color_bid: { 200: '#f5bfd0', 500: '#b567b0' },
   color_success: '#03fc73',
   color_failure: '#c92031',
+
+  shadow_text: '2px 2px 4px rgba(0, 0, 0, 0.7)',
 };

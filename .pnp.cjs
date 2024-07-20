@@ -60,6 +60,7 @@ const RAW_RUNTIME_STATE =
           ["util", "npm:0.12.5"],\
           ["uuid", "npm:10.0.0"],\
           ["vite", "virtual:bdf0dde8506bc50914fcdd774612b18580f0850f9f33247c5c476a41a66b81f8d322e6de469faa78f627be1c8be5481e43bb29d1279e64f3bb7a947eb374b3b4#npm:5.3.4"],\
+          ["vite-plugin-compression", "virtual:bdf0dde8506bc50914fcdd774612b18580f0850f9f33247c5c476a41a66b81f8d322e6de469faa78f627be1c8be5481e43bb29d1279e64f3bb7a947eb374b3b4#npm:0.5.1"],\
           ["vite-plugin-svgr", "virtual:bdf0dde8506bc50914fcdd774612b18580f0850f9f33247c5c476a41a66b81f8d322e6de469faa78f627be1c8be5481e43bb29d1279e64f3bb7a947eb374b3b4#npm:4.2.0"],\
           ["web-vitals", "npm:2.1.4"],\
           ["yarn", "npm:1.22.22"]\
@@ -8683,6 +8684,18 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
+    ["fs-extra", [\
+      ["npm:10.1.0", {\
+        "packageLocation": "../../../.yarn/berry/cache/fs-extra-npm-10.1.0-86573680ed-10c0.zip/node_modules/fs-extra/",\
+        "packageDependencies": [\
+          ["fs-extra", "npm:10.1.0"],\
+          ["graceful-fs", "npm:4.2.11"],\
+          ["jsonfile", "npm:6.1.0"],\
+          ["universalify", "npm:2.0.1"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
     ["fs-minipass", [\
       ["npm:2.1.0", {\
         "packageLocation": "../../../.yarn/berry/cache/fs-minipass-npm-2.1.0-501ef87306-10c0.zip/node_modules/fs-minipass/",\
@@ -9612,6 +9625,17 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
+    ["jsonfile", [\
+      ["npm:6.1.0", {\
+        "packageLocation": "../../../.yarn/berry/cache/jsonfile-npm-6.1.0-20a4796cee-10c0.zip/node_modules/jsonfile/",\
+        "packageDependencies": [\
+          ["jsonfile", "npm:6.1.0"],\
+          ["graceful-fs", "npm:4.2.11"],\
+          ["universalify", "npm:2.0.1"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
     ["jsrsasign", [\
       ["npm:11.1.0", {\
         "packageLocation": "../../../.yarn/berry/cache/jsrsasign-npm-11.1.0-1155f84fcd-10c0.zip/node_modules/jsrsasign/",\
@@ -9975,6 +9999,7 @@ const RAW_RUNTIME_STATE =
           ["util", "npm:0.12.5"],\
           ["uuid", "npm:10.0.0"],\
           ["vite", "virtual:bdf0dde8506bc50914fcdd774612b18580f0850f9f33247c5c476a41a66b81f8d322e6de469faa78f627be1c8be5481e43bb29d1279e64f3bb7a947eb374b3b4#npm:5.3.4"],\
+          ["vite-plugin-compression", "virtual:bdf0dde8506bc50914fcdd774612b18580f0850f9f33247c5c476a41a66b81f8d322e6de469faa78f627be1c8be5481e43bb29d1279e64f3bb7a947eb374b3b4#npm:0.5.1"],\
           ["vite-plugin-svgr", "virtual:bdf0dde8506bc50914fcdd774612b18580f0850f9f33247c5c476a41a66b81f8d322e6de469faa78f627be1c8be5481e43bb29d1279e64f3bb7a947eb374b3b4#npm:4.2.0"],\
           ["web-vitals", "npm:2.1.4"],\
           ["yarn", "npm:1.22.22"]\
@@ -11539,6 +11564,15 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
+    ["universalify", [\
+      ["npm:2.0.1", {\
+        "packageLocation": "../../../.yarn/berry/cache/universalify-npm-2.0.1-040ba5a21e-10c0.zip/node_modules/universalify/",\
+        "packageDependencies": [\
+          ["universalify", "npm:2.0.1"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
     ["update-browserslist-db", [\
       ["npm:1.1.0", {\
         "packageLocation": "../../../.yarn/berry/cache/update-browserslist-db-npm-1.1.0-3d2cb7d955-10c0.zip/node_modules/update-browserslist-db/",\
@@ -11698,6 +11732,31 @@ const RAW_RUNTIME_STATE =
           "stylus",\
           "sugarss",\
           "terser"\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["vite-plugin-compression", [\
+      ["npm:0.5.1", {\
+        "packageLocation": "../../../.yarn/berry/cache/vite-plugin-compression-npm-0.5.1-6054c7256e-10c0.zip/node_modules/vite-plugin-compression/",\
+        "packageDependencies": [\
+          ["vite-plugin-compression", "npm:0.5.1"]\
+        ],\
+        "linkType": "SOFT"\
+      }],\
+      ["virtual:bdf0dde8506bc50914fcdd774612b18580f0850f9f33247c5c476a41a66b81f8d322e6de469faa78f627be1c8be5481e43bb29d1279e64f3bb7a947eb374b3b4#npm:0.5.1", {\
+        "packageLocation": "./.yarn/__virtual__/vite-plugin-compression-virtual-921c6e8a8c/4/.yarn/berry/cache/vite-plugin-compression-npm-0.5.1-6054c7256e-10c0.zip/node_modules/vite-plugin-compression/",\
+        "packageDependencies": [\
+          ["vite-plugin-compression", "virtual:bdf0dde8506bc50914fcdd774612b18580f0850f9f33247c5c476a41a66b81f8d322e6de469faa78f627be1c8be5481e43bb29d1279e64f3bb7a947eb374b3b4#npm:0.5.1"],\
+          ["@types/vite", null],\
+          ["chalk", "npm:4.1.2"],\
+          ["debug", "virtual:b26422bd59fa17e008d6bc0175738ae8cd421c0bdf97531bc9d7ba8df7eb875cf3586702fdab2ad784dd2bd788b2ef7d413cd512768add7bfe10a3e1b04e9659#npm:4.3.5"],\
+          ["fs-extra", "npm:10.1.0"],\
+          ["vite", "virtual:bdf0dde8506bc50914fcdd774612b18580f0850f9f33247c5c476a41a66b81f8d322e6de469faa78f627be1c8be5481e43bb29d1279e64f3bb7a947eb374b3b4#npm:5.3.4"]\
+        ],\
+        "packagePeers": [\
+          "@types/vite",\
+          "vite"\
         ],\
         "linkType": "HARD"\
       }]\

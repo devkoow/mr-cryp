@@ -40,7 +40,9 @@ export default function AccountDetail({ balance }) {
                   id="panel1-header"
                 >
                   <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-                    <DescTypography>원화</DescTypography>
+                    <DescTypography sx={{ color: globalColors.black['400'] }}>
+                      원화
+                    </DescTypography>
                     <NGTypography
                       fontWeight={'bold'}
                       color={theme.palette.primary.light}
@@ -95,10 +97,14 @@ export default function AccountDetail({ balance }) {
                 >
                   <Box>
                     {item.currency === 'ETH' && (
-                      <DescTypography>이더리움</DescTypography>
+                      <DescTypography sx={{ color: globalColors.black['400'] }}>
+                        이더리움
+                      </DescTypography>
                     )}
                     {item.currency === 'XRP' && (
-                      <DescTypography>리플</DescTypography>
+                      <DescTypography sx={{ color: globalColors.black['400'] }}>
+                        리플
+                      </DescTypography>
                     )}
                     <NGTypography
                       fontWeight={'bold'}

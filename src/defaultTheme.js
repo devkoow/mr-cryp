@@ -16,13 +16,13 @@ export let theme = createTheme({
       main: globalColors.hotpink['400'],
       light: globalColors.hotpink['300'],
       dark: globalColors.hotpink['500'],
-      contrastText: globalColors.vanilla['200'],
+      contrastText: globalColors.vanilla['300'],
     },
     secondary: {
       main: globalColors.vanilla['400'],
       light: globalColors.vanilla['300'],
       dark: globalColors.vanilla['500'],
-      constrastText: globalColors.hotpink['200'],
+      constrastText: globalColors.hotpink['300'],
     },
   },
 
@@ -111,14 +111,12 @@ export const PriceTypography = styled(Typography)(() => ({
 export const NavTypography = styled(Typography)(() => ({
   fontFamily: 'SBAggroB',
   fontWeight: 500,
-  fontSize: '28px',
 }));
 
 // 네비게이션바 로고 타이포그래피
 export const LogoTypography = styled(Typography)(() => ({
   fontFamily: 'SBAggroB',
   fontWeight: 'bold',
-  fontSize: '50px',
   fontStyle: 'italic',
 }));
 
@@ -129,8 +127,8 @@ export const NGTypography = styled(Typography)(() => ({
 
 export const DescTypography = styled(Typography)(() => ({
   fontFamily: 'NEXON Lv1 Gothic OTF',
-  color: globalColors.white['400'],
-  textShadow: '1px 1px 2px black',
+  color: globalColors.white,
+  textShadow: globalColors.shadow_text,
   fontWeight: 'bold',
 }));
 

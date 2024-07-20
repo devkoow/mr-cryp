@@ -47,7 +47,7 @@ export default function MarketDetail({ code }) {
       sx={{
         height: 100,
         border: `dashed 5px ${theme.palette.primary.main}`,
-        backgroundColor: globalColors.white['400'],
+        backgroundColor: globalColors.white,
       }}
     >
       <Box display="flex" marginLeft={0.5} gap={0.5} alignItems="flex-end">

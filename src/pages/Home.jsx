@@ -36,35 +36,90 @@ export default function Home() {
               height: '500px',
               backgroundColor: globalColors.skyblue['300'],
               overflow: 'hidden',
-              gap: '2rem',
+              gap: '1rem',
             }}
           >
-            <img src={IMG_BG} width={300} height={100}></img>
+            <Box
+              component="img"
+              alt="logo"
+              src={IMG_BG}
+              sx={{
+                width: 420,
+                height: 140,
+                '@media (max-width:600px)': {
+                  width: 150,
+                  height: 50,
+                },
+              }}
+            ></Box>
             <Typography
-              fontSize={36}
+              fontSize={48}
               fontWeight={'bold'}
-              color={theme.palette.secondary.light}
+              color={globalColors.white}
               fontFamily={'CWDangamAsac-Bold'}
               sx={{
-                textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)',
+                textShadow: '2px 2px 4px rgba(0, 0, 0, 0.7)',
                 textAlign: 'center',
+                '@media (max-width:1200px)': {
+                  fontSize: 32,
+                  lineHeight: 1.2,
+                },
+                '@media (max-width:900px)': {
+                  fontSize: 24,
+                  lineHeight: 1.2,
+                },
+                '@media (max-width:600px)': {
+                  fontSize: 18,
+                  lineHeight: 1.2,
+                },
               }}
             >
-              실시간으로 가상화폐의 시세를 확인할 수 있고 <br />
+              실시간으로 가상화폐의 시세를 확인할 수 있고
+            </Typography>
+            <Typography
+              fontSize={48}
+              fontWeight={'bold'}
+              color={globalColors.white}
+              fontFamily={'CWDangamAsac-Bold'}
+              sx={{
+                textShadow: '2px 2px 4px rgba(0, 0, 0, 0.7)',
+                textAlign: 'center',
+                '@media (max-width:1200px)': {
+                  fontSize: 32,
+                  lineHeight: 1.2,
+                },
+                '@media (max-width:900px)': {
+                  fontSize: 24,
+                  lineHeight: 1.2,
+                },
+                '@media (max-width:600px)': {
+                  fontSize: 18,
+                  lineHeight: 1.2,
+                },
+              }}
+            >
               최신 소식도 확인 가능한 크립토 비서입니다!
             </Typography>
-            {/* <img src={IMG_TEXT} width={1100} height={150}></img> */}
           </Box>
         </Grid>
         <Grid item xs={12} md={6}>
-          <DescTypography fontSize={32} marginBottom={2}>
+          <DescTypography
+            fontSize={32}
+            marginBottom={2}
+            sx={{
+              '@media (max-width:900px)': {
+                fontSize: 24,
+                lineHeight: 1.2,
+              },
+            }}
+          >
             내 계좌 현황
           </DescTypography>
           <Box
             sx={{
               display: 'flex',
               justifyContent: 'center',
-              backgroundColor: 'transparent',
+              backgroundColor: globalColors.white['400'],
               borderRadius: '30px',
               paddingY: 5,
               boxShadow: 4,
@@ -73,10 +128,8 @@ export default function Home() {
             <AccountBox balance={balance} />
           </Box>
         </Grid>
-        <Grid item xs={12} md={6}>
-          <Box marginTop={12}>
-            <AccountDetail balance={balance} />
-          </Box>
+        <Grid item xs={12} md={6} sx={{ margin: 'auto' }}>
+          <AccountDetail balance={balance} />
         </Grid>
       </Grid>
     </Box>

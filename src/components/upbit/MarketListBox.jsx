@@ -40,7 +40,7 @@ const RealTimePriceTable = memo(function RealTimePriceTable({
         overflow: 'auto',
         margin: 0,
         padding: 0,
-        backgroundColor: globalColors.white['400'],
+        backgroundColor: globalColors.white,
       }}
     >
       <Table stickyHeader aria-label="sticky table">

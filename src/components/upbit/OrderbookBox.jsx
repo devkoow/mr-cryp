@@ -72,7 +72,7 @@ const OrderBookTable = memo(function OrderTable({
             height: 400,
             margin: 0,
             padding: 0,
-            backgroundColor: globalColors.white['400'],
+            backgroundColor: globalColors.white,
           }}
         >
           <Table display="flex" stickyHeader aria-label="sticky table">
