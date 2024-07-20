@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Grid, Paper } from '@mui/material';
-import { Box } from '@mui/system';
-import { DescTypography } from '../defaultTheme';
-import { globalColors } from '../globalColors';
 import IMG_BG from '../assets/images/logo_mustache.png';
-import IMG_TEXT from '../assets/images/img_home_text.png';
+import { Grid, Typography } from '@mui/material';
+import { Box } from '@mui/system';
+import { DescTypography, theme } from '../defaultTheme';
+import { globalColors } from '../globalColors';
 import AccountBox from '../components/upbit/AccountBox';
 import AccountDetail from '../components/upbit/AccountDetail';
 
@@ -28,34 +27,99 @@ export default function Home() {
     <Box sx={{ width: '80%', marginBottom: 10, marginX: 'auto' }}>
       <Grid container spacing={1}>
         <Grid item xs={12} md={12} marginBottom={4}>
-          <Paper sx={{ margin: 0, padding: 0, borderRadius: '30px' }}>
+          <Box
+            sx={{
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              justifyContent: 'center',
+              height: '500px',
+              backgroundColor: globalColors.skyblue['300'],
+              overflow: 'hidden',
+              gap: '1rem',
+            }}
+          >
             <Box
+              component="img"
+              alt="logo"
+              src={IMG_BG}
               sx={{
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                justifyContent: 'center',
-                height: '500px',
-                backgroundColor: globalColors.vanilla['200'],
-                borderRadius: '30px',
-                overflow: 'hidden',
-                gap: '2rem',
+                width: 420,
+                height: 140,
+                '@media (max-width:600px)': {
+                  width: 150,
+                  height: 50,
+                },
+              }}
+            ></Box>
+            <Typography
+              fontSize={48}
+              fontWeight={'bold'}
+              color={globalColors.white}
+              fontFamily={'CWDangamAsac-Bold'}
+              sx={{
+                textShadow: '2px 2px 4px rgba(0, 0, 0, 0.7)',
+                textAlign: 'center',
+                '@media (max-width:1200px)': {
+                  fontSize: 32,
+                  lineHeight: 1.2,
+                },
+                '@media (max-width:900px)': {
+                  fontSize: 24,
+                  lineHeight: 1.2,
+                },
+                '@media (max-width:600px)': {
+                  fontSize: 18,
+                  lineHeight: 1.2,
+                },
               }}
             >
-              <img src={IMG_BG} width={300} height={100}></img>
-              <img src={IMG_TEXT} width={1100} height={150}></img>
-            </Box>
-          </Paper>
+              실시간으로 가상화폐의 시세를 확인할 수 있고
+            </Typography>
+            <Typography
+              fontSize={48}
+              fontWeight={'bold'}
+              color={globalColors.white}
+              fontFamily={'CWDangamAsac-Bold'}
+              sx={{
+                textShadow: '2px 2px 4px rgba(0, 0, 0, 0.7)',
+                textAlign: 'center',
+                '@media (max-width:1200px)': {
+                  fontSize: 32,
+                  lineHeight: 1.2,
+                },
+                '@media (max-width:900px)': {
+                  fontSize: 24,
+                  lineHeight: 1.2,
+                },
+                '@media (max-width:600px)': {
+                  fontSize: 18,
+                  lineHeight: 1.2,
+                },
+              }}
+            >
+              최신 소식도 확인 가능한 크립토 비서입니다!
+            </Typography>
+          </Box>
         </Grid>
         <Grid item xs={12} md={6}>
-          <DescTypography variant="h6" marginBottom={2}>
+          <DescTypography
+            fontSize={32}
+            marginBottom={2}
+            sx={{
+              '@media (max-width:900px)': {
+                fontSize: 24,
+                lineHeight: 1.2,
+              },
+            }}
+          >
             내 계좌 현황
           </DescTypography>
           <Box
             sx={{
               display: 'flex',
               justifyContent: 'center',
-              backgroundColor: 'transparent',
+              backgroundColor: globalColors.white['400'],
               borderRadius: '30px',
               paddingY: 5,
               boxShadow: 4,
@@ -64,10 +128,8 @@ export default function Home() {
             <AccountBox balance={balance} />
           </Box>
         </Grid>
-        <Grid item xs={12} md={6}>
-          <Box marginTop={12}>
-            <AccountDetail balance={balance} />
-          </Box>
+        <Grid item xs={12} md={6} sx={{ margin: 'auto' }}>
+          <AccountDetail balance={balance} />
         </Grid>
       </Grid>
     </Box>

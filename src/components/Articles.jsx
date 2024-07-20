@@ -142,7 +142,6 @@ export default function Articles() {
                       />
                     </IconButton>
                   </Tooltip>
-
                   <Snackbar
                     open={open}
                     autoHideDuration={6000}

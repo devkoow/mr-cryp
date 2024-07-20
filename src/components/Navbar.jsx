@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
+import LOGO_APPBAR from '../assets/images/logo_circle.png';
 import { useNavigate } from 'react-router-dom';
+import User from './User';
 import { logoutGoogle } from '../api/firebase';
 import logoutKakao from '../api/logoutKakao';
-import LOGO_APPBAR from '../assets/images/logo_trans_vanilla.png';
 import { LogoTypography, NavTypography } from '../defaultTheme';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -15,10 +16,9 @@ import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
-import Avatar from '@mui/material/Avatar';
-import User from './User';
+import { globalColors } from '../globalColors';
 
-const pages = ['대시보드', '거래', '비전'];
+const pages = ['대시보드', '비전', '거래'];
 const settings = ['프로필 정보', '로그아웃'];
 const subMenus = ['실시간 오더북', '실시간 거래 내역', '차트'];
 
@@ -97,36 +97,28 @@ export default function ResponsiveAppBar() {
       position="static"
       sx={{ top: 0, left: 0, right: 0, marginBottom: 4 }}
     >
-      {/* 메인 네비게이션바 */}
+      {/* 네비게이션바 */}
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          {/* md */}
-          <Avatar
-            src={LOGO_APPBAR}
-            sx={{
-              display: { xs: 'none', md: 'flex' },
-              mr: 1,
-              width: '100px',
-              height: '100px',
-            }}
-          />
-          {/* md */}
+          {/* md 로고 타이포 */}
           <LogoTypography
-            variant="h6"
             noWrap
             component="a"
             fontWeight="bold"
+            fontSize={'50px'}
             sx={{
               mr: 2,
               display: { xs: 'none', md: 'flex' },
               letterSpacing: '.3rem',
               color: 'inherit',
               textDecoration: 'none',
+              textShadow: globalColors.shadow_text,
+              marginY: 2,
             }}
           >
             Mr.Cryp
           </LogoTypography>
-          {/* xs */}
+          {/* xs 네브바 메뉴 : 아이콘으로 활성화 */}
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
             <IconButton
               size="large"
@@ -134,7 +126,9 @@ export default function ResponsiveAppBar() {
               aria-controls="menu-appbar"
               aria-haspopup="true"
               onClick={handleOpenNavMenu}
-              color="inherit"
+              sx={{
+                color: globalColors.white,
+              }}
             >
               <MenuIcon />
             </IconButton>
@@ -158,24 +152,16 @@ export default function ResponsiveAppBar() {
             >
               {pages.map((page) => (
                 <MenuItem key={page} onClick={() => handleCloseNavMenu(page)}>
-                  <NavTypography textAlign="center">{page}</NavTypography>
+                  <NavTypography textAlign="center" fontSize={'18px'}>
+                    {page}
+                  </NavTypography>
                 </MenuItem>
               ))}
             </Menu>
           </Box>
-          {/* xs */}
-          <Avatar
-            src={LOGO_APPBAR}
-            sx={{
-              display: { xs: 'flex', md: 'none' },
-              mr: 1,
-              width: '100px',
-              height: '100px',
-            }}
-          />
-          {/* xs */}
+          {/* xs 로고 타이포 */}
           <LogoTypography
-            variant="h6"
+            fontSize={'32px'}
             noWrap
             component="a"
             href="#app-bar-with-responsive-menu"
@@ -185,12 +171,13 @@ export default function ResponsiveAppBar() {
               flexGrow: 1,
               letterSpacing: '.3rem',
               color: 'inherit',
+              textShadow: globalColors.shadow_text,
               textDecoration: 'none',
             }}
           >
             Mr.Cryp
           </LogoTypography>
-          {/* md */}
+          {/* md 네브바 메뉴 */}
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
               <Button
@@ -205,10 +192,21 @@ export default function ResponsiveAppBar() {
                   boxShadow: 'none',
                 }}
               >
-                <NavTypography>{page}</NavTypography>
+                <NavTypography
+                  sx={{
+                    textShadow: globalColors.shadow_text,
+                    fontSize: '32px',
+                    '@media (max-width:1100px)': {
+                      fontSize: '24px',
+                    },
+                  }}
+                >
+                  {page}
+                </NavTypography>
               </Button>
             ))}
           </Box>
+          {/* 유저 메뉴 */}
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="내 프로필 / 로그아웃">
               <Box sx={{ display: 'flex', alignItems: 'center' }}>
@@ -217,10 +215,16 @@ export default function ResponsiveAppBar() {
                   fontSize={32}
                   sx={{
                     p: 0,
+                    color: globalColors.white['400'],
+                    textShadow: globalColors.shadow_text,
                     '&:hover': {
                       opacity: '50%',
                       cursor: 'pointer',
                       transition: 'opacity 0.3s ease',
+                    },
+                    '@media (max-width:600px)': {
+                      fontSize: 18,
+                      lineHeight: 1.2,
                     },
                   }}
                 >
@@ -255,9 +259,18 @@ export default function ResponsiveAppBar() {
             </Menu>
           </Box>
         </Toolbar>
-        {/* 거래 서브 네비게이션바*/}
+        {/* '거래' 하위 탭*/}
         {activePage === '거래' && (
-          <Box sx={{ display: 'flex', marginLeft: 40 }}>
+          <Box
+            sx={{
+              display: 'flex',
+              marginLeft: 37,
+              '@media (max-width:900px)': {
+                marginLeft: 0,
+                justifyContent: 'center',
+              },
+            }}
+          >
             {subMenus.map((subMenu) => (
               <Button
                 key={subMenu}
@@ -272,7 +285,23 @@ export default function ResponsiveAppBar() {
                   boxShadow: 'none',
                 }}
               >
-                <NavTypography>{subMenu}</NavTypography>
+                <NavTypography
+                  fontSize={32}
+                  sx={{
+                    textShadow: globalColors.shadow_text,
+                    '&:hover': {
+                      textShadow: 'none',
+                    },
+                    '@media (max-width:1100px)': {
+                      fontSize: '24px',
+                    },
+                    '@media (max-width:900px)': {
+                      fontSize: '16px',
+                    },
+                  }}
+                >
+                  {subMenu}
+                </NavTypography>
               </Button>
             ))}
           </Box>

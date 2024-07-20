@@ -20,14 +20,14 @@ import { NGTypography, theme, flexCenter } from '../../defaultTheme';
 import RestoreIcon from '@mui/icons-material/Restore';
 import { globalColors } from '../../globalColors';
 
-function Panel({ value, code, addOrder, currPrice }) {
+function Panel({ value, code, addOrder, currPrice, askablePrice }) {
   const [selectedValue, setSelectedValue] = useState('a');
   const [price, setPrice] = useState(currPrice || 0);
   const [balance, setBalance] = useState(1);
   const [accPrice, setAccPrice] = useState(0);
   const [open, setOpen] = useState(false);
   const [success, setSuccess] = useState('');
-  const orderableCash = 3000000;
+  const bidableCash = 3000000;
 
   const handleRadio = (event) => {
     setSelectedValue(event.target.value);
@@ -65,7 +65,7 @@ function Panel({ value, code, addOrder, currPrice }) {
 
   const handleOpen = async () => {
     try {
-      if (orderableCash > accPrice && accPrice > 0) {
+      if (bidableCash > accPrice && accPrice > 0) {
         setSuccess('success');
       } else {
         setSuccess('error');
@@ -91,7 +91,7 @@ function Panel({ value, code, addOrder, currPrice }) {
 
   const handleOrder = () => {
     try {
-      if (orderableCash > accPrice && accPrice > 0) {
+      if (bidableCash > accPrice && accPrice > 0) {
         const orderType = value === '1' ? '매수' : '매도';
         const newOrder = {
           orderTime: new Date().toLocaleString(),
@@ -160,7 +160,10 @@ function Panel({ value, code, addOrder, currPrice }) {
           >
             <NGTypography>주문가능</NGTypography>
             <NGTypography>
-              {parseFloat(orderableCash).toLocaleString()} KRW
+              {value === '1'
+                ? parseFloat(bidableCash).toLocaleString()
+                : parseFloat(askablePrice).toLocaleString()}{' '}
+              KRW
             </NGTypography>
           </Box>
           <Box
@@ -235,10 +238,11 @@ function Panel({ value, code, addOrder, currPrice }) {
               <Button
                 sx={{
                   width: '100px',
-                  backgroundColor: globalColors.white['500'],
-                  color: theme.palette.primary.light,
+                  color: theme.palette.primary.main,
+                  backgroundColor: globalColors.white_retro,
                   '&:hover': {
-                    color: theme.palette.secondary.main,
+                    backgroundColor: theme.palette.primary.main,
+                    color: theme.palette.secondary.light,
                   },
                 }}
                 onClick={() => {
@@ -394,7 +398,7 @@ function OrderHistory({ value, orders, removeOrder }) {
                   <TableCell rowSpan={2}>
                     <Button
                       sx={{
-                        backgroundColor: globalColors.white['500'],
+                        backgroundColor: globalColors.white_retro,
                         color: theme.palette.primary.light,
                         '&:hover': {
                           color: theme.palette.secondary.main,
@@ -462,6 +466,9 @@ export default function OrderModal({ open, handleClose, code, currPrice }) {
     setValue(newValue);
   };
 
+  const askablePrice = orders
+    .filter((order) => order.type === '매수')
+    .reduce((acc, order) => acc + parseFloat(order.orderPrice), 0);
   return (
     <Modal
       open={open}
@@ -496,7 +503,12 @@ export default function OrderModal({ open, handleClose, code, currPrice }) {
             addOrder={addOrder}
             currPrice={currPrice}
           />
-          <Panel value="2" code={code} addOrder={addOrder} />
+          <Panel
+            value="2"
+            code={code}
+            addOrder={addOrder}
+            askablePrice={askablePrice}
+          />
           <OrderHistory value="3" orders={orders} removeOrder={removeOrder} />
         </TabContext>
       </Box>
