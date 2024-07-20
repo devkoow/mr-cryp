@@ -11,7 +11,7 @@ export const globalColors = {
   sma_15: '#de0417',
 
   white: { 400: '#ffffff' },
-  white_retro: { 400: '#e1e3e1' },
+  white_retro: '#e1e3e1',
   black: { 400: '#141715', 500: '#000000' },
   skyblue: { 200: '#a7fafc', 300: '#6df3f7', 400: '#41f5fa', 500: '#05e9f0' },
   hotpink: { 200: '#f788bc', 300: '#fa6eaf', 400: '#ff63ac', 500: '#fa52a1' },
@@ -22,6 +22,6 @@ export const globalColors = {
   color_neg: { 200: '#3e4bde', 300: '#2131eb', 400: '#000cfa', 500: '#111b8f' },
   color_ask: { 200: '#b6f5fa', 500: '#42b3e3' },
   color_bid: { 200: '#f5bfd0', 500: '#b567b0' },
-  color_success: { 400: '#03fc73' },
-  color_failure: { 400: '#c92031' },
+  color_success: '#03fc73',
+  color_failure: '#c92031',
 };

@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Grid, Paper } from '@mui/material';
-import { Box } from '@mui/system';
-import { DescTypography } from '../defaultTheme';
-import { globalColors } from '../globalColors';
 import IMG_BG from '../assets/images/logo_mustache.png';
-import IMG_TEXT from '../assets/images/img_home_text.png';
+import { Grid, Typography } from '@mui/material';
+import { Box } from '@mui/system';
+import { DescTypography, theme } from '../defaultTheme';
+import { globalColors } from '../globalColors';
 import AccountBox from '../components/upbit/AccountBox';
 import AccountDetail from '../components/upbit/AccountDetail';
 
@@ -28,27 +27,37 @@ export default function Home() {
     <Box sx={{ width: '80%', marginBottom: 10, marginX: 'auto' }}>
       <Grid container spacing={1}>
         <Grid item xs={12} md={12} marginBottom={4}>
-          <Paper sx={{ margin: 0, padding: 0, borderRadius: '30px' }}>
-            <Box
+          <Box
+            sx={{
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              justifyContent: 'center',
+              height: '500px',
+              backgroundColor: globalColors.skyblue['300'],
+              overflow: 'hidden',
+              gap: '2rem',
+            }}
+          >
+            <img src={IMG_BG} width={300} height={100}></img>
+            <Typography
+              fontSize={36}
+              fontWeight={'bold'}
+              color={theme.palette.secondary.light}
+              fontFamily={'CWDangamAsac-Bold'}
               sx={{
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                justifyContent: 'center',
-                height: '500px',
-                backgroundColor: globalColors.skyblue['200'],
-                borderRadius: '30px',
-                overflow: 'hidden',
-                gap: '2rem',
+                textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)',
+                textAlign: 'center',
               }}
             >
-              <img src={IMG_BG} width={300} height={100}></img>
-              <img src={IMG_TEXT} width={1100} height={150}></img>
-            </Box>
-          </Paper>
+              실시간으로 가상화폐의 시세를 확인할 수 있고 <br />
+              최신 소식도 확인 가능한 크립토 비서입니다!
+            </Typography>
+            {/* <img src={IMG_TEXT} width={1100} height={150}></img> */}
+          </Box>
         </Grid>
         <Grid item xs={12} md={6}>
-          <DescTypography variant="h6" marginBottom={2}>
+          <DescTypography fontSize={32} marginBottom={2}>
             내 계좌 현황
           </DescTypography>
           <Box

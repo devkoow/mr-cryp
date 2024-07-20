@@ -111,12 +111,12 @@ export const PriceTypography = styled(Typography)(() => ({
 export const NavTypography = styled(Typography)(() => ({
   fontFamily: 'SBAggroB',
   fontWeight: 500,
-  fontSize: '20px',
+  fontSize: '28px',
 }));
 
 // 네비게이션바 로고 타이포그래피
 export const LogoTypography = styled(Typography)(() => ({
-  fontFamily: 'omyu_pretty',
+  fontFamily: 'SBAggroB',
   fontWeight: 'bold',
   fontSize: '50px',
   fontStyle: 'italic',
