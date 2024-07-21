@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
-import { useOpenApi } from '../context/OpenApiContext';
+import { useOpenApi } from '../../context/OpenApiContext';
 import {
   Card,
   CardHeader,
@@ -15,9 +15,8 @@ import {
 import LinkIcon from '@mui/icons-material/Link';
 import IosShareIcon from '@mui/icons-material/IosShare';
 import ArticleRoundedIcon from '@mui/icons-material/ArticleRounded';
-
-import { DescTypography, theme } from '../defaultTheme';
-import { globalColors } from '../globalColors';
+import { DescTypography, theme } from '../../defaultTheme';
+import { globalColors } from '../../globalColors';
 
 export default function Articles() {
   const [open, setOpen] = useState(false);
@@ -30,7 +29,7 @@ export default function Articles() {
   } = useQuery({
     queryKey: ['articles'],
     queryFn: () => {
-      return naver.useMock('비트코인');
+      return naver.useMock('코인');
     },
     staleTime: 1000 * 60 * 10,
   });
@@ -64,9 +63,9 @@ export default function Articles() {
       <DescTypography
         sx={{
           color: globalColors.white,
-          textShadow: '1px 1px 2px black',
+          textShadow: globalColors.shadow_text,
           fontWeight: 'bold',
-          fontSize: '24px',
+          fontSize: '2rem',
         }}
       >
         TODAY NEWS
@@ -74,7 +73,7 @@ export default function Articles() {
       <DescTypography
         sx={{
           color: globalColors.white,
-          textShadow: '1px 1px 2px black',
+          textShadow: globalColors.shadow_text,
           fontWeight: 'bold',
           fontSize: '16px',
         }}
@@ -94,10 +93,11 @@ export default function Articles() {
               <Card
                 key={article.link}
                 sx={{
-                  marginTop: 3,
+                  display: 'flex',
+                  flexDirection: 'column',
+                  height: '100%',
+                  mt: 3,
                   backgroundColor: globalColors.vanilla['200'],
-                  height: '250px',
-                  position: 'relative',
                 }}
               >
                 <CardHeader
@@ -106,40 +106,53 @@ export default function Articles() {
                     <DescTypography
                       sx={{
                         color: globalColors.black,
-                        textShadow: '1px 1px 2px black',
+                        textShadow: globalColors.shadow_text,
                         fontWeight: 'bold',
+                        fontSize: '18px',
                       }}
                     >
                       {title}
                     </DescTypography>
                   }
                 />
-                <CardContent>
+                <CardContent
+                  sx={{
+                    maxHeight: '100px',
+                    overflow: 'flow',
+                    flexGrow: 1,
+                  }}
+                >
                   <DescTypography
                     variant="body2"
                     color="text.secondary"
                     fontSize="12px"
                   >
-                    {description}
+                    {`${description.substring(0, 50)}...`}
                   </DescTypography>
                 </CardContent>
                 <CardActions
-                  sx={{ position: 'absolute', bottom: 0, width: '100%' }}
+                  sx={{
+                    width: '100%',
+                    alignSelf: 'flex-end',
+                    py: 0,
+                  }}
                 >
                   <Tooltip title="기사로 이동">
-                    <IconButton aria-label="add to favorites">
+                    <IconButton
+                      aria-label="add to favorites"
+                      onClick={() => window.open(article.link, '_blank')}
+                    >
                       <IosShareIcon
                         sx={{ color: theme.palette.primary.dark }}
-                        onClick={() => window.open(article.link, '_blank')}
                       />
                     </IconButton>
                   </Tooltip>
                   <Tooltip title="링크 복사">
-                    <IconButton aria-label="share">
-                      <LinkIcon
-                        sx={{ color: globalColors.skyblue['500'] }}
-                        onClick={() => handleOpen(article.link)}
-                      />
+                    <IconButton
+                      aria-label="share"
+                      onClick={() => handleOpen(article.link)}
+                    >
+                      <LinkIcon sx={{ color: globalColors.skyblue['500'] }} />
                     </IconButton>
                   </Tooltip>
                   <Snackbar
@@ -152,7 +165,7 @@ export default function Articles() {
                       severity="success"
                       variant="filled"
                     >
-                      링크가 클립보드에 복사되었습니다!
+                      링크가 클립보드에 복사되었습니다
                     </Alert>
                   </Snackbar>
                 </CardActions>

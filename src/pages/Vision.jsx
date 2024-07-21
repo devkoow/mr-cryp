@@ -1,9 +1,9 @@
 import React from 'react';
-import Videos from '../components/Videos';
+import Information from '../components/vision/Information';
+import Videos from '../components/vision/Videos';
+import Articles from '../components/vision/Articles';
 import { Grid } from '@mui/material';
 import { Box } from '@mui/system';
-import Information from '../components/Information';
-import Articles from '../components/Articles';
 import { DescTypography } from '../defaultTheme';
 import { globalColors } from '../globalColors';
 
@@ -14,6 +14,7 @@ export default function Vision() {
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
+        marginBottom: 10,
       }}
     >
       <Grid container spacing={2} width="80%">

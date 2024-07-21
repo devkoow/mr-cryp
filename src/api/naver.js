@@ -41,7 +41,7 @@ export default class Naver {
       const response = await axios.get('/data/article.json');
       return response.data.items;
     } catch (error) {
-      console.log('네이버 목데이터 다운로드 중 에러 : ', error);
+      console.log('네이버 json 다운로드 중 에러 : ', error);
       return Promise.reject(error);
     }
   }

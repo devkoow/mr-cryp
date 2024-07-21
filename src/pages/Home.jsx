@@ -33,7 +33,7 @@ export default function Home() {
               flexDirection: 'column',
               alignItems: 'center',
               justifyContent: 'center',
-              height: '500px',
+              height: 'auto',
               backgroundColor: globalColors.skyblue['300'],
               overflow: 'hidden',
               gap: '1rem',
@@ -72,6 +72,10 @@ export default function Home() {
                   fontSize: 18,
                   lineHeight: 1.2,
                 },
+                '@media (max-width:450px)': {
+                  fontSize: 15,
+                  lineHeight: 1.2,
+                },
               }}
             >
               실시간으로 가상화폐의 시세를 확인할 수 있고
@@ -94,6 +98,10 @@ export default function Home() {
                 },
                 '@media (max-width:600px)': {
                   fontSize: 18,
+                  lineHeight: 1.2,
+                },
+                '@media (max-width:450px)': {
+                  fontSize: 15,
                   lineHeight: 1.2,
                 },
               }}
