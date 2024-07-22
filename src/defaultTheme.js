@@ -137,3 +137,11 @@ export const flexCenter = {
   display: 'flex',
   alignItems: 'center',
 };
+
+// 주문하기 모달 타이포그래피 : 모바일
+export const MobModalTypo = styled(Typography)(({ theme }) => ({
+  fontFamily: 'NEXON Lv1 Gothic OTF',
+  '@media (max-width:500px)': {
+    fontSize: '13px',
+  },
+}));

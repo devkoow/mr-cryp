@@ -109,6 +109,10 @@ export default function MarketDetail({ code }) {
             display: 'flex',
             gap: 2,
             marginRight: 2,
+
+            '@media (max-width:500px)': {
+              display: 'none',
+            },
           }}
         >
           <Box
