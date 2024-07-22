@@ -48,9 +48,16 @@ export default function MarketDetail({ code }) {
         height: 100,
         border: `dashed 5px ${theme.palette.primary.main}`,
         backgroundColor: globalColors.white,
+        boxSizing: 'border-box',
       }}
     >
-      <Box display="flex" marginLeft={0.5} gap={0.5} alignItems="flex-end">
+      <Box
+        display="flex"
+        flexWrap="wrap"
+        marginLeft={0.5}
+        gap={0.5}
+        alignItems="flex-end"
+      >
         <Typography fontSize={20} fontWeight={'bold'}>
           {marketCodeMap[data.code]}
         </Typography>
@@ -59,7 +66,12 @@ export default function MarketDetail({ code }) {
         </Typography>
       </Box>
       <Divider />
-      <Box display="flex" justifyContent={'space-between'} paddingLeft={1}>
+      <Box
+        display="flex"
+        flexWrap="wrap"
+        justifyContent={'space-between'}
+        paddingLeft={1}
+      >
         <Box
           display="flex"
           flexDirection="column"
@@ -94,14 +106,28 @@ export default function MarketDetail({ code }) {
         </Box>
         <Box
           sx={{
-            maxWidth: '100%',
             display: 'flex',
             gap: 2,
             marginRight: 2,
           }}
         >
-          <Box display="flex" flexDirection="column" justifyContent={'center'}>
-            <Box display="flex" justifyContent={'space-between'} width={200}>
+          <Box
+            display="flex"
+            flexDirection="column"
+            justifyContent={'center'}
+            flex="1 1 100%"
+          >
+            {/* 고가 */}
+            <Box
+              display="flex"
+              justifyContent={'space-between'}
+              width={200}
+              sx={{
+                '@media (max-width:1180px)': {
+                  width: '150px',
+                },
+              }}
+            >
               <Typography noWrap fontSize={12} marginTop={1}>
                 고가
               </Typography>
@@ -115,7 +141,17 @@ export default function MarketDetail({ code }) {
               </PriceTypography>
             </Box>
             <Divider />
-            <Box display="flex" justifyContent={'space-between'} width={200}>
+            {/* 저가 */}
+            <Box
+              display="flex"
+              justifyContent={'space-between'}
+              width={200}
+              sx={{
+                '@media (max-width:1180px)': {
+                  width: '150px',
+                },
+              }}
+            >
               <Typography noWrap fontSize={12} marginTop={1}>
                 저가
               </Typography>
@@ -130,8 +166,23 @@ export default function MarketDetail({ code }) {
             </Box>
             <Divider />
           </Box>
-          <Box display="flex" flexDirection="column" justifyContent={'center'}>
-            <Box display="flex" justifyContent={'space-between'} width={200}>
+          <Box
+            display="flex"
+            flexDirection="column"
+            justifyContent={'center'}
+            flex="1 1 100%"
+          >
+            {/* 52주 신고가 */}
+            <Box
+              display="flex"
+              justifyContent={'space-between'}
+              width={200}
+              sx={{
+                '@media (max-width:1180px)': {
+                  width: '150px',
+                },
+              }}
+            >
               <Typography noWrap fontSize={12} marginTop={1}>
                 52주 신고가
               </Typography>
@@ -145,7 +196,17 @@ export default function MarketDetail({ code }) {
               </PriceTypography>
             </Box>
             <Divider />
-            <Box display="flex" justifyContent={'space-between'} width={200}>
+            {/* 52주 신저가 */}
+            <Box
+              display="flex"
+              justifyContent={'space-between'}
+              width={200}
+              sx={{
+                '@media (max-width:1180px)': {
+                  width: '150px',
+                },
+              }}
+            >
               <Typography noWrap fontSize={12} marginTop={1}>
                 52주 신저가
               </Typography>
@@ -160,8 +221,23 @@ export default function MarketDetail({ code }) {
             </Box>
             <Divider />
           </Box>
-          <Box display="flex" flexDirection="column" justifyContent={'center'}>
-            <Box display="flex" justifyContent={'space-between'} width={200}>
+          <Box
+            display="flex"
+            flexDirection="column"
+            justifyContent={'center'}
+            flex="1 1 100%"
+          >
+            {/* 거래량 */}
+            <Box
+              display="flex"
+              justifyContent={'space-between'}
+              width={200}
+              sx={{
+                '@media (max-width:1180px)': {
+                  width: '150px',
+                },
+              }}
+            >
               <Typography noWrap fontSize={12} marginTop={1}>
                 거래량(24시간)
               </Typography>
@@ -170,7 +246,17 @@ export default function MarketDetail({ code }) {
               </PriceTypography>
             </Box>
             <Divider />
-            <Box display="flex" justifyContent={'space-between'} width={200}>
+            {/* 거래대금 */}
+            <Box
+              display="flex"
+              justifyContent={'space-between'}
+              width={200}
+              sx={{
+                '@media (max-width:1180px)': {
+                  width: '150px',
+                },
+              }}
+            >
               <Typography noWrap fontSize={12} marginTop={1}>
                 거래대금(24시간)
               </Typography>

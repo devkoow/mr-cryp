@@ -48,7 +48,7 @@ function VideoCard() {
   return (
     <Grid container spacing={2}>
       {videos.map((video) => (
-        <Grid item xs={12} md={6} key={video.id}>
+        <Grid item xs={12} sm={6} key={video.id}>
           <Box sx={{ width: '100%', mt: 3 }}>
             <Box
               component="img"

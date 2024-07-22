@@ -55,27 +55,67 @@ const TradeTable = memo(function TradeTable({ targetMarketCode }) {
             <TableHead>
               <TableRow>
                 <TableCell align="center">
-                  <DescTypography fontSize={20} fontWeight={700}>
+                  <DescTypography
+                    fontSize={20}
+                    fontWeight={700}
+                    sx={{
+                      '@media (max-width:900px)': {
+                        fontSize: 11,
+                      },
+                    }}
+                  >
                     코인
                   </DescTypography>
                 </TableCell>
                 <TableCell align="center">
-                  <DescTypography fontSize={20} fontWeight={700}>
+                  <DescTypography
+                    fontSize={20}
+                    fontWeight={700}
+                    sx={{
+                      '@media (max-width:900px)': {
+                        fontSize: 11,
+                      },
+                    }}
+                  >
                     체결 ID
                   </DescTypography>
                 </TableCell>
                 <TableCell align="center">
-                  <DescTypography fontSize={20} fontWeight={700}>
+                  <DescTypography
+                    fontSize={20}
+                    fontWeight={700}
+                    sx={{
+                      '@media (max-width:900px)': {
+                        fontSize: 11,
+                      },
+                    }}
+                  >
                     체결 시간
                   </DescTypography>
                 </TableCell>
                 <TableCell align="center">
-                  <DescTypography fontSize={20} fontWeight={700}>
+                  <DescTypography
+                    fontSize={20}
+                    fontWeight={700}
+                    sx={{
+                      '@media (max-width:900px)': {
+                        fontSize: 11,
+                      },
+                    }}
+                  >
                     ASK/BID
                   </DescTypography>
                 </TableCell>
                 <TableCell align="center">
-                  <DescTypography fontSize={20} fontWeight={700}>
+                  <DescTypography
+                    fontSize={20}
+                    fontWeight={700}
+                    sx={{
+                      '@media (max-width:900px)': {
+                        fontSize: 11,
+                      },
+                    }}
+                  >
                     체결 가격
                   </DescTypography>
                 </TableCell>

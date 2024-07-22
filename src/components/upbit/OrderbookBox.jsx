@@ -274,13 +274,11 @@ function OrderBookBox({ code, rate, prevPrice }) {
   }
 
   return (
-    <div>
-      <OrderBookTable
-        targetMarketCode={targetMarketCode}
-        rate={rate}
-        prevPrice={prevPrice}
-      />
-    </div>
+    <OrderBookTable
+      targetMarketCode={targetMarketCode}
+      rate={rate}
+      prevPrice={prevPrice}
+    />
   );
 }
 

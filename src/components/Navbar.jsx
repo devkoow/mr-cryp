@@ -221,7 +221,7 @@ export default function ResponsiveAppBar() {
                       cursor: 'pointer',
                       transition: 'opacity 0.3s ease',
                     },
-                    '@media (max-width:600px)': {
+                    '@media (max-width:900px)': {
                       fontSize: 18,
                       lineHeight: 1.2,
                     },

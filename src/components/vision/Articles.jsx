@@ -125,7 +125,7 @@ export default function Articles() {
                   <DescTypography
                     variant="body2"
                     color="text.secondary"
-                    fontSize="12px"
+                    fontSize="14px"
                   >
                     {`${description.substring(0, 50)}...`}
                   </DescTypography>
