@@ -1,6 +1,6 @@
 import React from 'react';
 import { Avatar, Box, Modal } from '@mui/material';
-import { NGTypography } from '../defaultTheme';
+import { NGTypo } from '../defaultTheme';
 
 export default function User({ open, handleClose }) {
   return (
@@ -43,14 +43,14 @@ export default function User({ open, handleClose }) {
             gap: 4,
           }}
         >
-          <NGTypography fontSize={24} fontWeight={'bold'}>
+          <NGTypo fontSize={24} fontWeight={'bold'}>
             {localStorage.getItem('nickname')}
-          </NGTypography>
-          <NGTypography>
+          </NGTypo>
+          <NGTypo>
             {localStorage.getItem('socialType') === 'Google'
               ? '구글 계정'
               : '카카오 계정'}
-          </NGTypography>
+          </NGTypo>
         </Box>
       </Box>
     </Modal>

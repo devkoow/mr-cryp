@@ -1,7 +1,6 @@
 import { Box, MenuItem, Select } from '@mui/material';
 import { memo } from 'react';
-import { DescriptionTypo, DescTypography } from '../../defaultTheme';
-import { globalColors } from '../../globalColors';
+import { DescriptionTypo } from '../../defaultTheme';
 
 /** 마켓 코드 셀렉터
   - Props 
@@ -21,7 +20,7 @@ function MarketCodeSelector({
   };
 
   if (isLoading) {
-    <DescTypography>마켓 코드 불러오는 중...</DescTypography>;
+    <DescriptionTypo>마켓 코드 불러오는 중...</DescriptionTypo>;
   }
 
   return (

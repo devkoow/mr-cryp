@@ -12,7 +12,7 @@ import {
 import {
   DescriptionTypo,
   NGTypo,
-  PriceTypography,
+  PriceTypo,
   StyledTableCell,
 } from '../../defaultTheme';
 import { globalColors } from '../../globalColors';
@@ -72,7 +72,7 @@ const TradeTable = memo(function TradeTable({ targetMarketCode }) {
                       </NGTypo>
                     </TableCell>
                     <TableCell align="center">
-                      <PriceTypography
+                      <PriceTypo
                         fontSize={12}
                         color={
                           data.ask_bid === 'ASK'
@@ -81,10 +81,10 @@ const TradeTable = memo(function TradeTable({ targetMarketCode }) {
                         }
                       >
                         {data.trade_volume}
-                      </PriceTypography>
+                      </PriceTypo>
                     </TableCell>
                     <TableCell align="center">
-                      <PriceTypography
+                      <PriceTypo
                         fontSize={12}
                         color={
                           data.ask_bid === 'ASK'
@@ -96,7 +96,7 @@ const TradeTable = memo(function TradeTable({ targetMarketCode }) {
                           data.trade_volume * data.trade_price
                         ).toLocaleString()}
                         원
-                      </PriceTypography>
+                      </PriceTypo>
                     </TableCell>
                   </TableRow>
                 ))

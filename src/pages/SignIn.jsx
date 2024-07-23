@@ -1,4 +1,12 @@
 import * as React from 'react';
+import { useNavigate } from 'react-router-dom';
+import { DescriptionTypo, NGTypo, LogoTypo, theme } from '../defaultTheme';
+import { globalColors } from '../globalColors';
+import { loginGoogle } from '../api/firebase';
+import ButtonKakao from '../components/ButtonKakao';
+import LOGO_BG from '../assets/images/logo_mustache.png';
+import LOGO_GOOGLE from '../assets/images/logo_google.png';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -7,28 +15,16 @@ import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
-import Typography from '@mui/material/Typography';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { loginGoogle } from '../api/firebase';
-import { useNavigate } from 'react-router-dom';
-import ButtonKakao from '../components/ButtonKakao';
-import LOGO_GOOGLE from '../assets/images/logo_google.png';
-import LOGO_BG from '../assets/images/logo_main.png';
 
 function Copyright(props) {
   return (
-    <Typography
-      variant="body2"
-      color="text.secondary"
-      align="center"
-      {...props}
-    >
+    <NGTypo variant="body2" color="text.secondary" align="center" {...props}>
       {'Copyrights All reserved © '}
       <Link color="inherit" href="https://github.com/devkoow">
         Mr.Cryp
       </Link>{' '}
       {new Date().getFullYear()}
-    </Typography>
+    </NGTypo>
   );
 }
 
@@ -69,12 +65,15 @@ export default function SignIn() {
               alignItems: 'center',
             }}
           >
-            <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
+            <Avatar sx={{ m: 1, backgroundColor: theme.palette.primary.main }}>
               <LockOutlinedIcon />
             </Avatar>
-            <Typography component="h1" variant="h5">
+            <DescriptionTypo
+              fontSize={30}
+              sx={{ color: theme.palette.primary.main, mb: 1 }}
+            >
               로그인
-            </Typography>
+            </DescriptionTypo>
             <Button
               variant="contained"
               sx={{
@@ -91,7 +90,7 @@ export default function SignIn() {
               onClick={handleLogin}
             >
               <img src={LOGO_GOOGLE} alt="구글 로고" width="20" height="20" />
-              <span>구글 로그인</span>
+              <NGTypo>구글 로그인</NGTypo>
             </Button>
             <ButtonKakao />
             <Copyright sx={{ mt: 5 }} />
@@ -104,12 +103,50 @@ export default function SignIn() {
           sm={4}
           md={7}
           sx={{
-            backgroundImage: `url(${LOGO_BG})`,
-            backgroundRepeat: 'no-repeat',
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
+            display: { xs: 'none', sm: 'block' },
+            backgroundColor: globalColors.skyblue['400'],
           }}
-        />
+        >
+          <Box
+            display={'flex'}
+            flexDirection={'column'}
+            alignItems={'center'}
+            justifyContent={'center'}
+            height={'100vh'}
+          >
+            <Box
+              component="img"
+              src={LOGO_BG}
+              width={450}
+              height={150}
+              sx={{
+                '@media (max-width: 900px)': {
+                  width: 210,
+                  height: 70,
+                },
+              }}
+            />
+            <LogoTypo
+              noWrap
+              component="a"
+              fontWeight="bold"
+              fontSize={'50px'}
+              sx={{
+                letterSpacing: '.3rem',
+                color: theme.palette.secondary.main,
+                textDecoration: 'none',
+                textShadow: globalColors.shadow_text,
+                mr: 2,
+
+                '@media (max-width: 900px)': {
+                  fontSize: 24,
+                },
+              }}
+            >
+              Mr.Cryp
+            </LogoTypo>
+          </Box>
+        </Grid>
       </Grid>
     </ThemeProvider>
   );

@@ -14,12 +14,7 @@ import {
   Typography,
 } from '@mui/material';
 import { globalColors } from '../globalColors';
-import {
-  DescriptionTypo,
-  NGTypo,
-  PriceTypography,
-  SubTitle,
-} from '../defaultTheme';
+import { DescriptionTypo, NGTypo, PriceTypo, SubTitle } from '../defaultTheme';
 
 /** 실시간 오더북 테이블 UI */
 const OrderTable = memo(function OrderTable({ targetMarketCode }) {
@@ -95,14 +90,14 @@ const OrderTable = memo(function OrderTable({ targetMarketCode }) {
                 .map((element, index) => (
                   <TableRow key={`ask_${index}`}>
                     <TableCell sx={{ backgroundColor: 'skyblue' }}>
-                      <PriceTypography fontSize={12} align="right">
+                      <PriceTypo fontSize={12} align="right">
                         {element.ask_size}
-                      </PriceTypography>
+                      </PriceTypo>
                     </TableCell>
                     <TableCell>
-                      <PriceTypography align="center" fontSize={12}>
+                      <PriceTypo align="center" fontSize={12}>
                         {element.ask_price.toLocaleString()}
-                      </PriceTypography>
+                      </PriceTypo>
                     </TableCell>
                     <TableCell>-</TableCell>
                   </TableRow>
@@ -111,16 +106,14 @@ const OrderTable = memo(function OrderTable({ targetMarketCode }) {
                 <TableRow key={`bid_${index}`}>
                   <TableCell>-</TableCell>
                   <TableCell>
-                    <PriceTypography align="center" fontSize={12}>
+                    <PriceTypo align="center" fontSize={12}>
                       {element.bid_price.toLocaleString()}
-                    </PriceTypography>
+                    </PriceTypo>
                   </TableCell>
                   <TableCell
                     sx={{ backgroundColor: globalColors.hotpink['500'] }}
                   >
-                    <PriceTypography fontSize={12}>
-                      {element.bid_size}
-                    </PriceTypography>
+                    <PriceTypo fontSize={12}>{element.bid_size}</PriceTypo>
                   </TableCell>
                 </TableRow>
               ))}
@@ -137,7 +130,9 @@ const OrderTable = memo(function OrderTable({ targetMarketCode }) {
 // 실시간 오더북
 function OrderBook() {
   const { isLoading, marketCodes } = useFetchMarketCode();
-  const [curMarketCode, setCurMarketCode] = useState('KRW-BTC');
+  const [curMarketCode, setCurMarketCode] = useState(
+    marketCodes && marketCodes.length > 0 ? marketCodes[0].market : ''
+  );
   const [targetMarketCode, setTargetMarketCode] = useState([
     {
       market: 'KRW-BTC',

@@ -13,7 +13,7 @@ import {
   Paper,
   Box,
 } from '@mui/material';
-import { DescriptionTypo, PriceTypography, SubTitle } from '../defaultTheme';
+import { DescriptionTypo, PriceTypo, SubTitle } from '../defaultTheme';
 
 const headStyle = {
   fontSize: 20,
@@ -81,9 +81,9 @@ const TradeTable = memo(function TradeTable({ targetMarketCode }) {
                   </TableCell>
                   <TableCell align="center">{ele.ask_bid}</TableCell>
                   <TableCell align="center">
-                    <PriceTypography fontSize={11}>
+                    <PriceTypo fontSize={11}>
                       {ele.prev_closing_price.toLocaleString()}
-                    </PriceTypography>
+                    </PriceTypo>
                   </TableCell>
                 </TableRow>
               ))}
@@ -99,7 +99,9 @@ const TradeTable = memo(function TradeTable({ targetMarketCode }) {
 
 function TradeHistory() {
   const { isLoading, marketCodes } = useFetchMarketCode();
-  const [curMarketCode, setCurMarketCode] = useState('KRW-BTC');
+  const [curMarketCode, setCurMarketCode] = useState(
+    marketCodes && marketCodes.length > 0 ? marketCodes[0].market : ''
+  );
   const [targetMarketCode, setTargetMarketCode] = useState([
     {
       market: 'KRW-BTC',
