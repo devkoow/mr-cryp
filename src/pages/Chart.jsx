@@ -6,7 +6,7 @@ import TradeHistoryBox from '../components/upbit/TradeHistoryBox';
 import ChartBox from '../components/upbit/ChartBox';
 import OrderModal from '../components/upbit/OrderModal';
 import { Box, Grid, Button } from '@mui/material';
-import { DescTypography, theme } from '../defaultTheme';
+import { DescriptionTypo, theme } from '../defaultTheme';
 
 export default function Chart() {
   const [code, setCode] = useState('KRW-BTC');
@@ -23,15 +23,20 @@ export default function Chart() {
         container
         spacing={0}
         sx={{
-          width: 1200,
-          height: 900,
+          width: '100%',
+          maxWidth: 1200,
+          height: '1005',
           border: '1px',
           boxShadow: 3,
-          marginBottom: 10,
+          mb: 10,
+
+          '@media (max-width:450px)': {
+            mb: 0,
+          },
         }}
         margin="auto"
       >
-        <Grid item xs={3}>
+        <Grid item xs={12} md={3}>
           <MarketListBox
             setCode={setCode}
             setRate={setRate}
@@ -39,7 +44,7 @@ export default function Chart() {
             setCurrPrice={setCurrPrice}
           />
         </Grid>
-        <Grid item xs={9}>
+        <Grid item xs={12} md={9}>
           <MarketDetail code={code} />
           <Box sx={{ position: 'relative' }}>
             <ChartBox code={code} />
@@ -52,14 +57,14 @@ export default function Chart() {
               }}
               onClick={handleOpen}
             >
-              <DescTypography>주문하기</DescTypography>
+              <DescriptionTypo>주문하기</DescriptionTypo>
             </Button>
           </Box>
           <Grid container spacing={0} padding="0">
-            <Grid item xs={7}>
+            <Grid item xs={12} md={7}>
               <TradeHistoryBox code={code} />
             </Grid>
-            <Grid item xs={5}>
+            <Grid item xs={12} md={5}>
               <OrderbookBox code={code} rate={rate} prevPrice={prevPrice} />
             </Grid>
           </Grid>

@@ -107,13 +107,12 @@ export default function ResponsiveAppBar() {
             fontWeight="bold"
             fontSize={'50px'}
             sx={{
-              mr: 2,
               display: { xs: 'none', md: 'flex' },
               letterSpacing: '.3rem',
               color: 'inherit',
               textDecoration: 'none',
               textShadow: globalColors.shadow_text,
-              marginY: 2,
+              mr: 2,
             }}
           >
             Mr.Cryp
@@ -166,13 +165,13 @@ export default function ResponsiveAppBar() {
             component="a"
             href="#app-bar-with-responsive-menu"
             sx={{
-              mr: 2,
               display: { xs: 'flex', md: 'none' },
               flexGrow: 1,
               letterSpacing: '.3rem',
               color: 'inherit',
               textShadow: globalColors.shadow_text,
               textDecoration: 'none',
+              mr: 2,
             }}
           >
             Mr.Cryp
@@ -222,10 +221,11 @@ export default function ResponsiveAppBar() {
                       cursor: 'pointer',
                       transition: 'opacity 0.3s ease',
                     },
-                    '@media (max-width:600px)': {
+                    '@media (max-width:900px)': {
                       fontSize: 18,
                       lineHeight: 1.2,
                     },
+                    my: 4,
                   }}
                 >
                   내 프로필
@@ -297,6 +297,9 @@ export default function ResponsiveAppBar() {
                     },
                     '@media (max-width:900px)': {
                       fontSize: '16px',
+                    },
+                    '@media (max-width:450px)': {
+                      fontSize: '14px',
                     },
                   }}
                 >

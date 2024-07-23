@@ -3,12 +3,13 @@ import { globalColors } from './globalColors';
 import { styled } from '@mui/system';
 
 /** 컬러 팔레트, 기본 컴포넌트 세팅
- - 배경 : skyblue,
- - primary : hotpink / secondary : vanilla
+ - 프로젝트 전체 배경색 : skyblue
+ - primary : hotpink 
+ - secondary : vanilla
         - light : 300
         - main : 400
         - dark : 500
- - contrastText: primary와 secondary의 서로 반대 컬러['200']
+ - contrastText: primary와 secondary의 서로 반대 컬러['300']
  */
 export let theme = createTheme({
   palette: {
@@ -94,17 +95,70 @@ export let theme = createTheme({
   },
 });
 
+// Home 안내 타이포
+export const InforTypo = styled(Typography)(({ theme }) => ({
+  fontSize: 48,
+  fontWeight: 'bold',
+  color: globalColors.white,
+  fontFamily: 'CWDangamAsac-Bold',
+  textShadow: globalColors.shadow_text,
+  textAlign: 'center',
+  '@media (max-width:1200px)': {
+    fontSize: 32,
+    lineHeight: 1.2,
+  },
+  '@media (max-width:900px)': {
+    fontSize: 24,
+    lineHeight: 1.2,
+  },
+  '@media (max-width:600px)': {
+    fontSize: 18,
+    lineHeight: 1.2,
+  },
+  '@media (max-width:450px)': {
+    fontSize: 15,
+    lineHeight: 1.2,
+  },
+}));
+
+// 공통 서브 타이틀
+export const SubTitle = styled(Typography)(({ theme }) => ({
+  fontSize: 32,
+  fontFamily: 'NEXON Lv1 Gothic OTF',
+  fontWeight: 'bold',
+  color: globalColors.white,
+  textShadow: globalColors.shadow_text,
+  marginBottom: 2,
+  '@media (max-width:900px)': {
+    fontSize: 24,
+    lineHeight: 1.2,
+  },
+}));
+
+// 공용 디스크립션
+export const DescriptionTypo = styled(Typography)(() => ({
+  fontFamily: 'NEXON Lv1 Gothic OTF',
+  color: globalColors.white,
+  textShadow: globalColors.shadow_text,
+  fontWeight: 'bold',
+}));
+
+// 공용 넥슨 고딕 타이포
+export const NGTypo = styled(Typography)(() => ({
+  fontFamily: 'NEXON Lv1 Gothic OTF',
+}));
+
+// 공용 금액 타이포그래피
+export const PriceTypography = styled(Typography)(() => ({
+  fontFamily: 'ONE-Mobile-Title',
+}));
+
 // 스틱키 헤드 셀
 export const StyledTableCell = styled(TableCell)(({ theme }) => ({
   backgroundColor: theme.palette.primary.main,
   position: 'sticky',
   top: 0,
   zIndex: 100,
-}));
-
-// 금액 타이포그래피
-export const PriceTypography = styled(Typography)(() => ({
-  fontFamily: 'ONE-Mobile-Title',
 }));
 
 // 네비게이션바 타이포그래피
@@ -120,7 +174,7 @@ export const LogoTypography = styled(Typography)(() => ({
   fontStyle: 'italic',
 }));
 
-// 커스텀 타이포그래피
+// 커스텀 타이포그래피 -- !! 삭제 예정
 export const NGTypography = styled(Typography)(() => ({
   fontFamily: 'NEXON Lv1 Gothic OTF',
 }));
@@ -137,3 +191,11 @@ export const flexCenter = {
   display: 'flex',
   alignItems: 'center',
 };
+
+// 주문하기 모달 타이포그래피 : 모바일
+export const MobModalTypo = styled(Typography)(({ theme }) => ({
+  fontFamily: 'NEXON Lv1 Gothic OTF',
+  '@media (max-width:500px)': {
+    fontSize: '13px',
+  },
+}));

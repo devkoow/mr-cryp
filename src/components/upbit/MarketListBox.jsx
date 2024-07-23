@@ -1,7 +1,8 @@
 import { memo, useEffect, useState } from 'react';
 import { useFetchMarketCode, useWsTicker } from 'use-upbit-api';
 import {
-  DescTypography,
+  DescriptionTypo,
+  NGTypo,
   PriceTypography,
   StyledTableCell,
 } from '../../defaultTheme';
@@ -12,7 +13,6 @@ import {
   TableCell,
   TableHead,
   TableRow,
-  Typography,
   Box,
 } from '@mui/material';
 import { globalColors } from '../../globalColors';
@@ -47,24 +47,16 @@ const RealTimePriceTable = memo(function RealTimePriceTable({
         <TableHead>
           <TableRow>
             <StyledTableCell align="center">
-              <DescTypography fontSize={12} fontWeight={700}>
-                코인
-              </DescTypography>
+              <DescriptionTypo fontSize={12}>코인</DescriptionTypo>
             </StyledTableCell>
             <StyledTableCell align="center">
-              <DescTypography fontSize={12} fontWeight={700}>
-                현재가
-              </DescTypography>
+              <DescriptionTypo fontSize={12}>현재가</DescriptionTypo>
             </StyledTableCell>
             <StyledTableCell align="center">
-              <DescTypography fontSize={12} fontWeight={700}>
-                전일대비
-              </DescTypography>
+              <DescriptionTypo fontSize={12}>전일대비</DescriptionTypo>
             </StyledTableCell>
             <StyledTableCell align="center">
-              <DescTypography fontSize={12} fontWeight={700}>
-                거래대금
-              </DescTypography>
+              <DescriptionTypo fontSize={12}>거래대금</DescriptionTypo>
             </StyledTableCell>
           </TableRow>
         </TableHead>
@@ -88,16 +80,16 @@ const RealTimePriceTable = memo(function RealTimePriceTable({
               }}
             >
               <TableCell>
-                <Typography
+                <NGTypo
                   fontSize={11}
                   fontWeight={'bold'}
                   sx={{ maxWidth: '5em', overflowWrap: 'break-word' }}
                 >
                   {marketCodeMap[data.code]}
-                </Typography>
-                <Typography fontSize={10} color="#8c8b88">
+                </NGTypo>
+                <NGTypo fontSize={10} color={globalColors.market_code}>
                   {data.code}
-                </Typography>
+                </NGTypo>
               </TableCell>
               <TableCell align="right">
                 <PriceTypography
@@ -136,12 +128,14 @@ const RealTimePriceTable = memo(function RealTimePriceTable({
                 </Box>
               </TableCell>
               <TableCell>
-                <PriceTypography fontSize={10}>
-                  {Math.round(
-                    parseInt(data.acc_trade_price_24h) / 1000000
-                  ).toLocaleString()}
-                  백만
-                </PriceTypography>
+                <Box display={'flex'}>
+                  <PriceTypography fontSize={10}>
+                    {Math.round(
+                      parseInt(data.acc_trade_price_24h) / 1000000
+                    ).toLocaleString()}
+                  </PriceTypography>
+                  <NGTypo fontSize={10}>백만</NGTypo>
+                </Box>
               </TableCell>
             </TableRow>
           ))}
@@ -187,7 +181,7 @@ function MarketListBox({ setCode, setRate, setPrevPrice, setCurrPrice }) {
           setCurrPrice={setCurrPrice}
         />
       ) : (
-        <Typography>실시간 가격 로딩중...</Typography>
+        <NGTypo>실시간 가격 로딩중...</NGTypo>
       )}
     </>
   );

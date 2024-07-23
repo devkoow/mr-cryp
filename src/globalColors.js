@@ -9,6 +9,7 @@ export const globalColors = {
   tooltip_bgColor: 'rgba(255,255,255, 0.8)',
   sma_50: '#03fc73',
   sma_15: '#de0417',
+  market_code: '#8c8b88',
 
   white: '#ffffff',
   white_retro: '#e1e3e1',

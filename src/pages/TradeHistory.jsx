@@ -13,8 +13,14 @@ import {
   Paper,
   Box,
 } from '@mui/material';
-import { DescTypography, PriceTypography } from '../defaultTheme';
-import { globalColors } from '../globalColors';
+import { DescriptionTypo, PriceTypography, SubTitle } from '../defaultTheme';
+
+const headStyle = {
+  fontSize: 20,
+  '@media (max-width:900px)': {
+    fontSize: 11,
+  },
+};
 
 /** 실시간 거래내역 테이블 UI */
 const TradeTable = memo(function TradeTable({ targetMarketCode }) {
@@ -33,17 +39,11 @@ const TradeTable = memo(function TradeTable({ targetMarketCode }) {
   return (
     <>
       <Box display="flex" alignItems="center" gap={4}>
-        <DescTypography
-          sx={{
-            color: globalColors.white,
-            textShadow: '1px 1px 2px black',
-            fontWeight: 'bold',
-          }}
-        >
+        <DescriptionTypo>
           연결 상태 : {isConnected ? '🟢' : '🔴'}
-        </DescTypography>
+        </DescriptionTypo>
         <Button onClick={connectButtonHandler}>
-          <DescTypography sx={{ fontWeight: 'bold' }}>연결종료</DescTypography>
+          <DescriptionTypo>연결종료</DescriptionTypo>
         </Button>
       </Box>
       <TableContainer
@@ -55,41 +55,31 @@ const TradeTable = memo(function TradeTable({ targetMarketCode }) {
             <TableHead>
               <TableRow>
                 <TableCell align="center">
-                  <DescTypography fontSize={20} fontWeight={700}>
-                    코인
-                  </DescTypography>
+                  <DescriptionTypo sx={headStyle}>코인</DescriptionTypo>
                 </TableCell>
                 <TableCell align="center">
-                  <DescTypography fontSize={20} fontWeight={700}>
-                    체결 ID
-                  </DescTypography>
+                  <DescriptionTypo sx={headStyle}>체결 ID</DescriptionTypo>
                 </TableCell>
                 <TableCell align="center">
-                  <DescTypography fontSize={20} fontWeight={700}>
-                    체결 시간
-                  </DescTypography>
+                  <DescriptionTypo sx={headStyle}>체결 시간</DescriptionTypo>
                 </TableCell>
                 <TableCell align="center">
-                  <DescTypography fontSize={20} fontWeight={700}>
-                    ASK/BID
-                  </DescTypography>
+                  <DescriptionTypo sx={headStyle}>ASK/BID</DescriptionTypo>
                 </TableCell>
                 <TableCell align="center">
-                  <DescTypography fontSize={20} fontWeight={700}>
-                    체결 가격
-                  </DescTypography>
+                  <DescriptionTypo sx={headStyle}>체결 가격</DescriptionTypo>
                 </TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
               {[...socketData].reverse().map((ele, index) => (
                 <TableRow key={index}>
-                  <TableCell align="center">{ele.code} </TableCell>
-                  <TableCell align="center">{ele.sequential_id} </TableCell>
+                  <TableCell align="center">{ele.code}</TableCell>
+                  <TableCell align="center">{ele.sequential_id}</TableCell>
                   <TableCell align="center">
                     {ele.trade_date} {ele.trade_time}
                   </TableCell>
-                  <TableCell align="center">{ele.ask_bid} </TableCell>
+                  <TableCell align="center">{ele.ask_bid}</TableCell>
                   <TableCell align="center">
                     <PriceTypography fontSize={11}>
                       {ele.prev_closing_price.toLocaleString()}
@@ -135,16 +125,7 @@ function TradeHistory() {
       gap={1}
       sx={{ marginBottom: 10 }}
     >
-      <DescTypography
-        variant="h5"
-        sx={{
-          color: globalColors.white,
-          textShadow: '1px 1px 2px black',
-          fontWeight: 'bold',
-        }}
-      >
-        실시간 거래내역
-      </DescTypography>
+      <SubTitle>실시간 거래내역</SubTitle>
       <MarketCodeSelector
         curMarketCode={curMarketCode}
         setCurMarketCode={setCurMarketCode}

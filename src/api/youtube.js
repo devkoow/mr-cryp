@@ -38,7 +38,7 @@ export default class Youtube {
       const items = response.data.items;
       return items.map((item) => ({ ...item, id: item.id.videoId }));
     } catch (error) {
-      console.log('유튜브 목데이터 다운로드 중 에러 : ', error);
+      console.log('유튜브 json 다운로드 중 에러 : ', error);
       return Promise.reject(error);
     }
   }

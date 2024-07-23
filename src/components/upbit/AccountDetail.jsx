@@ -6,7 +6,7 @@ import {
   AccordionDetails,
 } from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import { theme, DescTypography, NGTypography } from '../../defaultTheme';
+import { theme, NGTypo } from '../../defaultTheme';
 import { globalColors } from '../../globalColors';
 
 export default function AccountDetail({ balance }) {
@@ -31,7 +31,7 @@ export default function AccountDetail({ balance }) {
                 key={item.currency}
                 sx={{
                   width: '60%',
-                  '&:hover': { backgroundColor: globalColors.white['500'] },
+                  '&:hover': { backgroundColor: globalColors.white_retro },
                 }}
               >
                 <AccordionSummary
@@ -40,15 +40,13 @@ export default function AccountDetail({ balance }) {
                   id="panel1-header"
                 >
                   <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-                    <DescTypography sx={{ color: globalColors.black['400'] }}>
-                      원화
-                    </DescTypography>
-                    <NGTypography
+                    <NGTypo fontWeight={'bold'}>원화</NGTypo>
+                    <NGTypo
                       fontWeight={'bold'}
-                      color={theme.palette.primary.light}
+                      color={theme.palette.primary.main}
                     >
                       {item.currency}
-                    </NGTypography>
+                    </NGTypo>
                   </Box>
                 </AccordionSummary>
                 <AccordionDetails>
@@ -59,23 +57,23 @@ export default function AccountDetail({ balance }) {
                     }}
                   >
                     <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-                      <NGTypography>보유비중</NGTypography>
-                      <NGTypography fontWeight={'bold'}>
+                      <NGTypo>보유비중</NGTypo>
+                      <NGTypo fontWeight={'bold'}>
                         {(
                           (parseFloat(item.balance) / totalBalance) *
                           100
                         ).toFixed(2)}
                         %
-                      </NGTypography>
+                      </NGTypo>
                     </Box>
                     <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-                      <NGTypography>보유수량(평가금액)</NGTypography>
-                      <NGTypography fontWeight={'bold'}>
+                      <NGTypo>보유수량(평가금액)</NGTypo>
+                      <NGTypo fontWeight={'bold'}>
                         {parseFloat(
                           parseFloat(item.balance).toFixed(4)
                         ).toLocaleString()}{' '}
                         KRW
-                      </NGTypography>
+                      </NGTypo>
                     </Box>
                   </Box>
                 </AccordionDetails>
@@ -87,7 +85,7 @@ export default function AccountDetail({ balance }) {
                 key={item.currency}
                 sx={{
                   width: '60%',
-                  '&:hover': { backgroundColor: globalColors.white['500'] },
+                  '&:hover': { backgroundColor: globalColors.white_retro },
                 }}
               >
                 <AccordionSummary
@@ -97,21 +95,17 @@ export default function AccountDetail({ balance }) {
                 >
                   <Box>
                     {item.currency === 'ETH' && (
-                      <DescTypography sx={{ color: globalColors.black['400'] }}>
-                        이더리움
-                      </DescTypography>
+                      <NGTypo fontWeight={'bold'}>이더리움</NGTypo>
                     )}
                     {item.currency === 'XRP' && (
-                      <DescTypography sx={{ color: globalColors.black['400'] }}>
-                        리플
-                      </DescTypography>
+                      <NGTypo fontWeight={'bold'}>리플</NGTypo>
                     )}
-                    <NGTypography
+                    <NGTypo
                       fontWeight={'bold'}
                       color={theme.palette.primary.light}
                     >
                       {item.currency}
-                    </NGTypography>
+                    </NGTypo>
                   </Box>
                 </AccordionSummary>
                 <AccordionDetails>
@@ -122,27 +116,27 @@ export default function AccountDetail({ balance }) {
                     }}
                   >
                     <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-                      <NGTypography>보유비중</NGTypography>
-                      <NGTypography fontWeight={'bold'}>
+                      <NGTypo>보유비중</NGTypo>
+                      <NGTypo fontWeight={'bold'}>
                         {(
                           ((parseFloat(item.avg_buy_price) * item.balance) /
                             totalBalance) *
                           100
                         ).toFixed(2)}
                         %
-                      </NGTypography>
+                      </NGTypo>
                     </Box>
                     <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-                      <NGTypography>보유수량(평가금액)</NGTypography>
-                      <NGTypography fontWeight={'bold'}>
+                      <NGTypo>보유수량(평가금액)</NGTypo>
+                      <NGTypo fontWeight={'bold'}>
                         {item.balance} {item.currency}
-                      </NGTypography>
-                      <NGTypography fontWeight={'bold'}>
+                      </NGTypo>
+                      <NGTypo fontWeight={'bold'}>
                         {parseFloat(
                           parseFloat(item.avg_buy_price) * item.balance
                         ).toLocaleString()}{' '}
                         KRW
-                      </NGTypography>
+                      </NGTypo>
                     </Box>
                   </Box>
                 </AccordionDetails>
