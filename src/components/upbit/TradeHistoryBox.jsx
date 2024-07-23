@@ -7,11 +7,11 @@ import {
   TableCell,
   TableHead,
   TableRow,
-  Typography,
   Box,
 } from '@mui/material';
 import {
-  DescTypography,
+  DescriptionTypo,
+  NGTypo,
   PriceTypography,
   StyledTableCell,
 } from '../../defaultTheme';
@@ -44,24 +44,16 @@ const TradeTable = memo(function TradeTable({ targetMarketCode }) {
           <TableHead>
             <TableRow>
               <StyledTableCell align="center">
-                <DescTypography fontSize={12} fontWeight={700}>
-                  체결 시간
-                </DescTypography>
+                <DescriptionTypo fontSize={12}>체결 시간</DescriptionTypo>
               </StyledTableCell>
               <StyledTableCell align="center">
-                <DescTypography fontSize={12} fontWeight={700}>
-                  체결 가격
-                </DescTypography>
+                <DescriptionTypo fontSize={12}>체결 가격</DescriptionTypo>
               </StyledTableCell>
               <StyledTableCell align="center">
-                <DescTypography fontSize={12} fontWeight={700}>
-                  체결량
-                </DescTypography>
+                <DescriptionTypo fontSize={12}>체결량</DescriptionTypo>
               </StyledTableCell>
               <StyledTableCell align="center">
-                <DescTypography fontSize={12} fontWeight={700}>
-                  체결금액
-                </DescTypography>
+                <DescriptionTypo fontSize={12}>체결금액</DescriptionTypo>
               </StyledTableCell>
             </TableRow>
           </TableHead>
@@ -70,10 +62,14 @@ const TradeTable = memo(function TradeTable({ targetMarketCode }) {
               ? [...socketData].reverse().map((data, index) => (
                   <TableRow key={index}>
                     <TableCell align="center">
-                      {timestampToTime(data.trade_timestamp)}
+                      <NGTypo fontSize={12}>
+                        {timestampToTime(data.trade_timestamp)}
+                      </NGTypo>
                     </TableCell>
                     <TableCell align="center">
-                      {Number(data.trade_price).toLocaleString()}원
+                      <NGTypo fontSize={12}>
+                        {Number(data.trade_price).toLocaleString()}원
+                      </NGTypo>
                     </TableCell>
                     <TableCell align="center">
                       <PriceTypography
@@ -143,7 +139,7 @@ function TradeHistoryBox({ code }) {
   }, []);
 
   if (isLoading) {
-    return <Typography>실시간 거래 내역 로딩중...</Typography>;
+    return <NGTypo>실시간 거래 내역 로딩중...</NGTypo>;
   }
 
   return (

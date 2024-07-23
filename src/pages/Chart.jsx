@@ -6,7 +6,7 @@ import TradeHistoryBox from '../components/upbit/TradeHistoryBox';
 import ChartBox from '../components/upbit/ChartBox';
 import OrderModal from '../components/upbit/OrderModal';
 import { Box, Grid, Button } from '@mui/material';
-import { DescTypography, theme } from '../defaultTheme';
+import { DescriptionTypo, theme } from '../defaultTheme';
 
 export default function Chart() {
   const [code, setCode] = useState('KRW-BTC');
@@ -57,7 +57,7 @@ export default function Chart() {
               }}
               onClick={handleOpen}
             >
-              <DescTypography>주문하기</DescTypography>
+              <DescriptionTypo>주문하기</DescriptionTypo>
             </Button>
           </Box>
           <Grid container spacing={0} padding="0">

@@ -15,8 +15,16 @@ import {
 import LinkIcon from '@mui/icons-material/Link';
 import IosShareIcon from '@mui/icons-material/IosShare';
 import ArticleRoundedIcon from '@mui/icons-material/ArticleRounded';
-import { DescTypography, theme } from '../../defaultTheme';
+import { DescriptionTypo, NGTypo, SubTitle, theme } from '../../defaultTheme';
 import { globalColors } from '../../globalColors';
+
+const cardStyle = {
+  display: 'flex',
+  flexDirection: 'column',
+  height: '100%',
+  mt: 3,
+  backgroundColor: globalColors.vanilla['200'],
+};
 
 export default function Articles() {
   const [open, setOpen] = useState(false);
@@ -60,26 +68,8 @@ export default function Articles() {
 
   return (
     <div>
-      <DescTypography
-        sx={{
-          color: globalColors.white,
-          textShadow: globalColors.shadow_text,
-          fontWeight: 'bold',
-          fontSize: '2rem',
-        }}
-      >
-        TODAY NEWS
-      </DescTypography>
-      <DescTypography
-        sx={{
-          color: globalColors.white,
-          textShadow: globalColors.shadow_text,
-          fontWeight: 'bold',
-          fontSize: '16px',
-        }}
-      >
-        오늘은 어떤 뉴스가 올라왔을까요?
-      </DescTypography>
+      <SubTitle>TODAY NEWS</SubTitle>
+      <DescriptionTypo>오늘은 어떤 뉴스가 올라왔을까요?</DescriptionTypo>
       <Grid container spacing={2}>
         {articles.map((article) => {
           const title = article.title
@@ -90,30 +80,10 @@ export default function Articles() {
             .replace(/&quot;/g, '');
           return (
             <Grid item xs={12} sm={6} key={article.link}>
-              <Card
-                key={article.link}
-                sx={{
-                  display: 'flex',
-                  flexDirection: 'column',
-                  height: '100%',
-                  mt: 3,
-                  backgroundColor: globalColors.vanilla['200'],
-                }}
-              >
+              <Card key={article.link} sx={cardStyle}>
                 <CardHeader
                   avatar={<ArticleRoundedIcon sx={{ fontSize: 30 }} />}
-                  title={
-                    <DescTypography
-                      sx={{
-                        color: globalColors.black,
-                        textShadow: globalColors.shadow_text,
-                        fontWeight: 'bold',
-                        fontSize: '18px',
-                      }}
-                    >
-                      {title}
-                    </DescTypography>
-                  }
+                  title={<NGTypo fontWeight={'bold'}>{title}</NGTypo>}
                 />
                 <CardContent
                   sx={{
@@ -122,13 +92,7 @@ export default function Articles() {
                     flexGrow: 1,
                   }}
                 >
-                  <DescTypography
-                    variant="body2"
-                    color="text.secondary"
-                    fontSize="14px"
-                  >
-                    {`${description.substring(0, 50)}...`}
-                  </DescTypography>
+                  <NGTypo>{`${description.substring(0, 50)}...`}</NGTypo>
                 </CardContent>
                 <CardActions
                   sx={{

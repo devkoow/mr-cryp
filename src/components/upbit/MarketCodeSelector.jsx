@@ -1,6 +1,6 @@
 import { Box, MenuItem, Select } from '@mui/material';
 import { memo } from 'react';
-import { DescTypography } from '../../defaultTheme';
+import { DescriptionTypo, DescTypography } from '../../defaultTheme';
 import { globalColors } from '../../globalColors';
 
 /** 마켓 코드 셀렉터
@@ -31,15 +31,7 @@ function MarketCodeSelector({
       alignItems="center"
       justifyContent="space-between"
     >
-      <DescTypography
-        sx={{
-          color: globalColors.white,
-          textShadow: '1px 1px 2px black',
-          fontWeight: 'bold',
-        }}
-      >
-        마켓 코드
-      </DescTypography>
+      <DescriptionTypo sx={{ mb: 1 }}>마켓 코드</DescriptionTypo>
       <Select name="marketcode" onChange={handleMarket} value={curMarketCode}>
         {marketCodes
           ? marketCodes.map((code) => (

@@ -8,14 +8,27 @@ import {
   TableContainer,
   TableHead,
   TableRow,
-  Typography,
 } from '@mui/material';
 import {
   StyledTableCell,
   PriceTypography,
-  DescTypography,
+  DescriptionTypo,
+  NGTypo,
 } from '../../defaultTheme';
 import { globalColors } from '../../globalColors';
+
+const boxStyle = {
+  height: '11px',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+};
+
+const cellStyle = {
+  padding: 0.7,
+  width: '33%',
+  align: 'center',
+};
 
 const OrderBookTable = memo(function OrderTable({
   targetMarketCode,
@@ -78,54 +91,25 @@ const OrderBookTable = memo(function OrderTable({
           <Table display="flex" stickyHeader aria-label="sticky table">
             <TableHead>
               <TableRow>
-                <StyledTableCell
-                  sx={{ padding: 0.7, width: '33%' }}
-                  align="center"
-                >
-                  <Box
-                    height="11px"
-                    display="flex"
-                    alignItems="center"
-                    justifyContent="center"
-                  >
-                    <DescTypography fontSize={12} fontWeight={700}>
-                      매도 물량
-                    </DescTypography>
+                <StyledTableCell sx={cellStyle}>
+                  <Box sx={boxStyle}>
+                    <DescriptionTypo fontSize={12}>매도 물량</DescriptionTypo>
                   </Box>
                 </StyledTableCell>
-                <StyledTableCell
-                  sx={{ padding: 0.7, width: '33%' }}
-                  align="center"
-                >
-                  <Box
-                    height="11px"
-                    display="flex"
-                    alignItems="center"
-                    justifyContent="center"
-                  >
-                    <DescTypography fontSize={12} fontWeight={700}>
-                      가격
-                    </DescTypography>
+                <StyledTableCell sx={cellStyle}>
+                  <Box sx={boxStyle}>
+                    <DescriptionTypo fontSize={12}>가격</DescriptionTypo>
                   </Box>
                 </StyledTableCell>
-                <StyledTableCell
-                  sx={{ padding: 0.7, width: '33%' }}
-                  align="center"
-                >
-                  <Box
-                    height="11px"
-                    display="flex"
-                    alignItems="center"
-                    justifyContent="center"
-                  >
-                    <DescTypography fontSize={12} fontWeight={700}>
-                      매수 물량
-                    </DescTypography>
+                <StyledTableCell sx={cellStyle}>
+                  <Box sx={boxStyle}>
+                    <DescriptionTypo fontSize={12}>매수 물량</DescriptionTypo>
                   </Box>
                 </StyledTableCell>
               </TableRow>
             </TableHead>
             <TableBody>
+              {/* 매도 물량 */}
               {[...socketData.orderbook_units]
                 .reverse()
                 .map((element, index) => (
@@ -185,7 +169,7 @@ const OrderBookTable = memo(function OrderTable({
                     <TableCell sx={{ padding: 1 }}></TableCell>
                   </TableRow>
                 ))}
-
+              {/* 매수 물량 */}
               {[...socketData.orderbook_units].map((element, index) => (
                 <TableRow key={`bid_${index}`}>
                   <TableCell sx={{ padding: 1 }}></TableCell>
@@ -270,7 +254,7 @@ function OrderBookBox({ code, rate, prevPrice }) {
   }, [code, marketCodes]);
 
   if (isLoading) {
-    return <Typography>실시간 오더북 로딩중...</Typography>;
+    return <NGTypo>실시간 오더북 로딩중...</NGTypo>;
   }
 
   return (

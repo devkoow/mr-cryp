@@ -4,8 +4,7 @@ import Videos from '../components/vision/Videos';
 import Articles from '../components/vision/Articles';
 import { Grid } from '@mui/material';
 import { Box } from '@mui/system';
-import { DescTypography } from '../defaultTheme';
-import { globalColors } from '../globalColors';
+import { DescriptionTypo, SubTitle } from '../defaultTheme';
 
 export default function Vision() {
   return (
@@ -19,26 +18,10 @@ export default function Vision() {
     >
       <Grid container spacing={2} width="80%">
         <Grid item xs={12} md={12}>
-          <DescTypography
-            sx={{
-              color: globalColors.white,
-              textShadow: '1px 1px 2px black',
-              fontWeight: 'bold',
-              fontSize: '2rem',
-            }}
-          >
-            가상자산 관련 정보
-          </DescTypography>
-          <DescTypography
-            sx={{
-              color: globalColors.white,
-              textShadow: '1px 1px 2px black',
-              fontWeight: 'bold',
-              fontSize: '14px',
-            }}
-          >
+          <SubTitle>가상자산 관련 정보</SubTitle>
+          <DescriptionTypo>
             코인에 대한 정보와 크립토 서비스 이용 방법을 확인하세요 😊
-          </DescTypography>
+          </DescriptionTypo>
           <Information />
         </Grid>
         <Grid item xs={12} md={6}>

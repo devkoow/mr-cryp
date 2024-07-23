@@ -14,7 +14,12 @@ import {
   Typography,
 } from '@mui/material';
 import { globalColors } from '../globalColors';
-import { DescTypography, NGTypography, PriceTypography } from '../defaultTheme';
+import {
+  DescriptionTypo,
+  NGTypo,
+  PriceTypography,
+  SubTitle,
+} from '../defaultTheme';
 
 /** 실시간 오더북 테이블 UI */
 const OrderTable = memo(function OrderTable({ targetMarketCode }) {
@@ -41,17 +46,11 @@ const OrderTable = memo(function OrderTable({ targetMarketCode }) {
   return (
     <>
       <Box display="flex" alignItems="center" gap={4}>
-        <DescTypography
-          sx={{
-            color: globalColors.white,
-            textShadow: '1px 1px 2px black',
-            fontWeight: 'bold',
-          }}
-        >
+        <DescriptionTypo>
           연결 상태 : {isConnected ? '🟢' : '🔴'}
-        </DescTypography>
+        </DescriptionTypo>
         <Button onClick={connectButtonHandler}>
-          <DescTypography sx={{ fontWeight: 'bold' }}>연결종료</DescTypography>
+          <DescriptionTypo>연결종료</DescriptionTypo>
         </Button>
       </Box>
       {socketData ? (
@@ -70,36 +69,23 @@ const OrderTable = memo(function OrderTable({ targetMarketCode }) {
             }}
           >
             <Box sx={{ display: 'flex' }}>
-              <NGTypography>마켓 티커 </NGTypography>
-              <NGTypography fontWeight={'bold'}>
-                {' '}
-                : {socketData.code}
-              </NGTypography>
+              <NGTypo>마켓 티커 </NGTypo>
+              <NGTypo fontWeight={'bold'}> : {socketData.code}</NGTypo>
             </Box>
-            <NGTypography>
-              총 매도 물량 : {socketData.total_ask_size}
-            </NGTypography>
-            <NGTypography>
-              총 매수 물량 : {socketData.total_bid_size}
-            </NGTypography>
+            <NGTypo>총 매도 물량 : {socketData.total_ask_size}</NGTypo>
+            <NGTypo>총 매수 물량 : {socketData.total_bid_size}</NGTypo>
           </Box>
           <Table display="flex">
             <TableHead>
               <TableRow>
                 <TableCell align="center">
-                  <DescTypography fontSize={20} fontWeight={700}>
-                    매도 물량
-                  </DescTypography>
+                  <DescriptionTypo>매도 물량</DescriptionTypo>
                 </TableCell>
                 <TableCell align="center">
-                  <DescTypography fontSize={20} fontWeight={700}>
-                    가격
-                  </DescTypography>
+                  <DescriptionTypo>가격</DescriptionTypo>
                 </TableCell>
                 <TableCell align="center">
-                  <DescTypography fontSize={20} fontWeight={700}>
-                    매수 물량
-                  </DescTypography>
+                  <DescriptionTypo>매수 물량</DescriptionTypo>
                 </TableCell>
               </TableRow>
             </TableHead>
@@ -109,7 +95,7 @@ const OrderTable = memo(function OrderTable({ targetMarketCode }) {
                 .map((element, index) => (
                   <TableRow key={`ask_${index}`}>
                     <TableCell sx={{ backgroundColor: 'skyblue' }}>
-                      <PriceTypography fontSize={12}>
+                      <PriceTypography fontSize={12} align="right">
                         {element.ask_size}
                       </PriceTypography>
                     </TableCell>
@@ -177,16 +163,7 @@ function OrderBook() {
       gap={1}
       sx={{ marginBottom: 10 }}
     >
-      <DescTypography
-        variant="h5"
-        sx={{
-          color: globalColors.white,
-          textShadow: '1px 1px 2px black',
-          fontWeight: 'bold',
-        }}
-      >
-        실시간 오더북
-      </DescTypography>
+      <SubTitle>실시간 오더북</SubTitle>
       <MarketCodeSelector
         curMarketCode={curMarketCode}
         setCurMarketCode={setCurMarketCode}

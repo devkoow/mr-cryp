@@ -4,8 +4,7 @@ import { useOpenApi } from '../../context/OpenApiContext';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import Skeleton from '@mui/material/Skeleton';
-import { DescTypography } from '../../defaultTheme';
-import { globalColors } from '../../globalColors';
+import { DescriptionTypo, NGTypo, SubTitle, theme } from '../../defaultTheme';
 
 function VideoCard() {
   const { youtube } = useOpenApi();
@@ -71,23 +70,23 @@ function VideoCard() {
               }}
             />
             <Box sx={{ pr: 2 }}>
-              <DescTypography gutterBottom variant="body2" fontWeight={'bold'}>
+              <NGTypo gutterBottom variant="body2" fontWeight={'bold'}>
                 {video.snippet.title
                   .replace(/&quot;/g, '')
                   .replace(/&#39;/g, '')}
-              </DescTypography>
-              <DescTypography
+              </NGTypo>
+              <NGTypo
                 display="block"
                 variant="caption"
-                color={globalColors.white}
                 fontWeight={'bold'}
-                sx={{ textShadow: '1px 1px 2px black' }}
+                sx={{ color: theme.palette.primary.main }}
               >
                 {video.snippet.channelTitle}
-              </DescTypography>
-              <DescTypography variant="caption" color="text.secondary">
-                {`${video.snippet.publishTime}`}
-              </DescTypography>
+              </NGTypo>
+              <NGTypo variant="caption" fontWeight={'bold'}>
+                {video.snippet.publishTime.slice(0, 10)}{' '}
+                {video.snippet.publishTime.slice(11, 16)}
+              </NGTypo>
             </Box>
           </Box>
         </Grid>
@@ -99,26 +98,10 @@ function VideoCard() {
 export default function Videos() {
   return (
     <Box sx={{ mb: 10, mr: 4 }}>
-      <DescTypography
-        sx={{
-          color: globalColors.white,
-          textShadow: '1px 1px 2px black',
-          fontWeight: 'bold',
-          fontSize: '2rem',
-        }}
-      >
-        TREND 🔥
-      </DescTypography>
-      <DescTypography
-        sx={{
-          color: globalColors.white,
-          textShadow: '1px 1px 2px black',
-          fontWeight: 'bold',
-          fontSize: '16px',
-        }}
-      >
+      <SubTitle>TREND 🔥</SubTitle>
+      <DescriptionTypo>
         코인에 대한 실시간 트렌드를 확인해보세요!
-      </DescTypography>
+      </DescriptionTypo>
       <VideoCard />
     </Box>
   );
