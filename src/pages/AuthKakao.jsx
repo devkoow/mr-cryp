@@ -18,10 +18,10 @@ export default function KakaoAuth() {
             'https://kauth.kakao.com/oauth/token',
             {
               grant_type: 'authorization_code',
-              client_id: process.env.REACT_APP_KAKAO_REST_API_KEY,
-              redirect_uri: process.env.REACT_APP_KAKAO_REDIRECT_URI,
+              client_id: import.meta.env.VITE_KAKAO_REST_API_KEY,
+              redirect_uri: import.meta.env.VITE_KAKAO_REDIRECT_URI,
               code: authCode,
-              client_secret: process.env.REACT_APP_KAKAO_CLIENT_SECRET_KEY,
+              client_secret: import.meta.env.VITE_KAKAO_CLIENT_SECRET_KEY,
             },
             {
               headers: {
