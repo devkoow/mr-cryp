@@ -19,6 +19,9 @@ export default function User({ open, handleClose }) {
           left: '50%',
           transform: 'translate(-50%, -50%)',
           width: 500,
+          '@media (max-width:1000px)': {
+            width: '80%',
+          },
           bgcolor: 'background.paper',
           border: '2px solid #000',
           boxShadow: 24,
@@ -32,6 +35,13 @@ export default function User({ open, handleClose }) {
             width: '100px',
             height: '100px',
             '&:hover': { opacity: 0.5, transition: 'opacity 0.3s ease' },
+            '@media (max-width:450px)': {
+              width: '60px',
+              height: '60px',
+            },
+            '@media (max-width:175px)': {
+              display: 'none',
+            },
           }}
         />
         <Box
@@ -43,10 +53,24 @@ export default function User({ open, handleClose }) {
             gap: 4,
           }}
         >
-          <NGTypo fontSize={24} fontWeight={'bold'}>
+          <NGTypo
+            fontSize={24}
+            fontWeight={'bold'}
+            sx={{
+              '@media (max-width:450px)': {
+                fontSize: 16,
+              },
+            }}
+          >
             {localStorage.getItem('nickname')}
           </NGTypo>
-          <NGTypo>
+          <NGTypo
+            sx={{
+              '@media (max-width:200px)': {
+                display: 'none',
+              },
+            }}
+          >
             {localStorage.getItem('socialType') === 'Google'
               ? '구글 계정'
               : '카카오 계정'}
