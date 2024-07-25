@@ -20,4 +20,11 @@ export default defineConfig({
   build: {
     outDir: 'build',
   },
+  resolve: {
+    alias: {
+      '@': '/src',
+    },
+  },
 });
+
+console.log('Vite Config Loaded');
