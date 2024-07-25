@@ -1,8 +1,8 @@
 {
-  "routes": [
+  "rewrites": [
     {
-      "src": "/(.*)",
-      "dest": "/index.html"
+      "source": "/auth",
+      "destination": "https://mr-cryp.vercel.app/auth"
     }
   ]
 }
