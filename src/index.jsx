@@ -12,6 +12,7 @@ import Trade from './pages/Trade';
 import Orderbook from './pages/Orderbook';
 import TradeHistory from './pages/TradeHistory';
 import Chart from './pages/Chart';
+import ProtectedRoute from './pages/ProtectedRoute';
 
 const router = createBrowserRouter([
   {
@@ -21,12 +22,54 @@ const router = createBrowserRouter([
     children: [
       { index: true, element: <SignIn /> },
       { path: '/auth', element: <AuthKakao /> },
-      { path: '/home', element: <Home /> },
-      { path: '/trade', element: <Trade /> },
-      { path: '/trade/orderbook', element: <Orderbook /> },
-      { path: '/trade/tradeHistory', element: <TradeHistory /> },
-      { path: '/trade/chart', element: <Chart /> },
-      { path: '/vision', element: <Vision /> },
+      {
+        path: '/home',
+        element: (
+          <ProtectedRoute>
+            <Home />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: '/trade',
+        element: (
+          <ProtectedRoute>
+            <Trade />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: '/trade/orderbook',
+        element: (
+          <ProtectedRoute>
+            <Orderbook />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: '/trade/tradeHistory',
+        element: (
+          <ProtectedRoute>
+            <TradeHistory />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: '/trade/chart',
+        element: (
+          <ProtectedRoute>
+            <Chart />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: '/vision',
+        element: (
+          <ProtectedRoute>
+            <Vision />
+          </ProtectedRoute>
+        ),
+      },
     ],
   },
 ]);

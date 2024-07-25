@@ -11,7 +11,7 @@ import {
 } from '@mui/material';
 import {
   StyledTableCell,
-  PriceTypography,
+  PriceTypo,
   DescriptionTypo,
   NGTypo,
 } from '../../defaultTheme';
@@ -124,7 +124,7 @@ const OrderBookTable = memo(function OrderTable({
                           height: '15px',
                         }}
                       >
-                        <PriceTypography
+                        <PriceTypo
                           fontSize={10}
                           sx={{
                             position: 'absolute',
@@ -132,7 +132,7 @@ const OrderBookTable = memo(function OrderTable({
                           }}
                         >
                           {Number(element.ask_size).toFixed(4)}
-                        </PriceTypography>
+                        </PriceTypo>
                         <Box
                           sx={{
                             position: 'absolute',
@@ -148,14 +148,14 @@ const OrderBookTable = memo(function OrderTable({
                     </TableCell>
                     <TableCell sx={{ padding: 1 }} align="center">
                       <Box display="flex" justifyContent={'space-between'}>
-                        <PriceTypography
+                        <PriceTypo
                           color={numColor}
                           fontSize={12}
                           fontWeight={'bold'}
                         >
                           {element.ask_price.toLocaleString()}
-                        </PriceTypography>
-                        <PriceTypography fontSize={12} color={numColor}>
+                        </PriceTypo>
+                        <PriceTypo fontSize={12} color={numColor}>
                           {Number(rate) > 0 ? '+' : ''}
                           {prevPrice &&
                             Number(
@@ -163,7 +163,7 @@ const OrderBookTable = memo(function OrderTable({
                                 100
                             ).toFixed(2)}
                           {prevPrice && '%'}
-                        </PriceTypography>
+                        </PriceTypo>
                       </Box>
                     </TableCell>
                     <TableCell sx={{ padding: 1 }}></TableCell>
@@ -175,21 +175,21 @@ const OrderBookTable = memo(function OrderTable({
                   <TableCell sx={{ padding: 1 }}></TableCell>
                   <TableCell sx={{ padding: 1 }} align="center">
                     <Box display="flex" justifyContent={'space-between'}>
-                      <PriceTypography
+                      <PriceTypo
                         color={numColor}
                         fontSize={12}
                         fontWeight={'bold'}
                       >
                         {element.bid_price.toLocaleString()}
-                      </PriceTypography>
-                      <PriceTypography fontSize={12} color={numColor}>
+                      </PriceTypo>
+                      <PriceTypo fontSize={12} color={numColor}>
                         {Number(rate) > 0 ? '+' : ''}
                         {prevPrice &&
                           Number(
                             ((element.bid_price - prevPrice) / prevPrice) * 100
                           ).toFixed(2)}
                         {prevPrice && '%'}
-                      </PriceTypography>
+                      </PriceTypo>
                     </Box>
                   </TableCell>
                   <TableCell
@@ -202,7 +202,7 @@ const OrderBookTable = memo(function OrderTable({
                         height: '15px',
                       }}
                     >
-                      <PriceTypography
+                      <PriceTypo
                         fontSize={10}
                         sx={{
                           position: 'absolute',
@@ -210,7 +210,7 @@ const OrderBookTable = memo(function OrderTable({
                         }}
                       >
                         {Number(element.bid_size).toFixed(4)}
-                      </PriceTypography>
+                      </PriceTypo>
                       <Box
                         sx={{
                           position: 'absolute',

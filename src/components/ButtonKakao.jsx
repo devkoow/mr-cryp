@@ -1,5 +1,6 @@
 import Button from '@mui/material/Button';
 import LOGO_KAKAO from '../assets/images/logo_kakao.png';
+import { NGTypo } from '../defaultTheme';
 
 export default function ButtonKakao() {
   const REST_API_KEY = import.meta.env.VITE_KAKAO_REST_API_KEY;
@@ -14,7 +15,7 @@ export default function ButtonKakao() {
   };
 
   return (
-    <>
+    <div>
       <Button
         variant="contained"
         sx={{
@@ -32,8 +33,8 @@ export default function ButtonKakao() {
         onClick={handleLogin}
       >
         <img src={LOGO_KAKAO} alt="카카오 로고" width="20" height="20" />
-        <span>카카오 로그인</span>
+        <NGTypo>카카오 로그인</NGTypo>
       </Button>
-    </>
+    </div>
   );
 }

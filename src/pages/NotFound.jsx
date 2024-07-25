@@ -1,6 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Box } from '@mui/material';
+import { Box, Button } from '@mui/material';
+import { DescriptionTypo, NGTypo } from '../defaultTheme';
 
 export default function NotFound() {
   const navigate = useNavigate();
@@ -14,10 +15,10 @@ export default function NotFound() {
         alignItems: 'center',
       }}
     >
-      <h1>제작되지 않은 페이지입니다</h1>
-      <button onClick={() => navigate(-1)}>
-        <h1>이전 페이지</h1>
-      </button>
+      <DescriptionTypo>제작되지 않은 페이지입니다</DescriptionTypo>
+      <Button onClick={() => navigate(-1)}>
+        <NGTypo>이전 페이지</NGTypo>
+      </Button>
     </Box>
   );
 }

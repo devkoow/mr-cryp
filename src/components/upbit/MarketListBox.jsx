@@ -3,9 +3,10 @@ import { useFetchMarketCode, useWsTicker } from 'use-upbit-api';
 import {
   DescriptionTypo,
   NGTypo,
-  PriceTypography,
+  PriceTypo,
   StyledTableCell,
 } from '../../defaultTheme';
+import { globalColors } from '../../globalColors';
 import {
   TableContainer,
   Table,
@@ -15,7 +16,6 @@ import {
   TableRow,
   Box,
 } from '@mui/material';
-import { globalColors } from '../../globalColors';
 
 const RealTimePriceTable = memo(function RealTimePriceTable({
   socketData,
@@ -92,7 +92,7 @@ const RealTimePriceTable = memo(function RealTimePriceTable({
                 </NGTypo>
               </TableCell>
               <TableCell align="right">
-                <PriceTypography
+                <PriceTypo
                   fontSize={11}
                   fontWeight={'bold'}
                   sx={{
@@ -105,7 +105,7 @@ const RealTimePriceTable = memo(function RealTimePriceTable({
                   }}
                 >
                   {data.trade_price.toLocaleString()}
-                </PriceTypography>
+                </PriceTypo>
               </TableCell>
               <TableCell
                 sx={{
@@ -119,21 +119,21 @@ const RealTimePriceTable = memo(function RealTimePriceTable({
                 align="right"
               >
                 <Box display="flex" flexDirection="column">
-                  <PriceTypography fontSize={10} fontWeight={'bold'}>
+                  <PriceTypo fontSize={10} fontWeight={'bold'}>
                     {(data.signed_change_rate * 100).toFixed(2)}%
-                  </PriceTypography>
-                  <PriceTypography fontSize={10} fontWeight={'bold'}>
+                  </PriceTypo>
+                  <PriceTypo fontSize={10} fontWeight={'bold'}>
                     {data.signed_change_price.toLocaleString()}
-                  </PriceTypography>
+                  </PriceTypo>
                 </Box>
               </TableCell>
               <TableCell>
                 <Box display={'flex'}>
-                  <PriceTypography fontSize={10}>
+                  <PriceTypo fontSize={10}>
                     {Math.round(
                       parseInt(data.acc_trade_price_24h) / 1000000
                     ).toLocaleString()}
-                  </PriceTypography>
+                  </PriceTypo>
                   <NGTypo fontSize={10}>백만</NGTypo>
                 </Box>
               </TableCell>

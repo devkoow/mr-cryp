@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import LOGO_APPBAR from '../assets/images/logo_circle.png';
 import { useNavigate } from 'react-router-dom';
 import User from './User';
 import { logoutGoogle } from '../api/firebase';
 import logoutKakao from '../api/logoutKakao';
-import { LogoTypography, NavTypography } from '../defaultTheme';
+import { globalColors } from '../globalColors';
+import { LogoTypo, NavTypo } from '../defaultTheme';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -16,7 +16,6 @@ import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
-import { globalColors } from '../globalColors';
 
 const pages = ['대시보드', '비전', '거래'];
 const settings = ['프로필 정보', '로그아웃'];
@@ -101,7 +100,7 @@ export default function ResponsiveAppBar() {
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           {/* md 로고 타이포 */}
-          <LogoTypography
+          <LogoTypo
             noWrap
             component="a"
             fontWeight="bold"
@@ -116,7 +115,7 @@ export default function ResponsiveAppBar() {
             }}
           >
             Mr.Cryp
-          </LogoTypography>
+          </LogoTypo>
           {/* xs 네브바 메뉴 : 아이콘으로 활성화 */}
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
             <IconButton
@@ -151,15 +150,15 @@ export default function ResponsiveAppBar() {
             >
               {pages.map((page) => (
                 <MenuItem key={page} onClick={() => handleCloseNavMenu(page)}>
-                  <NavTypography textAlign="center" fontSize={'18px'}>
+                  <NavTypo textAlign="center" fontSize={'18px'}>
                     {page}
-                  </NavTypography>
+                  </NavTypo>
                 </MenuItem>
               ))}
             </Menu>
           </Box>
           {/* xs 로고 타이포 */}
-          <LogoTypography
+          <LogoTypo
             fontSize={'32px'}
             noWrap
             component="a"
@@ -175,7 +174,7 @@ export default function ResponsiveAppBar() {
             }}
           >
             Mr.Cryp
-          </LogoTypography>
+          </LogoTypo>
           {/* md 네브바 메뉴 */}
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
@@ -191,7 +190,7 @@ export default function ResponsiveAppBar() {
                   boxShadow: 'none',
                 }}
               >
-                <NavTypography
+                <NavTypo
                   sx={{
                     textShadow: globalColors.shadow_text,
                     fontSize: '32px',
@@ -201,7 +200,7 @@ export default function ResponsiveAppBar() {
                   }}
                 >
                   {page}
-                </NavTypography>
+                </NavTypo>
               </Button>
             ))}
           </Box>
@@ -209,7 +208,7 @@ export default function ResponsiveAppBar() {
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="내 프로필 / 로그아웃">
               <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                <NavTypography
+                <NavTypo
                   onClick={handleOpenUserMenu}
                   fontSize={32}
                   sx={{
@@ -229,7 +228,7 @@ export default function ResponsiveAppBar() {
                   }}
                 >
                   내 프로필
-                </NavTypography>
+                </NavTypo>
               </Box>
             </Tooltip>
             <Menu
@@ -285,7 +284,7 @@ export default function ResponsiveAppBar() {
                   boxShadow: 'none',
                 }}
               >
-                <NavTypography
+                <NavTypo
                   fontSize={32}
                   sx={{
                     textShadow: globalColors.shadow_text,
@@ -304,7 +303,7 @@ export default function ResponsiveAppBar() {
                   }}
                 >
                   {subMenu}
-                </NavTypography>
+                </NavTypo>
               </Button>
             ))}
           </Box>
