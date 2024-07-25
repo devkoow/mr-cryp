@@ -1,8 +1,0 @@
-{
-  "rewrites": [
-    {
-      "source": "/auth",
-      "destination": "https://mr-cryp.vercel.app/auth"
-    }
-  ]
-}
