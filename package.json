@@ -37,7 +37,7 @@
   },
   "scripts": {
     "start": "vite",
-    "build": "vite build"
+    "build": "yarn build"
   },
   "eslintConfig": {
     "extends": [
