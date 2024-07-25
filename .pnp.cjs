@@ -62,8 +62,7 @@ const RAW_RUNTIME_STATE =
           ["vite", "virtual:bdf0dde8506bc50914fcdd774612b18580f0850f9f33247c5c476a41a66b81f8d322e6de469faa78f627be1c8be5481e43bb29d1279e64f3bb7a947eb374b3b4#npm:5.3.4"],\
           ["vite-plugin-compression", "virtual:bdf0dde8506bc50914fcdd774612b18580f0850f9f33247c5c476a41a66b81f8d322e6de469faa78f627be1c8be5481e43bb29d1279e64f3bb7a947eb374b3b4#npm:0.5.1"],\
           ["vite-plugin-svgr", "virtual:bdf0dde8506bc50914fcdd774612b18580f0850f9f33247c5c476a41a66b81f8d322e6de469faa78f627be1c8be5481e43bb29d1279e64f3bb7a947eb374b3b4#npm:4.2.0"],\
-          ["web-vitals", "npm:2.1.4"],\
-          ["yarn", "npm:1.22.22"]\
+          ["web-vitals", "npm:2.1.4"]\
         ],\
         "linkType": "SOFT"\
       }]\
@@ -10001,8 +10000,7 @@ const RAW_RUNTIME_STATE =
           ["vite", "virtual:bdf0dde8506bc50914fcdd774612b18580f0850f9f33247c5c476a41a66b81f8d322e6de469faa78f627be1c8be5481e43bb29d1279e64f3bb7a947eb374b3b4#npm:5.3.4"],\
           ["vite-plugin-compression", "virtual:bdf0dde8506bc50914fcdd774612b18580f0850f9f33247c5c476a41a66b81f8d322e6de469faa78f627be1c8be5481e43bb29d1279e64f3bb7a947eb374b3b4#npm:0.5.1"],\
           ["vite-plugin-svgr", "virtual:bdf0dde8506bc50914fcdd774612b18580f0850f9f33247c5c476a41a66b81f8d322e6de469faa78f627be1c8be5481e43bb29d1279e64f3bb7a947eb374b3b4#npm:4.2.0"],\
-          ["web-vitals", "npm:2.1.4"],\
-          ["yarn", "npm:1.22.22"]\
+          ["web-vitals", "npm:2.1.4"]\
         ],\
         "linkType": "SOFT"\
       }]\
@@ -11973,15 +11971,6 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "../../../.yarn/berry/cache/yargs-parser-npm-21.1.1-8fdc003314-10c0.zip/node_modules/yargs-parser/",\
         "packageDependencies": [\
           ["yargs-parser", "npm:21.1.1"]\
-        ],\
-        "linkType": "HARD"\
-      }]\
-    ]],\
-    ["yarn", [\
-      ["npm:1.22.22", {\
-        "packageLocation": "./.yarn/unplugged/yarn-npm-1.22.22-cb63c707fe/node_modules/yarn/",\
-        "packageDependencies": [\
-          ["yarn", "npm:1.22.22"]\
         ],\
         "linkType": "HARD"\
       }]\
