@@ -1,4 +1,15 @@
 {
   "trailingSlash": false,
-  "rewrites": [{ "source": "/:path*", "destination": "/index.html" }]
+  "rewrites": [{ "source": "/:path*", "destination": "/index.html" }],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "Access-Control-Allow-Origin",
+          "value": "*"
+        }
+      ]
+    }
+  ]
 }
