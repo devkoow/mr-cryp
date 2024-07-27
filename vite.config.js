@@ -4,7 +4,6 @@ import viteCompression from 'vite-plugin-compression';
 import svgr from 'vite-plugin-svgr';
 
 export default defineConfig({
-  base: '/mr-cryp/',
   plugins: [
     react(),
     viteCompression({
