@@ -6,8 +6,8 @@ import { KJUR } from 'jsrsasign';
 
 export default function RealAccount() {
   const [account, setAccount] = useState([]);
-  const accessKey = process.env.REACT_APP_UPBIT_OPEN_API_ACCESS_KEY;
-  const secretKey = process.env.REACT_APP_UPBIT_OPEN_API_SECRET_KEY;
+  const accessKey = import.meta.env.VITE_UPBIT_OPEN_API_ACCESS_KEY;
+  const secretKey = import.meta.env.VITE_APP_UPBIT_OPEN_API_SECRET_KEY;
   const payload = {
     access_key: accessKey,
     nonce: uuidv4(),
