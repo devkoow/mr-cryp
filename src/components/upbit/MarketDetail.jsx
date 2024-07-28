@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useWsTicker, useFetchMarketCode } from 'use-upbit-api';
 import { NGTypo, PriceTypo, theme } from '../../defaultTheme';
-import { Box, Divider } from '@mui/material';
+import { Box, Divider, LinearProgress } from '@mui/material';
 import { globalColors } from '../../globalColors';
 
-const yaxisStyle = {
+const yAxisStyle = {
   display: 'flex',
   flexDirection: 'column',
   justifyContent: 'center',
@@ -38,9 +38,15 @@ const negStyle = {
   color: globalColors.color_neg['400'],
 };
 
+const normalStyle = {
+  fontSize: 12,
+  fontWeight: 'bold',
+  marginTop: 1,
+};
+
 const statusTextStyle = {
   fontSize: 12,
-  marginTop: 1,
+  alignSelf: 'end',
 };
 
 /** 실시간 마켓 정보 */
@@ -78,7 +84,7 @@ export default function MarketDetail({ code }) {
         : globalColors.color_neg['400'];
 
   if (!data) {
-    return <NGTypo>마켓 정보 로딩중...</NGTypo>;
+    return <LinearProgress color="primary" />;
   }
 
   return (
@@ -157,7 +163,7 @@ export default function MarketDetail({ code }) {
             },
           }}
         >
-          <Box sx={{ yaxisStyle }}>
+          <Box sx={{ yAxisStyle }}>
             {/* 고가 */}
             <Box sx={boxStyle}>
               <NGTypo sx={statusTextStyle}>고가</NGTypo>
@@ -175,7 +181,7 @@ export default function MarketDetail({ code }) {
             </Box>
             <Divider />
           </Box>
-          <Box sx={{ yaxisStyle }}>
+          <Box sx={{ yAxisStyle }}>
             {/* 52주 신고가 */}
             <Box sx={boxStyle}>
               <NGTypo sx={statusTextStyle}>52주 신고가</NGTypo>
@@ -193,11 +199,11 @@ export default function MarketDetail({ code }) {
             </Box>
             <Divider />
           </Box>
-          <Box sx={{ yaxisStyle }}>
+          <Box sx={{ yAxisStyle }}>
             {/* 거래량 */}
             <Box sx={boxStyle}>
               <NGTypo sx={statusTextStyle}>거래량(24시간)</NGTypo>
-              <PriceTypo sx={statusTextStyle}>
+              <PriceTypo sx={normalStyle}>
                 {Number(data.acc_trade_volume_24h).toFixed(3).toLocaleString()}
               </PriceTypo>
             </Box>
@@ -205,7 +211,7 @@ export default function MarketDetail({ code }) {
             {/* 거래대금 */}
             <Box sx={boxStyle}>
               <NGTypo sx={statusTextStyle}>거래대금(24시간)</NGTypo>
-              <PriceTypo sx={statusTextStyle}>
+              <PriceTypo sx={normalStyle}>
                 {Math.round(Number(data.acc_trade_price_24h)).toLocaleString()}
               </PriceTypo>
             </Box>

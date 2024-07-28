@@ -8,6 +8,7 @@ import {
   TableHead,
   TableRow,
   Box,
+  LinearProgress,
 } from '@mui/material';
 import {
   DescriptionTypo,
@@ -58,49 +59,51 @@ const TradeTable = memo(function TradeTable({ targetMarketCode }) {
             </TableRow>
           </TableHead>
           <TableBody>
-            {socketData
-              ? [...socketData].reverse().map((data, index) => (
-                  <TableRow key={index}>
-                    <TableCell align="center">
-                      <NGTypo fontSize={12}>
-                        {timestampToTime(data.trade_timestamp)}
-                      </NGTypo>
-                    </TableCell>
-                    <TableCell align="center">
-                      <NGTypo fontSize={12}>
-                        {Number(data.trade_price).toLocaleString()}원
-                      </NGTypo>
-                    </TableCell>
-                    <TableCell align="center">
-                      <PriceTypo
-                        fontSize={12}
-                        color={
-                          data.ask_bid === 'ASK'
-                            ? globalColors.color_pos['400']
-                            : globalColors.color_neg['400']
-                        }
-                      >
-                        {data.trade_volume}
-                      </PriceTypo>
-                    </TableCell>
-                    <TableCell align="center">
-                      <PriceTypo
-                        fontSize={12}
-                        color={
-                          data.ask_bid === 'ASK'
-                            ? globalColors.color_pos['400']
-                            : globalColors.color_neg['400']
-                        }
-                      >
-                        {Math.round(
-                          data.trade_volume * data.trade_price
-                        ).toLocaleString()}
-                        원
-                      </PriceTypo>
-                    </TableCell>
-                  </TableRow>
-                ))
-              : '내역 테이블 로딩중'}
+            {socketData ? (
+              [...socketData].reverse().map((data, index) => (
+                <TableRow key={index}>
+                  <TableCell align="center">
+                    <NGTypo fontSize={12}>
+                      {timestampToTime(data.trade_timestamp)}
+                    </NGTypo>
+                  </TableCell>
+                  <TableCell align="center">
+                    <NGTypo fontSize={12}>
+                      {Number(data.trade_price).toLocaleString()}원
+                    </NGTypo>
+                  </TableCell>
+                  <TableCell align="center">
+                    <PriceTypo
+                      fontSize={12}
+                      color={
+                        data.ask_bid === 'ASK'
+                          ? globalColors.color_pos['400']
+                          : globalColors.color_neg['400']
+                      }
+                    >
+                      {data.trade_volume}
+                    </PriceTypo>
+                  </TableCell>
+                  <TableCell align="center">
+                    <PriceTypo
+                      fontSize={12}
+                      color={
+                        data.ask_bid === 'ASK'
+                          ? globalColors.color_pos['400']
+                          : globalColors.color_neg['400']
+                      }
+                    >
+                      {Math.round(
+                        data.trade_volume * data.trade_price
+                      ).toLocaleString()}
+                      원
+                    </PriceTypo>
+                  </TableCell>
+                </TableRow>
+              ))
+            ) : (
+              <LinearProgress color="primary" />
+            )}
           </TableBody>
         </Table>
       )}
@@ -139,7 +142,7 @@ function TradeHistoryBox({ code }) {
   }, []);
 
   if (isLoading) {
-    return <NGTypo>실시간 거래 내역 로딩중...</NGTypo>;
+    return <LinearProgress color="primary" />;
   }
 
   return (

@@ -11,7 +11,7 @@ import {
   TableContainer,
   TableHead,
   TableRow,
-  Typography,
+  LinearProgress,
 } from '@mui/material';
 import { globalColors } from '../globalColors';
 import { DescriptionTypo, NGTypo, PriceTypo, SubTitle } from '../defaultTheme';
@@ -121,7 +121,7 @@ const OrderTable = memo(function OrderTable({ targetMarketCode }) {
           </Table>
         </TableContainer>
       ) : (
-        <Typography>오더북 로딩</Typography>
+        <LinearProgress color="primary" />
       )}
     </>
   );

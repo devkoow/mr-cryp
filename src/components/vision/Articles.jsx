@@ -11,6 +11,7 @@ import {
   Snackbar,
   Alert,
   Tooltip,
+  LinearProgress,
 } from '@mui/material';
 import LinkIcon from '@mui/icons-material/Link';
 import IosShareIcon from '@mui/icons-material/IosShare';
@@ -43,7 +44,7 @@ export default function Articles() {
   });
 
   if (isPending) {
-    return <span>Loading...</span>;
+    return <LinearProgress color="primary" />;
   }
 
   if (isError) {

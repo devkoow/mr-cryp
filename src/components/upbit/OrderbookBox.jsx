@@ -8,12 +8,12 @@ import {
   TableContainer,
   TableHead,
   TableRow,
+  LinearProgress,
 } from '@mui/material';
 import {
   StyledTableCell,
   PriceTypo,
   DescriptionTypo,
-  NGTypo,
 } from '../../defaultTheme';
 import { globalColors } from '../../globalColors';
 
@@ -254,7 +254,7 @@ function OrderBookBox({ code, rate, prevPrice }) {
   }, [code, marketCodes]);
 
   if (isLoading) {
-    return <NGTypo>실시간 오더북 로딩중...</NGTypo>;
+    return <LinearProgress color="primary" />;
   }
 
   return (
