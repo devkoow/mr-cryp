@@ -29,7 +29,6 @@ export default function Chart() {
           border: '1px',
           boxShadow: 3,
           mb: 10,
-
           '@media (max-width:450px)': {
             mb: 0,
           },

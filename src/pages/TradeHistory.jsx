@@ -12,6 +12,7 @@ import {
   Typography,
   Paper,
   Box,
+  LinearProgress,
 } from '@mui/material';
 import { DescriptionTypo, PriceTypo, SubTitle } from '../defaultTheme';
 
@@ -90,7 +91,7 @@ const TradeTable = memo(function TradeTable({ targetMarketCode }) {
             </TableBody>
           </Table>
         ) : (
-          <Typography>실시간 거래내역 로딩중...</Typography>
+          <LinearProgress color="primary" />
         )}
       </TableContainer>
     </>

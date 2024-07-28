@@ -15,6 +15,7 @@ import {
   TableHead,
   TableRow,
   Box,
+  LinearProgress,
 } from '@mui/material';
 
 const RealTimePriceTable = memo(function RealTimePriceTable({
@@ -181,7 +182,7 @@ function MarketListBox({ setCode, setRate, setPrevPrice, setCurrPrice }) {
           setCurrPrice={setCurrPrice}
         />
       ) : (
-        <NGTypo>실시간 가격 로딩중...</NGTypo>
+        <LinearProgress color="primary" />
       )}
     </>
   );

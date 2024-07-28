@@ -5,13 +5,10 @@ import { useNavigate } from 'react-router-dom';
 export default function KakaoAuth() {
   const navigate = useNavigate();
   useEffect(() => {
-    /** 액세스 토큰 발급 API */
     const getAuthToken = async () => {
       const urlParams = new URLSearchParams(window.location.search);
       const authCode = urlParams.get('code');
       const authCancel = urlParams.get('error');
-
-      // 약관 동의시
       if (authCode) {
         try {
           const response = await axios.post(
@@ -40,15 +37,13 @@ export default function KakaoAuth() {
           console.error('카카오 로그인 오류: ', error.message);
         }
       }
-
-      // 약관 동의 중 취소시
       if (authCancel) {
         console.log('약관 동의 중 취소');
         window.alert('시작화면으로 돌아갑니다');
         navigate('/');
       }
     };
-    /** 유저 ID, 프로필 이미지, 닉네임 GET API */
+
     const getUserData = async () => {
       try {
         const response = await axios.get('https://kapi.kakao.com/v2/user/me', {

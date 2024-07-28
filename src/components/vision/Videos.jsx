@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { useOpenApi } from '../../context/OpenApiContext';
-import Grid from '@mui/material/Grid';
-import Box from '@mui/material/Box';
+
+import { Box, Grid } from '@mui/material';
 import Skeleton from '@mui/material/Skeleton';
 import { DescriptionTypo, NGTypo, SubTitle, theme } from '../../defaultTheme';
 
@@ -40,7 +40,6 @@ function VideoCard() {
   }
 
   if (isError) {
-    // 에러 메세지
     return <span>에러 발생 : {error}</span>;
   }
 
