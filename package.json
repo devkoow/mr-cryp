@@ -10,6 +10,7 @@
     "@mui/material": "^5.15.19",
     "@mui/system": "^5.15.20",
     "@mui/x-charts": "^7.9.0",
+    "@reduxjs/toolkit": "^2.2.7",
     "@tanstack/react-query": "^5.40.1",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
