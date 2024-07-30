@@ -16,6 +16,7 @@ import {
   DescriptionTypo,
 } from '../../defaultTheme';
 import { globalColors } from '../../globalColors';
+import { useSelector } from 'react-redux';
 
 const boxStyle = {
   height: '11px',
@@ -30,11 +31,9 @@ const cellStyle = {
   align: 'center',
 };
 
-const OrderBookTable = memo(function OrderTable({
-  targetMarketCode,
-  rate,
-  prevPrice,
-}) {
+const OrderBookTable = memo(function OrderTable({ targetMarketCode }) {
+  const rate = useSelector((state) => state.chart.rate);
+  const prevPrice = useSelector((state) => state.chart.prevPrice);
   const webSocketOptions = { throttle_time: 400, max_length_queue: 100 };
   const { socket, isConnected, socketData } = useWsOrderbook(targetMarketCode);
   const [numColor, setNumColor] = useState(
@@ -234,9 +233,10 @@ const OrderBookTable = memo(function OrderTable({
   );
 });
 
-function OrderBookBox({ code, rate, prevPrice }) {
+function OrderBookBox() {
   const { isLoading, marketCodes } = useFetchMarketCode();
   const [targetMarketCode, setTargetMarketCode] = useState();
+  const code = useSelector((state) => state.chart.code);
 
   useEffect(() => {
     if (marketCodes) {
@@ -257,13 +257,7 @@ function OrderBookBox({ code, rate, prevPrice }) {
     return <LinearProgress color="primary" />;
   }
 
-  return (
-    <OrderBookTable
-      targetMarketCode={targetMarketCode}
-      rate={rate}
-      prevPrice={prevPrice}
-    />
-  );
+  return <OrderBookTable targetMarketCode={targetMarketCode} />;
 }
 
 export default memo(OrderBookBox);

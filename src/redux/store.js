@@ -1,9 +1,9 @@
 import { configureStore } from '@reduxjs/toolkit';
-import chartReducer from './chartSlice';
+import chartSlice from './chartSlice';
 
 const store = configureStore({
   reducer: {
-    chart: chartReducer,
+    chart: chartSlice.reducer,
   },
 });
 

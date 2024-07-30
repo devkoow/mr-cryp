@@ -21,6 +21,7 @@ import { styled } from '@mui/system';
 import RestoreIcon from '@mui/icons-material/Restore';
 import { NGTypo, theme, MobModalTypo } from '../../defaultTheme';
 import { globalColors } from '../../globalColors';
+import { useSelector } from 'react-redux';
 
 const StyledTab = styled(Tab)({
   fontFamily: 'NEXON Lv1 Gothic OTF',
@@ -57,7 +58,9 @@ const cellStyle = {
   '@media (max-width: 500px)': { fontSize: '10px' },
 };
 
-function Panel({ value, code, addOrder, currPrice, askablePrice }) {
+function Panel({ value, addOrder, askablePrice }) {
+  const code = useSelector((state) => state.chart.code);
+  const currPrice = useSelector((state) => state.chart.currPrice);
   const [selectedValue, setSelectedValue] = useState('a');
   const [price, setPrice] = useState(currPrice || 0);
   const [balance, setBalance] = useState(1);
@@ -510,9 +513,10 @@ function OrderHistory({ value, orders, removeOrder }) {
   );
 }
 
-export default function OrderModal({ open, handleClose, code, currPrice }) {
+export default function OrderModal({ handleClose }) {
   const [value, setValue] = useState('1');
   const [orders, setOrders] = useState([]);
+  const open = useSelector((state) => state.chart.open);
 
   const addOrder = (newOrder) => {
     setOrders((prevOrders) => [...prevOrders, newOrder]);
@@ -560,18 +564,8 @@ export default function OrderModal({ open, handleClose, code, currPrice }) {
               <StyledTab label="거래내역" value="3" />
             </TabList>
           </Box>
-          <Panel
-            value="1"
-            code={code}
-            addOrder={addOrder}
-            currPrice={currPrice}
-          />
-          <Panel
-            value="2"
-            code={code}
-            addOrder={addOrder}
-            askablePrice={askablePrice}
-          />
+          <Panel value="1" addOrder={addOrder} />
+          <Panel value="2" addOrder={addOrder} askablePrice={askablePrice} />
           <OrderHistory value="3" orders={orders} removeOrder={removeOrder} />
         </TabContext>
       </Box>
