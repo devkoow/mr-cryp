@@ -3,6 +3,7 @@ import { useWsTicker, useFetchMarketCode } from 'use-upbit-api';
 import { NGTypo, PriceTypo, theme } from '../../defaultTheme';
 import { Box, Divider, LinearProgress } from '@mui/material';
 import { globalColors } from '../../globalColors';
+import { useSelector } from 'react-redux';
 
 const yAxisStyle = {
   display: 'flex',
@@ -50,11 +51,12 @@ const statusTextStyle = {
 };
 
 /** 실시간 마켓 정보 */
-export default function MarketDetail({ code }) {
+export default function MarketDetail() {
   const { isLoading, marketCodes } = useFetchMarketCode();
   const [krwMarketCodes, setKrwMarketCodes] = useState([]);
   const { socket, isConnected, socketData } = useWsTicker(krwMarketCodes);
   const [data, setData] = useState({});
+  const code = useSelector((state) => state.chart.code);
 
   useEffect(() => {
     if (!isLoading && marketCodes) {

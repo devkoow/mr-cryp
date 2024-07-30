@@ -17,7 +17,7 @@ import {
   StyledTableCell,
 } from '../../defaultTheme';
 import { globalColors } from '../../globalColors';
-import { useOpenApi } from '../../context/OpenApiContext';
+import { useSelector } from 'react-redux';
 
 /** 실시간 거래내역 테이블 UI
  * - timestampToTime : 타임스탬프 값을 KST 시간으로 변환
@@ -114,10 +114,10 @@ const TradeTable = memo(function TradeTable({ targetMarketCode }) {
 /** 실시간 거래 내역
  * - targetMarketCode : props로 전달받은 마켓의 티커
  */
-function TradeHistoryBox({ code }) {
+function TradeHistoryBox() {
   const { isLoading, marketCodes } = useFetchMarketCode();
   const [targetMarketCode, setTargetMarketCode] = useState();
-  const { upbit } = useOpenApi();
+  const code = useSelector((state) => state.chart.code);
 
   useEffect(() => {
     if (marketCodes) {
@@ -133,13 +133,6 @@ function TradeHistoryBox({ code }) {
       );
     }
   }, [code, marketCodes]);
-
-  useEffect(() => {
-    async function fetchData() {
-      const result = await upbit.tradeHistory(code);
-    }
-    fetchData();
-  }, []);
 
   if (isLoading) {
     return <LinearProgress color="primary" />;

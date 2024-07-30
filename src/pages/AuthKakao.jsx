@@ -52,7 +52,6 @@ export default function KakaoAuth() {
             'Content-type': 'application/x-www-form-urlencoded;charset=utf-8',
           },
         });
-        console.log(response);
         const data = response.data;
         const id = data.id;
         const imgUrl = data.kakao_account.profile.profile_image_url;

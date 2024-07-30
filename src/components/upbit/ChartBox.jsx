@@ -5,6 +5,8 @@ import { globalColors } from '../../globalColors';
 import Highcharts from 'highcharts/highstock';
 import HighchartsReact from 'highcharts-react-official';
 import indicators from 'highcharts/indicators/indicators';
+import { useSelector } from 'react-redux';
+
 indicators(Highcharts);
 Highcharts.setOptions({
   lang: {
@@ -109,10 +111,11 @@ const initialOptions = {
   },
 };
 
-export default function ChartBox({ code }) {
+export default function ChartBox() {
   const { upbit } = useOpenApi();
   const [options, setOptions] = useState(initialOptions);
   const [candles, setCandles] = useState([]);
+  const code = useSelector((state) => state.chart.code);
   const fetchCandles = useCallback(
     async (type, count) => {
       let fetchedCandles;

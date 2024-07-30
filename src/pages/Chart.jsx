@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import MarketListBox from '../components/upbit/MarketListBox';
 import MarketDetail from '../components/upbit/MarketDetail';
 import OrderbookBox from '../components/upbit/OrderbookBox';
@@ -7,15 +7,13 @@ import ChartBox from '../components/upbit/ChartBox';
 import OrderModal from '../components/upbit/OrderModal';
 import { Box, Grid, Button } from '@mui/material';
 import { DescriptionTypo, theme } from '../defaultTheme';
+import { useDispatch } from 'react-redux';
+import { setOpen } from '../redux/chartSlice';
 
 export default function Chart() {
-  const [code, setCode] = useState('KRW-BTC');
-  const [rate, setRate] = useState(0);
-  const [prevPrice, setPrevPrice] = useState(null);
-  const [currPrice, setCurrPrice] = useState(null);
-  const [open, setOpen] = useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+  const dispatch = useDispatch();
+  const handleOpen = () => dispatch(setOpen(true));
+  const handleClose = () => dispatch(setOpen(false));
 
   return (
     <Box>
@@ -36,17 +34,12 @@ export default function Chart() {
         margin="auto"
       >
         <Grid item xs={12} md={3}>
-          <MarketListBox
-            setCode={setCode}
-            setRate={setRate}
-            setPrevPrice={setPrevPrice}
-            setCurrPrice={setCurrPrice}
-          />
+          <MarketListBox />
         </Grid>
         <Grid item xs={12} md={9}>
-          <MarketDetail code={code} />
+          <MarketDetail />
           <Box sx={{ position: 'relative' }}>
-            <ChartBox code={code} />
+            <ChartBox />
             <Button
               sx={{
                 position: 'absolute',
@@ -61,20 +54,15 @@ export default function Chart() {
           </Box>
           <Grid container spacing={0} padding="0">
             <Grid item xs={12} md={7}>
-              <TradeHistoryBox code={code} />
+              <TradeHistoryBox />
             </Grid>
             <Grid item xs={12} md={5}>
-              <OrderbookBox code={code} rate={rate} prevPrice={prevPrice} />
+              <OrderbookBox />
             </Grid>
           </Grid>
         </Grid>
       </Grid>
-      <OrderModal
-        open={open}
-        handleClose={handleClose}
-        code={code}
-        currPrice={currPrice}
-      />
+      <OrderModal handleClose={handleClose} />
     </Box>
   );
 }

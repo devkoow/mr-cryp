@@ -17,20 +17,25 @@ import {
   Box,
   LinearProgress,
 } from '@mui/material';
-
-const RealTimePriceTable = memo(function RealTimePriceTable({
-  socketData,
-  marketCodeMap,
+import { useDispatch } from 'react-redux';
+import {
   setCode,
   setRate,
   setPrevPrice,
   setCurrPrice,
+} from '../../redux/chartSlice';
+
+const RealTimePriceTable = memo(function RealTimePriceTable({
+  socketData,
+  marketCodeMap,
 }) {
+  const dispatch = useDispatch();
+
   const handleRowClick = (code, rate, prevPrice, currPrice) => {
-    setCode(code);
-    setRate(rate);
-    setPrevPrice(prevPrice);
-    setCurrPrice(currPrice);
+    dispatch(setCode(code));
+    dispatch(setRate(rate));
+    dispatch(setPrevPrice(prevPrice));
+    dispatch(setCurrPrice(currPrice));
   };
 
   return (
@@ -152,7 +157,7 @@ const RealTimePriceTable = memo(function RealTimePriceTable({
  * - krwMarketCodes : KRW로 시작하는 marketCodes
  * - marketCodeMap : market 값을 키로 사용하는 korean_name 해시맵
  * */
-function MarketListBox({ setCode, setRate, setPrevPrice, setCurrPrice }) {
+function MarketListBox() {
   const { isLoading, marketCodes } = useFetchMarketCode();
   const [krwMarketCodes, setKrwMarketCodes] = useState([]);
   const { socket, isConnected, socketData } = useWsTicker(krwMarketCodes);
@@ -176,10 +181,6 @@ function MarketListBox({ setCode, setRate, setPrevPrice, setCurrPrice }) {
         <RealTimePriceTable
           socketData={socketData}
           marketCodeMap={marketCodeMap}
-          setCode={setCode}
-          setRate={setRate}
-          setPrevPrice={setPrevPrice}
-          setCurrPrice={setCurrPrice}
         />
       ) : (
         <LinearProgress color="primary" />

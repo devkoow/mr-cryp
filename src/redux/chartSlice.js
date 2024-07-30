@@ -8,8 +8,9 @@ const initialState = {
   open: false,
 };
 
+// 차트 페이지
 const chartSlice = createSlice({
-  name: 'chart',
+  name: 'chartSlice',
   initialState,
   reducers: {
     setCode: (state, action) => {
@@ -30,7 +31,6 @@ const chartSlice = createSlice({
   },
 });
 
+export default chartSlice;
 export const { setCode, setRate, setPrevPrice, setCurrPrice, setOpen } =
   chartSlice.actions;
-
-export default chartSlice.reducer;
